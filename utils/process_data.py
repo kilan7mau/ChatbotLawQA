@@ -141,20 +141,80 @@ def clean_document_text(raw_text: str) -> str:
     return text
 
 def extract_document_metadata(raw_text: str, filename: str) -> Dict[str, Any]:
-    """Trích xuất metadata, xử lý tốt định dạng 2 cột."""
+    """Trích xuất metadata, ưu tiên dùng Gemini 2.0 Flash nếu có API key."""
+    import os
+    import json
+    from langchain_google_genai import ChatGoogleGenerativeAI
+    from langchain_core.prompts import ChatPromptTemplate
+    from langchain_core.output_parsers import JsonOutputParser
+    import logging
+    logger = logging.getLogger(__name__)
+    
+    
+
+    # Mặc định metadata rỗng
+    metadata = {
+        "so_hieu": None,
+        "loai_van_ban": None,
+        "ten_van_ban": None,
+        "ngay_ban_hanh_str": None,
+        "nam_ban_hanh": None,
+        "co_quan_ban_hanh": None,
+        "ngay_hieu_luc_str": None
+    }
+
+    GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
+    if GOOGLE_API_KEY:
+        try:
+            llm = ChatGoogleGenerativeAI(
+                model="gemini-2.5-flash-preview-05-20",
+                google_api_key=GOOGLE_API_KEY,
+                temperature=0.0,
+            )
+            prompt = ChatPromptTemplate.from_template(
+                """
+Bạn là một AI chuyên trích xuất metadata từ văn bản pháp luật tiếng Việt. Hãy đọc kỹ văn bản sau và trả về một object JSON với các trường sau:
+- so_hieu: Số hiệu văn bản (ví dụ: "57/2009/NĐ-CP")
+- loai_van_ban: Loại văn bản (ví dụ: "Nghị định", "Quyết định", ...)
+- ten_van_ban: Tên văn bản (ví dụ: "Sửa đổi, bổ sung khoản 3 Điều 8 của Nghị định số 12/2007/NĐ-CP ...")
+- ngay_ban_hanh_str: Ngày ban hành dạng chuỗi (ví dụ: "ngày 08-7-2009")
+- nam_ban_hanh: Năm ban hành (ví dụ: 2009)
+- co_quan_ban_hanh: Cơ quan ban hành (ví dụ: "Chính phủ")
+- ngay_hieu_luc_str: Ngày hiệu lực dạng chuỗi (nếu có, ví dụ: "ngày 01-9-2009")
+Chỉ trả về object JSON, không giải thích gì thêm. Dưới đây là văn bản:
+---
+{raw_text}
+---
+"""
+            )
+            chain = prompt | llm | JsonOutputParser()
+            result = chain.invoke({"raw_text": raw_text})
+            # Đảm bảo các trường cần thiết đều có mặt
+            for k in metadata.keys():
+                if k in result:
+                    metadata[k] = result[k]
+            # Xử lý năm ban hành nếu là string
+            if metadata["nam_ban_hanh"] and isinstance(metadata["nam_ban_hanh"], str):
+                try:
+                    metadata["nam_ban_hanh"] = int(metadata["nam_ban_hanh"])
+                except Exception:
+                    metadata["nam_ban_hanh"] = None
+            logger.info(f"[Gemini] Metadata extracted: {metadata}")
+            return metadata
+        except Exception as e:
+            logger.error(f"[Gemini] Lỗi khi trích xuất metadata bằng Gemini: {e}")
+            # Fallback về logic cũ nếu có lỗi
+
     metadata: Dict[str, Any] = { "so_hieu": None, "loai_van_ban": None, "ten_van_ban": None, "ngay_ban_hanh_str": None, "nam_ban_hanh": None, "co_quan_ban_hanh": None, "ngay_hieu_luc_str": None }
     lines = raw_text.splitlines()[:50]
-
     found_doc_type = False
     is_capturing_title = False
     title_lines = []
-
     for line in lines:
         stripped_line = line.strip()
         if not stripped_line:
             is_capturing_title = False
             continue
-
         parts = re.split(r'\s{3,}', stripped_line)
         if len(parts) >= 2:
             left, right = parts[0], parts[-1]
@@ -165,41 +225,30 @@ def extract_document_metadata(raw_text: str, filename: str) -> Dict[str, Any]:
                     day, month, year = m.groups()
                     metadata["ngay_ban_hanh_str"] = f"ngày {day} tháng {month} năm {year}"
                     metadata["nam_ban_hanh"] = int(year)
-
         doc_type_pattern = r"^(" + "|".join(LEGAL_DOC_TYPES) + ")$"
         if not found_doc_type and (m := re.fullmatch(doc_type_pattern, stripped_line, re.IGNORECASE)):
             metadata["loai_van_ban"] = m.group(1).strip().upper()
             found_doc_type = True
             is_capturing_title = True
             continue
-
         if is_capturing_title:
             if stripped_line.startswith(("Căn cứ", "Chương ", "Điều ", "Phần ")) or re.match(r"^-+$", stripped_line):
                 is_capturing_title = False
             else:
                 title_lines.append(stripped_line)
-
     if title_lines: metadata["ten_van_ban"] = re.sub(r'\s+', ' ', " ".join(title_lines)).strip()
-
-    # 2. Fallback tìm năm ban hành từ số hiệu hoặc tên file
     if not metadata["nam_ban_hanh"]:
         if metadata["so_hieu"] and (m := re.search(r"/(\d{4})/", metadata["so_hieu"])):
             metadata["nam_ban_hanh"] = int(m.group(1))
         elif m := re.search(r"[-_](\d{4})[-_.]", filename):
             metadata["nam_ban_hanh"] = int(m.group(1))
-
-    # 3. Fallback tìm loại văn bản nếu cách trên thất bại
     if not metadata["loai_van_ban"]:
          for doc_type in LEGAL_DOC_TYPES:
              if metadata["ten_van_ban"] and metadata["ten_van_ban"].upper().startswith(doc_type.upper()):
                  metadata["loai_van_ban"] = doc_type.upper()
-                 # Loại bỏ phần loại văn bản khỏi tên
                  metadata["ten_van_ban"] = metadata["ten_van_ban"][len(doc_type):].strip()
                  break
-
-    # 4. Tìm ngày hiệu lực ở cuối văn bản
-    # (Giữ nguyên logic này vì nó thường hoạt động tốt)
-    eff_text = "\n".join(raw_text.splitlines()[-20:]) # Chỉ tìm trong 20 dòng cuối
+    eff_text = "\n".join(raw_text.splitlines()[-20:])
     if m := re.search(r"có\s+hiệu\s+lực\s+(?:thi\s+hành\s+)?kể\s+từ\s+ngày\s*(\d{1,2})\s*tháng\s*(\d{1,2})\s*năm\s*(\d{4})", eff_text, re.I):
         day, month, year = m.groups()
         metadata["ngay_hieu_luc_str"] = f"ngày {day} tháng {month} năm {year}"
@@ -970,6 +1019,7 @@ def process_single_file(file_path: str) -> List[Document]:
         doc_metadata["source"] = filename
 
         logger.debug(f"Extracted document metadata for '{filename}': so_hieu={doc_metadata.get('so_hieu')}, loai_van_ban={doc_metadata.get('loai_van_ban')}")
+        
 
         # --- BƯỚC 4: SUY LUẬN LĨNH VỰC ---
         # Dựa trên nội dung sạch và tiêu đề đã trích xuất

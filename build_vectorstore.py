@@ -123,6 +123,16 @@ def build_store_v5(force_rebuild: bool = False, pool_batch_size: int = 50):
 
                         processed_chunks = filter_and_serialize_complex_metadata(chunks_from_file)
 
+                        # Lưu metadata ra file JSON trước khi ingest lên Weaviate
+                        import json
+                        metadata_list = [chunk.metadata for chunk in processed_chunks]
+                        metadata_dir = os.path.join(os.path.dirname(path), "..", "processed_files_metadata")
+                        os.makedirs(metadata_dir, exist_ok=True)
+                        metadata_filename = os.path.splitext(os.path.basename(path))[0] + "_metadata.json"
+                        metadata_path = os.path.join(metadata_dir, metadata_filename)
+                        with open(metadata_path, "w", encoding="utf-8") as meta_f:
+                            json.dump(metadata_list, meta_f, ensure_ascii=False, indent=2)
+
                         ingest_chunks_with_native_batching(
                             client=weaviate_client,
                             collection_name=collection_name,

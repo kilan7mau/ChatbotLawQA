@@ -25,6 +25,7 @@ WEAVIATE_SCHEMA_CONFIG: List[Dict[str, Any]] = [
     {"name": "title", "dataType": wvc_config.DataType.TEXT, "index_searchable": True, "tokenization": wvc_config.Tokenization.WORD, "vectorize": True},
     {"name": "field", "dataType": wvc_config.DataType.TEXT,"index_searchable": True, "vectorize": True},
     {"name": "so_hieu", "dataType": wvc_config.DataType.TEXT, "index_searchable": False,"vectorize": False},
+    #{"name": "so_hieu", "dataType": wvc_config.DataType.TEXT, "index_searchable": True,"vectorize": True},
     {"name": "loai_van_ban", "dataType": wvc_config.DataType.TEXT, "index_searchable": True,"vectorize": True},
     {"name": "ten_van_ban", "dataType": wvc_config.DataType.TEXT,"index_searchable": True, "tokenization": wvc_config.Tokenization.WORD, "vectorize": True},
     {"name": "co_quan_ban_hanh", "dataType": wvc_config.DataType.TEXT, "index_searchable": False,"vectorize": False},
@@ -133,7 +134,7 @@ def ingest_chunks_with_native_batching(client: weaviate.WeaviateClient, collecti
     logger.info(f"⏱️  Thời gian tạo embedding: {time.time() - start_embed_time:.2f} giây.")
 
     # 3. CẢI TIẾN: Đảm bảo chỉ ingest các thuộc tính hợp lệ
-    valid_property_names = {prop["name"] for prop in WEAVIATE_SCHEMA_CONFIG}
+    valid_property_names = {prop["name"] for prop in    WEAVIATE_SCHEMA_CONFIG}
     valid_property_names.add("text") # Thêm trường 'text'
 
     with client.batch.dynamic() as batch:
