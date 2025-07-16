@@ -18,7 +18,7 @@ from operator import itemgetter
 
 
 logger = logging.getLogger(__name__)
-
+'''
 WEAVIATE_SCHEMA_CONFIG: List[Dict[str, Any]] = [
     # Tên trường, Kiểu dữ liệu trong Weaviate, Có nên vector hóa trường này không?
     {"name": "source", "dataType": wvc_config.DataType.TEXT,"index_searchable": False, "vectorize": False},
@@ -38,7 +38,35 @@ WEAVIATE_SCHEMA_CONFIG: List[Dict[str, Any]] = [
     {"name": "entity_type", "dataType": wvc_config.DataType.TEXT,"index_searchable": True, "vectorize": False},
     {"name": "penalties", "dataType": wvc_config.DataType.TEXT,"index_searchable": False, "vectorize": False},
     {"name": "cross_references", "dataType": wvc_config.DataType.TEXT, "index_searchable": False, "vectorize": False},
+]'''
+# Cấu hình schema Weaviate ver 2
+WEAVIATE_SCHEMA_CONFIG: List[Dict[str, Any]] = [
+    # Trường bắt buộc
+    {"name": "document_number", "dataType": wvc_config.DataType.TEXT, "index_searchable": False, "vectorize": False},
+    {"name": "document_type", "dataType": wvc_config.DataType.TEXT, "index_searchable": True, "vectorize": True},
+    {"name": "document_title", "dataType": wvc_config.DataType.TEXT, "index_searchable": True, "tokenization": wvc_config.Tokenization.WORD, "vectorize": True},
+    {"name": "issue_date", "dataType": wvc_config.DataType.TEXT, "index_searchable": False, "vectorize": False},
+    {"name": "issue_year", "dataType": wvc_config.DataType.INT, "index_searchable": True, "vectorize": False},
+    {"name": "expiry_date", "dataType": wvc_config.DataType.TEXT, "index_searchable": False, "vectorize": False},
+    {"name": "issuing_agency", "dataType": wvc_config.DataType.TEXT, "index_searchable": False, "vectorize": False},
+    {"name": "confidential_level", "dataType": wvc_config.DataType.TEXT, "index_searchable": True, "vectorize": False},
+    {"name": "law_field", "dataType": wvc_config.DataType.TEXT, "index_searchable": True, "vectorize": True},
+    {"name": "chunk_title", "dataType": wvc_config.DataType.TEXT, "index_searchable": True, "tokenization": wvc_config.Tokenization.WORD, "vectorize": True},
+    {"name": "source_file", "dataType": wvc_config.DataType.TEXT, "index_searchable": False, "vectorize": False},
+
+    # Cấu trúc pháp luật
+    {"name": "part_code", "dataType": wvc_config.DataType.TEXT, "index_searchable": False, "vectorize": False},
+    {"name": "chapter_code", "dataType": wvc_config.DataType.TEXT, "index_searchable": False, "vectorize": False},
+    {"name": "section_code", "dataType": wvc_config.DataType.TEXT, "index_searchable": False, "vectorize": False},
+    {"name": "article_code", "dataType": wvc_config.DataType.TEXT, "index_searchable": False, "vectorize": False},
+    {"name": "entity_type", "dataType": wvc_config.DataType.TEXT, "index_searchable": True, "vectorize": False},
+
+    # Trường nâng cao
+    {"name": "penalties", "dataType": wvc_config.DataType.TEXT, "index_searchable": False, "vectorize": False},
+    {"name": "cross_references", "dataType": wvc_config.DataType.TEXT, "index_searchable": False, "vectorize": False},
 ]
+    
+
 
 # Hàm get_huggingface_embeddings giữ nguyên
 def get_huggingface_embeddings(model_name: str, device: str = 'cpu'):

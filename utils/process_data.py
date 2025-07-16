@@ -8,10 +8,16 @@ import json
 from langchain_core.documents import Document
 from config import LEGAL_DOC_TYPES, MAX_CHUNK_SIZE, CHUNK_OVERLAP
 
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import JsonOutputParser
+
+import prompt_templete
+GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 
 logger = logging.getLogger(__name__)
 
-
+#Hàm cuối cùng để chuẩn hóa metadata ngay trước khi ingest vào vector store.
 def filter_and_serialize_complex_metadata(documents: List[Document]) -> List[Document]:
     """Hàm cuối cùng để chuẩn hóa metadata ngay trước khi ingest vào vector store."""
     updated_documents = []
@@ -37,7 +43,7 @@ def filter_and_serialize_complex_metadata(documents: List[Document]) -> List[Doc
         updated_documents.append(doc)
     return updated_documents
 
-
+#Một text splitter đơn giản để chia nhỏ các chunk quá lớn.
 class SimpleTextSplitter:
     """Một text splitter đơn giản để chia nhỏ các chunk quá lớn."""
     def __init__(self, chunk_size: int, chunk_overlap: int):
@@ -141,29 +147,20 @@ def clean_document_text(raw_text: str) -> str:
     return text
 
 def extract_document_metadata(raw_text: str, filename: str) -> Dict[str, Any]:
-    """Trích xuất metadata, ưu tiên dùng Gemini 2.0 Flash nếu có API key."""
-    import os
-    import json
-    from langchain_google_genai import ChatGoogleGenerativeAI
-    from langchain_core.prompts import ChatPromptTemplate
-    from langchain_core.output_parsers import JsonOutputParser
-    import logging
-    logger = logging.getLogger(__name__)
-    
-    
-
-    # Mặc định metadata rỗng
+    """Extract metadata and return with English keys."""
+    # Default metadata with English keys
     metadata = {
-        "so_hieu": None,
-        "loai_van_ban": None,
-        "ten_van_ban": None,
-        "ngay_ban_hanh_str": None,
-        "nam_ban_hanh": None,
-        "co_quan_ban_hanh": None,
-        "ngay_hieu_luc_str": None
+        "document_number": None,
+        "document_type": None,
+        "document_title": None,
+        "issue_date": None,
+        "issue_year": None,
+        "issuing_agency": None,
+        "effective_date": None,
+        "source_file": os.path.splitext(filename)[0],
+        "confidential_level": "Công Khai"  # ✅ Mặc định nếu không tìm thấy
     }
 
-    GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
     if GOOGLE_API_KEY:
         try:
             llm = ChatGoogleGenerativeAI(
@@ -171,41 +168,36 @@ def extract_document_metadata(raw_text: str, filename: str) -> Dict[str, Any]:
                 google_api_key=GOOGLE_API_KEY,
                 temperature=0.0,
             )
-            prompt = ChatPromptTemplate.from_template(
-                """
-Bạn là một AI chuyên trích xuất metadata từ văn bản pháp luật tiếng Việt. Hãy đọc kỹ văn bản sau và trả về một object JSON với các trường sau:
-- so_hieu: Số hiệu văn bản (ví dụ: "57/2009/NĐ-CP")
-- loai_van_ban: Loại văn bản (ví dụ: "Nghị định", "Quyết định", ...)
-- ten_van_ban: Tên văn bản (ví dụ: "Sửa đổi, bổ sung khoản 3 Điều 8 của Nghị định số 12/2007/NĐ-CP ...")
-- ngay_ban_hanh_str: Ngày ban hành dạng chuỗi (ví dụ: "ngày 08-7-2009")
-- nam_ban_hanh: Năm ban hành (ví dụ: 2009)
-- co_quan_ban_hanh: Cơ quan ban hành (ví dụ: "Chính phủ")
-- ngay_hieu_luc_str: Ngày hiệu lực dạng chuỗi (nếu có, ví dụ: "ngày 01-9-2009")
-Chỉ trả về object JSON, không giải thích gì thêm. Dưới đây là văn bản:
----
-{raw_text}
----
-"""
+            keyword_extraction_prompt = ChatPromptTemplate.from_template(
+                prompt_templete.KEYWORD_EXTRACTION_PROMPT
             )
-            chain = prompt | llm | JsonOutputParser()
+            chain = keyword_extraction_prompt | llm | JsonOutputParser()
             result = chain.invoke({"raw_text": raw_text})
-            # Đảm bảo các trường cần thiết đều có mặt
-            for k in metadata.keys():
-                if k in result:
-                    metadata[k] = result[k]
-            # Xử lý năm ban hành nếu là string
-            if metadata["nam_ban_hanh"] and isinstance(metadata["nam_ban_hanh"], str):
+            # Map Vietnamese keys to English
+            mapping = {
+                "so_hieu": "document_number",
+                "loai_van_ban": "document_type",
+                "ten_van_ban": "document_title",
+                "ngay_ban_hanh_str": "issue_date",
+                "nam_ban_hanh": "issue_year",
+                "co_quan_ban_hanh": "issuing_agency",
+                "ngay_hieu_luc_str": "effective_date"
+            }
+            for vi_key, en_key in mapping.items():
+                if vi_key in result:
+                    metadata[en_key] = result[vi_key]
+            if metadata["issue_year"] and isinstance(metadata["issue_year"], str):
                 try:
-                    metadata["nam_ban_hanh"] = int(metadata["nam_ban_hanh"])
+                    metadata["issue_year"] = int(metadata["issue_year"])
                 except Exception:
-                    metadata["nam_ban_hanh"] = None
+                    metadata["issue_year"] = None
             logger.info(f"[Gemini] Metadata extracted: {metadata}")
             return metadata
         except Exception as e:
-            logger.error(f"[Gemini] Lỗi khi trích xuất metadata bằng Gemini: {e}")
-            # Fallback về logic cũ nếu có lỗi
+            logger.error(f"[Gemini] Error extracting metadata: {e}")
+            # Fallback to old logic
 
-    metadata: Dict[str, Any] = { "so_hieu": None, "loai_van_ban": None, "ten_van_ban": None, "ngay_ban_hanh_str": None, "nam_ban_hanh": None, "co_quan_ban_hanh": None, "ngay_hieu_luc_str": None }
+    # Fallback extraction logic
     lines = raw_text.splitlines()[:50]
     found_doc_type = False
     is_capturing_title = False
@@ -218,16 +210,16 @@ Chỉ trả về object JSON, không giải thích gì thêm. Dưới đây là 
         parts = re.split(r'\s{3,}', stripped_line)
         if len(parts) >= 2:
             left, right = parts[0], parts[-1]
-            if any(kw in left.upper() for kw in ["CHÍNH PHỦ", "QUỐC HỘI", "BỘ"]): metadata["co_quan_ban_hanh"] = left.strip().upper()
+            if any(kw in left.upper() for kw in ["CHÍNH PHỦ", "QUỐC HỘI", "BỘ"]): metadata["issuing_agency"] = left.strip().upper()
             if "số:" in left.lower():
-                if m := re.search(r"([\w\d/.-]+(?:-[\w\d/.-]+)?)", left): metadata["so_hieu"] = m.group(1).strip()
+                if m := re.search(r"([\w\d/.-]+(?:-[\w\d/.-]+)?)", left): metadata["document_number"] = m.group(1).strip()
                 if m := re.search(r"ngày\s*(\d{1,2})\s*tháng\s*(\d{1,2})\s*năm\s*(\d{4})", right, re.I):
                     day, month, year = m.groups()
-                    metadata["ngay_ban_hanh_str"] = f"ngày {day} tháng {month} năm {year}"
-                    metadata["nam_ban_hanh"] = int(year)
+                    metadata["issue_date"] = f"ngày {day} tháng {month} năm {year}"
+                    metadata["issue_year"] = int(year)
         doc_type_pattern = r"^(" + "|".join(LEGAL_DOC_TYPES) + ")$"
         if not found_doc_type and (m := re.fullmatch(doc_type_pattern, stripped_line, re.IGNORECASE)):
-            metadata["loai_van_ban"] = m.group(1).strip().upper()
+            metadata["document_type"] = m.group(1).strip().upper()
             found_doc_type = True
             is_capturing_title = True
             continue
@@ -236,26 +228,26 @@ Chỉ trả về object JSON, không giải thích gì thêm. Dưới đây là 
                 is_capturing_title = False
             else:
                 title_lines.append(stripped_line)
-    if title_lines: metadata["ten_van_ban"] = re.sub(r'\s+', ' ', " ".join(title_lines)).strip()
-    if not metadata["nam_ban_hanh"]:
-        if metadata["so_hieu"] and (m := re.search(r"/(\d{4})/", metadata["so_hieu"])):
-            metadata["nam_ban_hanh"] = int(m.group(1))
+    if title_lines: metadata["document_title"] = re.sub(r'\s+', ' ', " ".join(title_lines)).strip()
+    if not metadata["issue_year"]:
+        if metadata["document_number"] and (m := re.search(r"/(\d{4})/", metadata["document_number"])):
+            metadata["issue_year"] = int(m.group(1))
         elif m := re.search(r"[-_](\d{4})[-_.]", filename):
-            metadata["nam_ban_hanh"] = int(m.group(1))
-    if not metadata["loai_van_ban"]:
+            metadata["issue_year"] = int(m.group(1))
+    if not metadata["document_type"]:
          for doc_type in LEGAL_DOC_TYPES:
-             if metadata["ten_van_ban"] and metadata["ten_van_ban"].upper().startswith(doc_type.upper()):
-                 metadata["loai_van_ban"] = doc_type.upper()
-                 metadata["ten_van_ban"] = metadata["ten_van_ban"][len(doc_type):].strip()
+             if metadata["document_title"] and metadata["document_title"].upper().startswith(doc_type.upper()):
+                 metadata["document_type"] = doc_type.upper()
+                 metadata["document_title"] = metadata["document_title"][len(doc_type):].strip()
                  break
     eff_text = "\n".join(raw_text.splitlines()[-20:])
     if m := re.search(r"có\s+hiệu\s+lực\s+(?:thi\s+hành\s+)?kể\s+từ\s+ngày\s*(\d{1,2})\s*tháng\s*(\d{1,2})\s*năm\s*(\d{4})", eff_text, re.I):
         day, month, year = m.groups()
-        metadata["ngay_hieu_luc_str"] = f"ngày {day} tháng {month} năm {year}"
+        metadata["effective_date"] = f"ngày {day} tháng {month} năm {year}"
 
     return metadata
 
-
+# hàm này cần xem lại để dùng llm trích xuất
 def extract_cross_references(text_chunk_content: str, current_doc_full_metadata: Dict) -> List[Dict]:
     references = []
     internal_ref_patterns = [
@@ -272,7 +264,7 @@ def extract_cross_references(text_chunk_content: str, current_doc_full_metadata:
 
             # Logic xác định điểm, khoản, điều dựa trên số lượng group và nội dung
             # Pattern 1: (điểm)? (khoản)? (Điều)
-            if pattern.pattern.count('(') - pattern.pattern.count('(?:') == 3: # Đếm số capturing groups
+            if pattern.pattern.count('(') - pattern.pattern.count('?:') == 3: # Đếm số capturing groups
                 ref_diem_text = groups[0] if groups[0] and "điểm" in groups[0].lower() else None
                 ref_khoan_text = groups[1] if groups[1] and "khoản" in groups[1].lower() else None
                 ref_dieu_text = groups[2] if groups[2] and "điều" in groups[2].lower() else None
@@ -287,7 +279,7 @@ def extract_cross_references(text_chunk_content: str, current_doc_full_metadata:
 
 
             # Pattern 2: (khoản)? (Điều)
-            elif pattern.pattern.count('(') - pattern.pattern.count('(?:') == 2:
+            elif pattern.pattern.count('(') - pattern.pattern.count('?:') == 2:
                 ref_khoan_text = groups[0] if groups[0] and "khoản" in groups[0].lower() else None
                 ref_dieu_text = groups[1] if groups[1] and "điều" in groups[1].lower() else None
                 # Nếu group 0 là điều
@@ -295,7 +287,7 @@ def extract_cross_references(text_chunk_content: str, current_doc_full_metadata:
                     ref_dieu_text = groups[0]
 
             # Pattern 3: (Điều)
-            elif pattern.pattern.count('(') - pattern.pattern.count('(?:') == 1:
+            elif pattern.pattern.count('(') - pattern.pattern.count('?:') == 1:
                 ref_dieu_text = groups[0] if groups[0] and "điều" in groups[0].lower() else None
 
             ref_dieu = ref_dieu_text.replace("Điều ", "").strip() if ref_dieu_text else None
@@ -415,97 +407,113 @@ def extract_cross_references(text_chunk_content: str, current_doc_full_metadata:
 
 def hierarchical_split_law_document(doc_obj: Document) -> List[Document]:
     """
-    PHIÊN BẢN CUỐI CÙNG: Chia văn bản luật theo cấu trúc, xử lý Preamble,
-    giữ trọn vẹn "Điều" và thêm "structured context".
+    Chunking theo Điều bằng Gemini nếu có API key, fallback về regex nếu không.
     """
+
     text = doc_obj.page_content
     source_metadata = doc_obj.metadata.copy()
-    filename = source_metadata.get("source", "unknown_file")
-    doc_so_hieu = source_metadata.get("so_hieu")
+    filename = source_metadata.get("source_file", source_metadata.get("source", "unknown_file"))
+    doc_so_hieu = source_metadata.get("document_number", source_metadata.get("so_hieu"))
+    document_title = source_metadata.get("document_title", source_metadata.get("ten_van_ban", filename))
+    law_field = source_metadata.get("law_field", source_metadata.get("field"))
 
     final_chunks: List[Document] = []
 
-    # === BƯỚC 1: TÁCH VĂN BẢN THÀNH CÁC KHỐI CÓ CẤU TRÚC LỚN ===
-    # Regex này sẽ chia văn bản tại MỌI dòng bắt đầu bằng "Phần", "Chương", hoặc "Điều".
-    # `(?=...)` là positive lookahead, nó tìm điểm chia mà không "ăn" mất chuỗi đó.
-    # Thêm `\s*($|\n)` vào cuối để xử lý các dòng tiêu đề không có nội dung theo sau.
+    if GOOGLE_API_KEY:
+        try:
+            llm = ChatGoogleGenerativeAI(
+                model="gemini-2.5-flash-preview-05-20",
+                google_api_key=GOOGLE_API_KEY,
+                temperature=0.0,
+            )
+            hierarchical_split_law_document_prompt = ChatPromptTemplate.from_template(
+                prompt_templete.HIERARCHICAL_SPLIT_LAW_DOCUMENT_PROMPT
+            )
+            chain = hierarchical_split_law_document_prompt | llm | JsonOutputParser()
+            result = chain.invoke({"text": text})
+            if isinstance(result, list) and result:
+                for i, item in enumerate(result):
+                    dieu_code = item.get("dieu_code")
+                    dieu_title = item.get("dieu_title")
+                    content = item.get("content")
+                    if not dieu_code or not content:
+                        continue
+                    block_meta = source_metadata.copy()
+                    block_meta["dieu_code"] = dieu_code
+                    block_meta["dieu_title"] = dieu_title
+                    block_meta["chunk_title"] = dieu_code + (f" - {dieu_title}" if dieu_title else "")
+                    block_meta["document_title"] = document_title
+                    block_meta["law_field"] = law_field
+                    block_meta["entity_type"] = infer_entity_type(content, law_field)
+                    block_meta["penalties"] = extract_penalties_from_text(content)
+                    block_meta["cross_references"] = extract_cross_references(content, source_metadata)
+                    context_header = f"Excerpt from: {block_meta['chunk_title']}\nIn document: {document_title}"
+                    final_page_content = f"Full text: {block_meta['chunk_title']}\n\nContent:\n{content}"
+                    chunk_id = generate_structured_id(doc_so_hieu, [dieu_code], filename)
+                    final_chunks.append(Document(page_content=final_page_content, metadata=block_meta, id=chunk_id))
+                if final_chunks:
+                    logger.info(f"[Gemini] Chunked {len(final_chunks)} articles for file {filename}")
+                    return final_chunks
+        except Exception as e:
+            logger.error(f"[Gemini] Error chunking by article: {e}")
+            # Fallback to regex if error
+
     split_pattern = r"(?=\n^\s*(?:PHẦN\s+(?:THỨ\s+[\w\sÀ-Ỹà-ỹ]+|[IVXLCDM]+|CHUNG)|Chương\s+[IVXLCDM\d]+|Điều\s+\d+[a-z]?)\s*[:.]?.*($|\n))"
     blocks = re.split(split_pattern, text, flags=re.MULTILINE | re.IGNORECASE)
 
-    # Khối đầu tiên trước lần chia đầu tiên luôn là Preamble (hoặc toàn bộ văn bản nếu không có cấu trúc)
     preamble_block = blocks.pop(0).strip()
     if preamble_block:
         logger.debug(f"Processing Preamble for {filename}...")
-        # Tạo metadata cho Preamble
         preamble_meta = source_metadata.copy()
-        preamble_meta["title"] = f"{source_metadata.get('ten_van_ban', filename)} - Phần Mở đầu"
-
-        # Làm giàu metadata cho Preamble
-        preamble_meta["entity_type"] = infer_entity_type(preamble_block, preamble_meta.get("field"))
-        preamble_meta["penalties"] = extract_penalties_from_text(preamble_block) # Thường là rỗng
-
-        # Tạo structured content
-        context_header = f"Trích từ: {preamble_meta['title']}\nThuộc văn bản: {preamble_meta.get('ten_van_ban', filename)}"
-        final_page_content = f"{context_header}\n\nNội dung:\n{preamble_block}"
-
-        # Tạo chunk cho Preamble
+        preamble_meta["chunk_title"] = f"{document_title} - Preamble"
+        preamble_meta["document_title"] = document_title
+        preamble_meta["law_field"] = law_field
+        preamble_meta["entity_type"] = infer_entity_type(preamble_block, law_field)
+        preamble_meta["penalties"] = extract_penalties_from_text(preamble_block)
+        context_header = f"Excerpt from: {preamble_meta['chunk_title']}\nIn document: {document_title}"
+        final_page_content = f"{context_header}\n\nContent:\n{preamble_block}"
         chunk_id = generate_structured_id(doc_so_hieu, ["preamble"], filename)
         final_chunks.append(Document(page_content=final_page_content, metadata=preamble_meta, id=chunk_id))
-
-    # === BƯỚC 2: XỬ LÝ TỪNG KHỐI CẤU TRÚC (PHẦN, CHƯƠNG, ĐIỀU) ===
     hierarchy_context: Dict[str, Any] = {}
-
     for block_content in blocks:
         block_content = block_content.strip()
         if not block_content:
             continue
-
         first_line = block_content.splitlines()[0].strip()
         item_type, item_code, item_title = parse_law_item_line(first_line)
-
-        # Cập nhật ngữ cảnh phân cấp
         if item_type == "phan":
             hierarchy_context = {"phan_code": item_code, "phan_title": item_title}
         elif item_type == "chuong":
-            # Khi gặp Chương mới, giữ lại Phần, reset các cấp nhỏ hơn
             hierarchy_context = {k: v for k, v in hierarchy_context.items() if k.startswith("phan")}
             hierarchy_context.update({"chuong_code": item_code, "chuong_title": item_title})
-
-        # Chỉ xử lý sâu hơn nếu khối này là một "Điều"
         if item_type == "dieu":
-            # Cập nhật context cho Điều này
             hierarchy_context.update({"dieu_code": item_code, "dieu_title": item_title})
-
-            # Tạo metadata cuối cùng cho khối "Điều"
             block_meta = {**source_metadata, **hierarchy_context}
             title_parts = [str(block_meta.get(k)) for k in ["phan_code", "chuong_code", "dieu_code"] if block_meta.get(k)]
-            block_meta["title"] = " - ".join(title_parts)
-
-            # Làm giàu metadata cho toàn bộ "Điều"
-            block_meta["entity_type"] = infer_entity_type(block_content, block_meta.get("field"))
+            block_meta["chunk_title"] = " - ".join(title_parts)
+            block_meta["document_title"] = document_title
+            block_meta["law_field"] = law_field
+            block_meta["entity_type"] = infer_entity_type(block_content, law_field)
             block_meta["penalties"] = extract_penalties_from_text(block_content)
             block_meta["cross_references"] = extract_cross_references(block_content, source_metadata)
-
-            context_header = f"Trích từ: {block_meta['title']}\nThuộc văn bản: {block_meta.get('ten_van_ban', filename)}"
-
-            # Chia nhỏ "Điều" nếu cần
+            context_header = f"Excerpt from: {block_meta['chunk_title']}\nIn document: {document_title}"
             if len(block_content) > MAX_CHUNK_SIZE:
-                logger.debug(f"Splitting long article: {block_meta['title']}")
+                logger.debug(f"Splitting long article: {block_meta['chunk_title']}")
                 sub_texts = base_text_splitter.split_text(block_content)
                 for i, sub_text in enumerate(sub_texts):
                     sub_chunk_meta = block_meta.copy()
                     sub_chunk_meta["sub_chunk_index"] = i
-                    final_page_content = f"{context_header}\n\nNội dung:\n{sub_text}"
+                    final_page_content = f"{context_header}\n\nContent:\n{sub_text}"
                     chunk_id = generate_structured_id(doc_so_hieu, title_parts + [f"part-{i}"], filename)
                     final_chunks.append(Document(page_content=final_page_content, metadata=sub_chunk_meta, id=chunk_id))
             else:
-                final_page_content = f"Toàn văn: {block_meta['title']}\n\nNội dung:\n{block_content}"
+                final_page_content = f"Full text: {block_meta['chunk_title']}\n\nContent:\n{block_content}"
                 chunk_id = generate_structured_id(doc_so_hieu, title_parts, filename)
                 final_chunks.append(Document(page_content=final_page_content, metadata=block_meta, id=chunk_id))
 
     return final_chunks
 
-
+#xem lại hàm này để cải tiến sau
 def infer_field(text_content: str, doc_title: Optional[str]) -> str:
     """
     CẢI TIẾN V2: Bổ sung từ khóa ngắn gọn, thông tục để xử lý câu hỏi người dùng.
@@ -729,7 +737,7 @@ def infer_field(text_content: str, doc_title: Optional[str]) -> str:
     return best_field
 
 
-
+#xem lại hàm này để cải tiến sau
 def infer_entity_type(query_or_text: str, field: Optional[str]) -> Optional[List[str]]:
     """
     CẢI TIẾN V2: Mở rộng từ khóa, xử lý khi không có field và luôn trả về list.
@@ -778,7 +786,7 @@ def infer_entity_type(query_or_text: str, field: Optional[str]) -> Optional[List
     # Luôn trả về một danh sách các entity tìm được
     return found_entities
 
-
+# xem lại hàm này để chunking và trích xuất bằng llm sau
 def parse_law_item_line(line: str) -> Tuple[Optional[str], str, str]:
     """Phân tích cấu trúc dòng một cách mạnh mẽ và có thứ tự."""
     stripped_line = line.strip()
@@ -805,7 +813,7 @@ def parse_law_item_line(line: str) -> Tuple[Optional[str], str, str]:
 
 
 
-
+# các hàm đằng sau này đều cần xem lại
 def _normalize_money(value_str: str) -> Optional[float]:
     if not value_str: return None
     try:
@@ -954,7 +962,7 @@ def load_process_and_split_documents(folder_path: str) -> List[Document]:
 
             # Trích xuất metadata gốc từ raw_content trước khi làm sạch quá nhiều
             doc_metadata_original = extract_document_metadata(raw_content, filename)
-            doc_metadata_original["source"] = filename
+            doc_metadata_original["source_file"] = os.path.splitext(filename)[0]
 
             # Làm sạch nội dung để xử lý (có thể giữ lại phần đầu nếu clean_document_text được điều chỉnh)
             cleaned_content_for_processing = clean_document_text(raw_content)
@@ -963,7 +971,7 @@ def load_process_and_split_documents(folder_path: str) -> List[Document]:
                 continue
 
             # Suy luận lĩnh vực và các thông tin khác
-            doc_metadata_original["field"] = infer_field(cleaned_content_for_processing, doc_metadata_original.get("ten_van_ban"))
+            doc_metadata_original["law_field"] = infer_field(cleaned_content_for_processing, doc_metadata_original.get("document_title"))
             doc_metadata_original["entity_type"] = infer_entity_type(cleaned_content_for_processing, doc_metadata_original.get("field"))
             # Penalty sẽ được trích xuất cho từng chunk
 

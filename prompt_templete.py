@@ -229,3 +229,34 @@ khởi kiện đòi lương
 
 **OUTPUT:**
 """
+# Prompt for extracting keywords from a legal question
+KEYWORD_EXTRACTION_PROMPT = """
+Bạn là một AI chuyên trích xuất metadata từ văn bản pháp luật tiếng Việt. Hãy đọc kỹ văn bản sau và trả về một object JSON hợp lệ với các trường sau:
+
+- so_hieu: Số hiệu văn bản (ví dụ: "57/2009/NĐ-CP")
+- loai_van_ban: Loại văn bản (ví dụ: "Nghị định", "Quyết định", ...)
+- ten_van_ban: Tên văn bản (ví dụ: "Sửa đổi, bổ sung khoản 3 Điều 8 của Nghị định số 12/2007/NĐ-CP ...")
+- ngay_ban_hanh_str: Ngày ban hành của văn bản, chuyển về định dạng dd/mm/yyyy (ví dụ: "08/07/2009"). Văn bản có thể ghi theo nhiều kiểu (vd: "ngày 8-7-2009", "8.7.2009", "08/07/2009", "ngày  8   tháng 7  năm 2009",) nhưng kết quả phải luôn là dd/mm/yyyy.
+- nam_ban_hanh: Năm ban hành dạng số nguyên (ví dụ: 2009)
+- co_quan_ban_hanh: Cơ quan ban hành (ví dụ: "Chính phủ")
+- ngay_hieu_luc_str: Ngày hiệu lực, nếu có,  chuyển về định dạng dd/mm/yyyy (ví dụ: "08/07/2009"). Văn bản có thể ghi theo nhiều kiểu (vd: "ngày 8-7-2009", "8.7.2009", "08/07/2009", "ngày  8   tháng 7  năm 2009",) nhưng kết quả phải luôn là dd/mm/yyyy.
+- ngay_het_hieu_luc_str: Ngày hết hiệu lực, nếu có, định dạng dd/mm/yyyy (ví dụ: "01/01/2025")
+- muc_do_mat: Mức độ mật của văn bản, nhận dạng tự do theo ngữ cảnh. Trường này có thể xuất hiện dưới nhiều hình thức, ví dụ: "Công khai", "Mật", "Tối Mật", "Tuyệt Mật", v.v. Nếu không tìm thấy thông tin nào về mức độ mật, hãy trả về mặc định là "Công Khai".
+
+⚠️ Chỉ trả về một object JSON hợp lệ duy nhất, không được giải thích, không thêm mô tả. Dưới đây là nội dung văn bản cần phân tích:
+---
+{raw_text}
+---
+"""
+
+# Prompt for hierarchical split of law documents
+HIERARCHICAL_SPLIT_LAW_DOCUMENT_PROMPT= """
+Bạn là một AI chuyên phân tích văn bản pháp luật tiếng Việt. Hãy đọc kỹ văn bản sau và trả về một danh sách JSON, mỗi phần tử là một object với các trường:
+- dieu_code: Số điều (ví dụ: "Điều 1", "Điều 2", ...)
+- dieu_title: Tiêu đề điều (nếu có, ví dụ: "Quy định chung")
+- content: Nội dung đầy đủ của điều đó
+Nếu không tìm thấy điều nào, trả về mảng rỗng. Chỉ trả về JSON, không giải thích gì thêm. Dưới đây là văn bản:
+---
+{text}
+---
+"""
