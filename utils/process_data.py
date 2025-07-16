@@ -1051,3 +1051,4 @@ def process_single_file(file_path: str) -> List[Document]:
     except Exception as e:
         logger.error(f"❌ A critical error occurred while processing file '{filename}': {e}", exc_info=True)
         return []
+
