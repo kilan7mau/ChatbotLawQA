@@ -154,7 +154,7 @@ def extract_document_metadata(raw_text: str, filename: str) -> Dict[str, Any]:
         "document_type": None,
         "document_title": None,
         "issue_date": None,
-        "issue_year": None,
+        #"issue_year": None,
         "issuing_agency": None,
         "effective_date": None,
         "source_file": os.path.splitext(filename)[0],
@@ -179,73 +179,22 @@ def extract_document_metadata(raw_text: str, filename: str) -> Dict[str, Any]:
                 "loai_van_ban": "document_type",
                 "ten_van_ban": "document_title",
                 "ngay_ban_hanh_str": "issue_date",
-                "nam_ban_hanh": "issue_year",
+                #"nam_ban_hanh": "issue_year",
                 "co_quan_ban_hanh": "issuing_agency",
                 "ngay_hieu_luc_str": "effective_date"
             }
             for vi_key, en_key in mapping.items():
                 if vi_key in result:
                     metadata[en_key] = result[vi_key]
-            if metadata["issue_year"] and isinstance(metadata["issue_year"], str):
-                try:
-                    metadata["issue_year"] = int(metadata["issue_year"])
-                except Exception:
-                    metadata["issue_year"] = None
+            # if metadata["issue_year"] and isinstance(metadata["issue_year"], str):
+            #     try:
+            #         metadata["issue_year"] = int(metadata["issue_year"])
+            #     except Exception:
+            #         metadata["issue_year"] = None
             logger.info(f"[Gemini] Metadata extracted: {metadata}")
             return metadata
         except Exception as e:
             logger.error(f"[Gemini] Error extracting metadata: {e}")
-            # Fallback to old logic
-
-    # Fallback extraction logic
-    lines = raw_text.splitlines()[:50]
-    found_doc_type = False
-    is_capturing_title = False
-    title_lines = []
-    for line in lines:
-        stripped_line = line.strip()
-        if not stripped_line:
-            is_capturing_title = False
-            continue
-        parts = re.split(r'\s{3,}', stripped_line)
-        if len(parts) >= 2:
-            left, right = parts[0], parts[-1]
-            if any(kw in left.upper() for kw in ["CHÍNH PHỦ", "QUỐC HỘI", "BỘ"]): metadata["issuing_agency"] = left.strip().upper()
-            if "số:" in left.lower():
-                if m := re.search(r"([\w\d/.-]+(?:-[\w\d/.-]+)?)", left): metadata["document_number"] = m.group(1).strip()
-                if m := re.search(r"ngày\s*(\d{1,2})\s*tháng\s*(\d{1,2})\s*năm\s*(\d{4})", right, re.I):
-                    day, month, year = m.groups()
-                    metadata["issue_date"] = f"ngày {day} tháng {month} năm {year}"
-                    metadata["issue_year"] = int(year)
-        doc_type_pattern = r"^(" + "|".join(LEGAL_DOC_TYPES) + ")$"
-        if not found_doc_type and (m := re.fullmatch(doc_type_pattern, stripped_line, re.IGNORECASE)):
-            metadata["document_type"] = m.group(1).strip().upper()
-            found_doc_type = True
-            is_capturing_title = True
-            continue
-        if is_capturing_title:
-            if stripped_line.startswith(("Căn cứ", "Chương ", "Điều ", "Phần ")) or re.match(r"^-+$", stripped_line):
-                is_capturing_title = False
-            else:
-                title_lines.append(stripped_line)
-    if title_lines: metadata["document_title"] = re.sub(r'\s+', ' ', " ".join(title_lines)).strip()
-    if not metadata["issue_year"]:
-        if metadata["document_number"] and (m := re.search(r"/(\d{4})/", metadata["document_number"])):
-            metadata["issue_year"] = int(m.group(1))
-        elif m := re.search(r"[-_](\d{4})[-_.]", filename):
-            metadata["issue_year"] = int(m.group(1))
-    if not metadata["document_type"]:
-         for doc_type in LEGAL_DOC_TYPES:
-             if metadata["document_title"] and metadata["document_title"].upper().startswith(doc_type.upper()):
-                 metadata["document_type"] = doc_type.upper()
-                 metadata["document_title"] = metadata["document_title"][len(doc_type):].strip()
-                 break
-    eff_text = "\n".join(raw_text.splitlines()[-20:])
-    if m := re.search(r"có\s+hiệu\s+lực\s+(?:thi\s+hành\s+)?kể\s+từ\s+ngày\s*(\d{1,2})\s*tháng\s*(\d{1,2})\s*năm\s*(\d{4})", eff_text, re.I):
-        day, month, year = m.groups()
-        metadata["effective_date"] = f"ngày {day} tháng {month} năm {year}"
-
-    return metadata
 
 # hàm này cần xem lại để dùng llm trích xuất
 def extract_cross_references(text_chunk_content: str, current_doc_full_metadata: Dict) -> List[Dict]:
@@ -458,60 +407,6 @@ def hierarchical_split_law_document(doc_obj: Document) -> List[Document]:
             logger.error(f"[Gemini] Error chunking by article: {e}")
             # Fallback to regex if error
 
-    split_pattern = r"(?=\n^\s*(?:PHẦN\s+(?:THỨ\s+[\w\sÀ-Ỹà-ỹ]+|[IVXLCDM]+|CHUNG)|Chương\s+[IVXLCDM\d]+|Điều\s+\d+[a-z]?)\s*[:.]?.*($|\n))"
-    blocks = re.split(split_pattern, text, flags=re.MULTILINE | re.IGNORECASE)
-
-    preamble_block = blocks.pop(0).strip()
-    if preamble_block:
-        logger.debug(f"Processing Preamble for {filename}...")
-        preamble_meta = source_metadata.copy()
-        preamble_meta["chunk_title"] = f"{document_title} - Preamble"
-        preamble_meta["document_title"] = document_title
-        preamble_meta["law_field"] = law_field
-        preamble_meta["entity_type"] = infer_entity_type(preamble_block, law_field)
-        preamble_meta["penalties"] = extract_penalties_from_text(preamble_block)
-        context_header = f"Excerpt from: {preamble_meta['chunk_title']}\nIn document: {document_title}"
-        final_page_content = f"{context_header}\n\nContent:\n{preamble_block}"
-        chunk_id = generate_structured_id(doc_so_hieu, ["preamble"], filename)
-        final_chunks.append(Document(page_content=final_page_content, metadata=preamble_meta, id=chunk_id))
-    hierarchy_context: Dict[str, Any] = {}
-    for block_content in blocks:
-        block_content = block_content.strip()
-        if not block_content:
-            continue
-        first_line = block_content.splitlines()[0].strip()
-        item_type, item_code, item_title = parse_law_item_line(first_line)
-        if item_type == "phan":
-            hierarchy_context = {"phan_code": item_code, "phan_title": item_title}
-        elif item_type == "chuong":
-            hierarchy_context = {k: v for k, v in hierarchy_context.items() if k.startswith("phan")}
-            hierarchy_context.update({"chuong_code": item_code, "chuong_title": item_title})
-        if item_type == "dieu":
-            hierarchy_context.update({"dieu_code": item_code, "dieu_title": item_title})
-            block_meta = {**source_metadata, **hierarchy_context}
-            title_parts = [str(block_meta.get(k)) for k in ["phan_code", "chuong_code", "dieu_code"] if block_meta.get(k)]
-            block_meta["chunk_title"] = " - ".join(title_parts)
-            block_meta["document_title"] = document_title
-            block_meta["law_field"] = law_field
-            block_meta["entity_type"] = infer_entity_type(block_content, law_field)
-            block_meta["penalties"] = extract_penalties_from_text(block_content)
-            block_meta["cross_references"] = extract_cross_references(block_content, source_metadata)
-            context_header = f"Excerpt from: {block_meta['chunk_title']}\nIn document: {document_title}"
-            if len(block_content) > MAX_CHUNK_SIZE:
-                logger.debug(f"Splitting long article: {block_meta['chunk_title']}")
-                sub_texts = base_text_splitter.split_text(block_content)
-                for i, sub_text in enumerate(sub_texts):
-                    sub_chunk_meta = block_meta.copy()
-                    sub_chunk_meta["sub_chunk_index"] = i
-                    final_page_content = f"{context_header}\n\nContent:\n{sub_text}"
-                    chunk_id = generate_structured_id(doc_so_hieu, title_parts + [f"part-{i}"], filename)
-                    final_chunks.append(Document(page_content=final_page_content, metadata=sub_chunk_meta, id=chunk_id))
-            else:
-                final_page_content = f"Full text: {block_meta['chunk_title']}\n\nContent:\n{block_content}"
-                chunk_id = generate_structured_id(doc_so_hieu, title_parts, filename)
-                final_chunks.append(Document(page_content=final_page_content, metadata=block_meta, id=chunk_id))
-
-    return final_chunks
 
 #xem lại hàm này để cải tiến sau
 def infer_field(text_content: str, doc_title: Optional[str]) -> str:
@@ -1052,3 +947,29 @@ def process_single_file(file_path: str) -> List[Document]:
         logger.error(f"❌ A critical error occurred while processing file '{filename}': {e}", exc_info=True)
         return []
 
+def extract_entities_with_llm(text: str, field: Optional[str] = None) -> list:
+    """
+    Sử dụng Gemini LLM để trích xuất entity_type từ văn bản thay cho regex.
+    """
+    from langchain_google_genai import ChatGoogleGenerativeAI
+    from langchain_core.prompts import ChatPromptTemplate
+    from langchain_core.output_parsers import JsonOutputParser
+    import prompt_templete
+    import os
+    GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
+    llm = ChatGoogleGenerativeAI(
+        model="gemini-2.5-flash-preview-05-20",
+        google_api_key=GOOGLE_API_KEY,
+        temperature=0.0,
+    )
+    # Tạo prompt cho Gemini
+    prompt = ChatPromptTemplate.from_template(prompt_templete.KEYWORD_EXTRACTION_PROMPT)
+    chain = prompt | llm | JsonOutputParser()
+    # Gọi LLM để lấy entity_type
+    try:
+        result = chain.invoke({"question": text})
+        # result là list các cụm từ khóa, bạn có thể map sang entity_type nếu cần
+        return result if isinstance(result, list) else []
+    except Exception as e:
+        logger.error(f"LLM entity extraction failed: {e}")
+        return []

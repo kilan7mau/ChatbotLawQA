@@ -46,7 +46,7 @@ WEAVIATE_SCHEMA_CONFIG: List[Dict[str, Any]] = [
     {"name": "document_type", "dataType": wvc_config.DataType.TEXT, "index_searchable": True, "vectorize": True},
     {"name": "document_title", "dataType": wvc_config.DataType.TEXT, "index_searchable": True, "tokenization": wvc_config.Tokenization.WORD, "vectorize": True},
     {"name": "issue_date", "dataType": wvc_config.DataType.TEXT, "index_searchable": False, "vectorize": False},
-    {"name": "issue_year", "dataType": wvc_config.DataType.INT, "index_searchable": True, "vectorize": False},
+    #{"name": "issue_year", "dataType": wvc_config.DataType.INT, "index_searchable": True, "vectorize": False},
     {"name": "expiry_date", "dataType": wvc_config.DataType.TEXT, "index_searchable": False, "vectorize": False},
     {"name": "issuing_agency", "dataType": wvc_config.DataType.TEXT, "index_searchable": False, "vectorize": False},
     {"name": "confidential_level", "dataType": wvc_config.DataType.TEXT, "index_searchable": True, "vectorize": False},
