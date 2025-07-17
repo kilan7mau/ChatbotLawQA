@@ -1,0 +1,22 @@
+| STT | Trường (cũ)         | Trường (mới)         | Khác biệt                               | Ghi chú                                                         |
+| --- | ------------------- | -------------------- | --------------------------------------- | --------------------------------------------------------------- |
+| 1   | `source`            | `source_file`        | ✅ Đổi tên cho rõ hơn                    | `source_file` thể hiện rõ là tên/đường dẫn file gốc             |
+| 2   | `title`             | `chunk_title`        | ✅ Đổi tên cho rõ nghĩa                  | `title` dễ gây nhầm với `ten_van_ban` → đổi thành `chunk_title` |
+| 3   | `field`             | `law_field`          | ✅ Đổi tên cho rõ nghĩa                  | Thể hiện rõ đây là lĩnh vực pháp luật                           |
+| 4   | `so_hieu`           | `document_number`    | ✅ Đổi tên để chuẩn hóa                  | Giữ nguyên chức năng (số hiệu văn bản)                          |
+| 5   | `loai_van_ban`      | `document_type`      | ✅ Đổi tên để chuẩn hóa                  | Ví dụ: "Nghị định", "Thông tư"...                               |
+| 6   | `ten_van_ban`       | `document_title`     | ✅ Đổi tên cho rõ nghĩa                  | Là tiêu đề chính thức của văn bản luật                          |
+| 7   | `co_quan_ban_hanh`  | `issuing_agency`     | ✅ Đổi tên để chuẩn hóa                  | Cơ quan ban hành                                                |
+| 8   | `ngay_ban_hanh_str` | `issue_date`         | ✅ Đổi tên, thống nhất format dd/mm/yyyy | Đổi từ `_str` sang format chuẩn để sử dụng                      |
+| 9   | `nam_ban_hanh`      | `issue_year`         | ✅ Đổi tên để đồng bộ `issue_*`          | Giữ nguyên ý nghĩa (năm ban hành dạng INT)                      |
+| 10  | ❌ (chưa có)         | `expiry_date`        | ✅ MỚI                                   | Ngày hết hiệu lực của văn bản                                   |
+| 11  | `phan_code`         | `part_code`          | ✅ Đổi tên tiếng Anh                     | Cấu trúc của văn bản: PHẦN                                      |
+| 12  | `chuong_code`       | `chapter_code`       | ✅ Đổi tên tiếng Anh                     | Cấu trúc của văn bản: CHƯƠNG                                    |
+| 13  | `muc_code`          | `section_code`       | ✅ Đổi tên tiếng Anh                     | Cấu trúc của văn bản: MỤC                                       |
+| 14  | `dieu_code`         | `article_code`       | ✅ Đổi tên tiếng Anh                     | Cấu trúc của văn bản: ĐIỀU                                      |
+| 15  | `entity_type`       | `entity_type`        | ⏸ Giữ nguyên                            | Không cần đổi, đã đúng chuẩn                                    |
+| 16  | `penalties`         | `penalties`          | ⏸ Giữ nguyên                            | Mức phạt đi kèm điều luật                                       |
+| 17  | `cross_references`  | `cross_references`   | ⏸ Giữ nguyên                            | Điều khoản tham chiếu                                           |
+| 18  | ❌ (chưa có)         | `confidential_level` | ✅ MỚI                                   | Bổ sung mức độ mật của văn bản ("Công khai", "Mật",...)         |
+| 19  | ❌ (chưa có)         | `signer`             | ✅ MỚI (nếu cần sau)                     | Người ký ban hành văn bản (nếu muốn bổ sung sau này)            |
+| 20  | ❌ (chưa có)         | `status`             | ✅ MỚI (nếu cần sau)                     | Trạng thái hiệu lực: “Còn hiệu lực”, “Hết hiệu lực”,...         |
