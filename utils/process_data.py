@@ -947,29 +947,29 @@ def process_single_file(file_path: str) -> List[Document]:
         logger.error(f"❌ A critical error occurred while processing file '{filename}': {e}", exc_info=True)
         return []
 
-def extract_entities_with_llm(text: str, field: Optional[str] = None) -> list:
-    """
-    Sử dụng Gemini LLM để trích xuất entity_type từ văn bản thay cho regex.
-    """
-    from langchain_google_genai import ChatGoogleGenerativeAI
-    from langchain_core.prompts import ChatPromptTemplate
-    from langchain_core.output_parsers import JsonOutputParser
-    import prompt_templete
-    import os
-    GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
-    llm = ChatGoogleGenerativeAI(
-        model="gemini-2.5-flash-preview-05-20",
-        google_api_key=GOOGLE_API_KEY,
-        temperature=0.0,
-    )
-    # Tạo prompt cho Gemini
-    prompt = ChatPromptTemplate.from_template(prompt_templete.KEYWORD_EXTRACTION_PROMPT)
-    chain = prompt | llm | JsonOutputParser()
-    # Gọi LLM để lấy entity_type
-    try:
-        result = chain.invoke({"question": text})
-        # result là list các cụm từ khóa, bạn có thể map sang entity_type nếu cần
-        return result if isinstance(result, list) else []
-    except Exception as e:
-        logger.error(f"LLM entity extraction failed: {e}")
-        return []
+# def extract_entities_with_llm(text: str, field: Optional[str] = None) -> list:
+#     """
+#     Sử dụng Gemini LLM để trích xuất entity_type từ văn bản thay cho regex.
+#     """
+#     from langchain_google_genai import ChatGoogleGenerativeAI
+#     from langchain_core.prompts import ChatPromptTemplate
+#     from langchain_core.output_parsers import JsonOutputParser
+#     import prompt_templete
+#     import os
+#     GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
+#     llm = ChatGoogleGenerativeAI(
+#         model="gemini-2.5-flash-preview-05-20",
+#         google_api_key=GOOGLE_API_KEY,
+#         temperature=0.0,
+#     )
+#     # Tạo prompt cho Gemini
+#     prompt = ChatPromptTemplate.from_template(prompt_templete.KEYWORD_EXTRACTION_PROMPT)
+#     chain = prompt | llm | JsonOutputParser()
+#     # Gọi LLM để lấy entity_type
+#     try:
+#         result = chain.invoke({"question": text})
+#         # result là list các cụm từ khóa, bạn có thể map sang entity_type nếu cần
+#         return result if isinstance(result, list) else []
+#     except Exception as e:
+#         logger.error(f"LLM entity extraction failed: {e}")
+#         return []
