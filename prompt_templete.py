@@ -260,3 +260,62 @@ Nếu không tìm thấy điều nào, trả về mảng rỗng. Chỉ trả v�
 {text}
 ---
 """
+CROSS_REFERENCE_EXTRACTION_PROMPT = """
+Bạn là một AI pháp lý có nhiệm vụ trích xuất **các tham chiếu pháp lý** (cross-references) từ đoạn văn bản luật Việt Nam.
+
+Dưới đây là một đoạn văn bản và metadata của văn bản chứa nó. Hãy đọc thật kỹ và liệt kê ra tất cả các tham chiếu pháp lý, bao gồm cả:
+
+- **Tham chiếu nội bộ**: ví dụ "Điều 5", "khoản 2 Điều 3", "điểm a khoản 1 Điều 6"
+- **Tham chiếu đến văn bản khác**: ví dụ "theo Nghị định 100/2019/NĐ-CP", "Luật Giao thông", v.v.
+
+---
+
+**QUY TẮC:**
+
+- Mỗi tham chiếu là một object JSON.
+- Nếu là tham chiếu nội bộ (cùng văn bản), đặt `"type": "internal"` và bổ sung:
+  - `"target_document_id"`: lấy từ `metadata["so_hieu"]` (nếu có)
+  - `"target_document_title"`: lấy từ `metadata["ten_van_ban"]` (nếu có)
+
+- Nếu là tham chiếu ngoài, đặt `"type": "external"` và cố gắng cung cấp:
+  - `"target_document_type"`: Loại văn bản (ví dụ: "LUẬT", "NGHỊ ĐỊNH", v.v.)
+  - `"target_document_title"`: tên văn bản (nếu có)
+  - `"target_document_number"`: số hiệu nếu có (ví dụ: "100/2019/NĐ-CP")
+  - `"target_document_year"`: năm nếu có (ví dụ: 2019)
+  - `"target_document_year_hint"`: giống `target_document_year`
+
+- Các trường khác cần có nếu trích được:
+  - `"target_dieu"`: số Điều
+  - `"target_khoan"`: số Khoản
+  - `"target_diem"`: chữ cái Điểm
+
+---
+
+**YÊU CẦU ĐẦU RA:**
+Trả về **một danh sách JSON** gồm các object như sau:
+
+```json
+[
+  {{
+    "type": "internal",
+    "original_text": "quy định tại khoản 1 Điều 5",
+    "target_dieu": "5",
+    "target_khoan": "1",
+    "target_diem": null,
+    "target_document_id": "57/2019/NĐ-CP",
+    "target_document_title": "Nghị định quy định xử phạt hành chính"
+  }},
+  {{
+    "type": "external",
+    "original_text": "theo Nghị định 100/2019/NĐ-CP",
+    "target_document_type": "NGHỊ ĐỊNH",
+    "target_document_title": "Quy định xử phạt giao thông",
+    "target_document_number": "100/2019/NĐ-CP",
+    "target_document_year": 2019,
+    "target_document_year_hint": 2019,
+    "target_dieu": null,
+    "target_khoan": null,
+    "target_diem": null
+  }}
+]
+"""
