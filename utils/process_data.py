@@ -161,197 +161,200 @@ def extract_document_metadata(raw_text: str, filename: str) -> Dict[str, Any]:
         "confidential_level": "Công Khai"  # ✅ Mặc định nếu không tìm thấy
     }
 
-    if GOOGLE_API_KEY:
-        try:
-            llm = ChatGoogleGenerativeAI(
-                model="gemini-2.5-flash-preview-05-20",
-                google_api_key=GOOGLE_API_KEY,
-                temperature=0.0,
-            )
-            keyword_extraction_prompt = ChatPromptTemplate.from_template(
-                prompt_templete.KEYWORD_EXTRACTION_PROMPT
-            )
-            chain = keyword_extraction_prompt | llm | JsonOutputParser()
-            result = chain.invoke({"raw_text": raw_text})
-            # Map Vietnamese keys to English
-            mapping = {
-                "so_hieu": "document_number",
-                "loai_van_ban": "document_type",
-                "ten_van_ban": "document_title",
-                "ngay_ban_hanh_str": "issue_date",
-                #"nam_ban_hanh": "issue_year",
-                "co_quan_ban_hanh": "issuing_agency",
-                "ngay_hieu_luc_str": "effective_date"
-            }
-            for vi_key, en_key in mapping.items():
-                if vi_key in result:
-                    metadata[en_key] = result[vi_key]
-            # if metadata["issue_year"] and isinstance(metadata["issue_year"], str):
-            #     try:
-            #         metadata["issue_year"] = int(metadata["issue_year"])
-            #     except Exception:
-            #         metadata["issue_year"] = None
-            logger.info(f"[Gemini] Metadata extracted: {metadata}")
-            return metadata
-        except Exception as e:
-            logger.error(f"[Gemini] Error extracting metadata: {e}")
+    if not GOOGLE_API_KEY:
+        raise Exception("GOOGLE_API_KEY is not set. Please provide your Google API key to extract document metadata.")
 
-# hàm này cần xem lại để dùng llm trích xuất
-def extract_cross_references(text_chunk_content: str, current_doc_full_metadata: Dict) -> List[Dict]:
-    references = []
-    internal_ref_patterns = [
-        re.compile(r"(?:quy định tại|xem|theo|như|tại)\s+(?:(điểm\s+[a-zđ])\s+)?(?:(khoản\s+\d+)\s+)?(Điều\s+\d+[a-z]?)(?:\s+của\s+(?:Nghị định|Luật|Bộ luật|Thông tư|Pháp lệnh|Quyết định|Nghị quyết)\s+này)?", re.IGNORECASE),
-        re.compile(r"(?:quy định tại|xem|theo|như|tại)\s+(?:(khoản\s+\d+)\s+)?(Điều\s+\d+[a-z]?)(?:\s+của\s+(?:Nghị định|Luật|Bộ luật|Thông tư|Pháp lệnh|Quyết định|Nghị quyết)\s+này)?", re.IGNORECASE),
-        re.compile(r"(?:quy định tại|xem|theo|như|tại)\s+(Điều\s+\d+[a-z]?)(?:\s+của\s+(?:Nghị định|Luật|Bộ luật|Thông tư|Pháp lệnh|Quyết định|Nghị quyết)\s+này|\s+nêu trên|\s+dưới đây)?", re.IGNORECASE),
-    ]
-    # ... (phần internal_ref_patterns giữ nguyên) ...
-    for pattern in internal_ref_patterns:
-        for match in pattern.finditer(text_chunk_content):
-            original_text_internal = match.group(0) # Lấy toàn bộ chuỗi khớp
-            groups = match.groups()
-            ref_diem, ref_khoan, ref_dieu = None, None, None
+    try:
+        llm = ChatGoogleGenerativeAI(
+            model="gemini-2.5-flash-preview-05-20",
+            google_api_key=GOOGLE_API_KEY,
+            temperature=0.0,
+        )
+        keyword_extraction_prompt = ChatPromptTemplate.from_template(
+            prompt_templete.KEYWORD_EXTRACTION_PROMPT
+        )
+        chain = keyword_extraction_prompt | llm | JsonOutputParser()
+        result = chain.invoke({"raw_text": raw_text})
+        # Map Vietnamese keys to English
+        mapping = {
+            "so_hieu": "document_number",
+            "loai_van_ban": "document_type",
+            "ten_van_ban": "document_title",
+            "ngay_ban_hanh_str": "issue_date",
+            #"nam_ban_hanh": "issue_year",
+            "co_quan_ban_hanh": "issuing_agency",
+            "ngay_hieu_luc_str": "effective_date"
+        }
+        for vi_key, en_key in mapping.items():
+            if vi_key in result:
+                metadata[en_key] = result[vi_key]
+        # if metadata["issue_year"] and isinstance(metadata["issue_year"], str):
+        #     try:
+        #         metadata["issue_year"] = int(metadata["issue_year"])
+        #     except Exception:
+        #         metadata["issue_year"] = None
+        logger.info(f"[Gemini] Metadata extracted: {metadata}")
+        return metadata
+    except Exception as e:
+        logger.error(f"[Gemini] Error extracting metadata: {e}")
+        raise e
 
-            # Logic xác định điểm, khoản, điều dựa trên số lượng group và nội dung
-            # Pattern 1: (điểm)? (khoản)? (Điều)
-            if pattern.pattern.count('(') - pattern.pattern.count('?:') == 3: # Đếm số capturing groups
-                ref_diem_text = groups[0] if groups[0] and "điểm" in groups[0].lower() else None
-                ref_khoan_text = groups[1] if groups[1] and "khoản" in groups[1].lower() else None
-                ref_dieu_text = groups[2] if groups[2] and "điều" in groups[2].lower() else None
+# --- Các hàm cũ đã được thay thế bằng LLM, giữ lại để tham khảo ---
+# def extract_cross_references(text_chunk_content: str, current_doc_full_metadata: Dict) -> List[Dict]:
+#     references = []
+#     internal_ref_patterns = [
+#         re.compile(r"(?:quy định tại|xem|theo|như|tại)\s+(?:(điểm\s+[a-zđ])\s+)?(?:(khoản\s+\d+)\s+)?(Điều\s+\d+[a-z]?)(?:\s+của\s+(?:Nghị định|Luật|Bộ luật|Thông tư|Pháp lệnh|Quyết định|Nghị quyết)\s+này)?", re.IGNORECASE),
+#         re.compile(r"(?:quy định tại|xem|theo|như|tại)\s+(?:(khoản\s+\d+)\s+)?(Điều\s+\d+[a-z]?)(?:\s+của\s+(?:Nghị định|Luật|Bộ luật|Thông tư|Pháp lệnh|Quyết định|Nghị quyết)\s+này)?", re.IGNORECASE),
+#         re.compile(r"(?:quy định tại|xem|theo|như|tại)\s+(Điều\s+\d+[a-z]?)(?:\s+của\s+(?:Nghị định|Luật|Bộ luật|Thông tư|Pháp lệnh|Quyết định|Nghị quyết)\s+này|\s+nêu trên|\s+dưới đây)?", re.IGNORECASE),
+#     ]
+#     # ... (phần internal_ref_patterns giữ nguyên) ...
+#     for pattern in internal_ref_patterns:
+#         for match in pattern.finditer(text_chunk_content):
+#             original_text_internal = match.group(0) # Lấy toàn bộ chuỗi khớp
+#             groups = match.groups()
+#             ref_diem, ref_khoan, ref_dieu = None, None, None
 
-                # Nếu group 1 là khoản, group 2 là điều (do điểm optional)
-                if not ref_diem_text and ref_khoan_text is None and (groups[0] and "khoản" in groups[0].lower()):
-                    ref_khoan_text = groups[0]
-                    ref_dieu_text = groups[1]
-                # Nếu group 1 là điều (do điểm và khoản optional)
-                elif not ref_diem_text and not ref_khoan_text and (groups[0] and "điều" in groups[0].lower()):
-                    ref_dieu_text = groups[0]
+#             # Logic xác định điểm, khoản, điều dựa trên số lượng group và nội dung
+#             # Pattern 1: (điểm)? (khoản)? (Điều)
+#             if pattern.pattern.count('(') - pattern.pattern.count('?:') == 3: # Đếm số capturing groups
+#                 ref_diem_text = groups[0] if groups[0] and "điểm" in groups[0].lower() else None
+#                 ref_khoan_text = groups[1] if groups[1] and "khoản" in groups[1].lower() else None
+#                 ref_dieu_text = groups[2] if groups[2] and "điều" in groups[2].lower() else None
 
-
-            # Pattern 2: (khoản)? (Điều)
-            elif pattern.pattern.count('(') - pattern.pattern.count('?:') == 2:
-                ref_khoan_text = groups[0] if groups[0] and "khoản" in groups[0].lower() else None
-                ref_dieu_text = groups[1] if groups[1] and "điều" in groups[1].lower() else None
-                # Nếu group 0 là điều
-                if not ref_khoan_text and (groups[0] and "điều" in groups[0].lower()):
-                    ref_dieu_text = groups[0]
-
-            # Pattern 3: (Điều)
-            elif pattern.pattern.count('(') - pattern.pattern.count('?:') == 1:
-                ref_dieu_text = groups[0] if groups[0] and "điều" in groups[0].lower() else None
-
-            ref_dieu = ref_dieu_text.replace("Điều ", "").strip() if ref_dieu_text else None
-            ref_khoan = ref_khoan_text.replace("khoản ", "").strip() if ref_khoan_text else None
-            ref_diem = ref_diem_text.replace("điểm ", "").strip() if ref_diem_text else None
-
-            references.append({
-                "type": "internal", "original_text": original_text_internal,
-                "target_dieu": ref_dieu,
-                "target_khoan": ref_khoan,
-                "target_diem": ref_diem,
-                "target_document_id": current_doc_full_metadata.get("so_hieu"),
-                "target_document_title": current_doc_full_metadata.get("ten_van_ban")
-            })
+#                 # Nếu group 1 là khoản, group 2 là điều (do điểm optional)
+#                 if not ref_diem_text and ref_khoan_text is None and (groups[0] and "khoản" in groups[0].lower()):
+#                     ref_khoan_text = groups[0]
+#                     ref_dieu_text = groups[1]
+#                 # Nếu group 1 là điều (do điểm và khoản optional)
+#                 elif not ref_diem_text and not ref_khoan_text and (groups[0] and "điều" in groups[0].lower()):
+#                     ref_dieu_text = groups[0]
 
 
-    external_ref_pattern = re.compile(
-        r"(?:quy định tại|theo|tại|của|trong)\s+"
-        # Group 1: Cụm điểm/khoản/điều (optional), ví dụ "điểm a khoản 1 Điều 5 " hoặc "Điều 5 "
-        r"((?:điểm\s+[a-zđ]\s*)?(?:khoản\s+\d+\s*)?(?:Điều\s+\d+[a-z]?\s*)?)?"
-        r"(?:của\s+)?" # Non-capturing "của "
-        # Group 2: Loại VB + Tên VB, ví dụ "Luật Giao thông đường bộ" hoặc "Nghị định 100/2019/NĐ-CP"
-        r"((?:Nghị định|Luật|Bộ luật|Thông tư|Pháp lệnh|Quyết định|Nghị quyết|Hiến pháp)"
-        r"(?:\s+[\w\sÀ-Ỹà-ỹ\d()/'.,-]+?)?)"
-        # Group 3: Số hiệu (optional), ví dụ "100/2019/NĐ-CP"
-        r"(?:\s+(?:số|số hiệu)?\s*([\w\d/.-]+(?:-\d{4}-[\w\d.-]+)?))?"
-        # Group 4: Năm từ ngày ban hành (optional), ví dụ "2019"
-        r"(?:\s*ngày\s*\d{1,2}\s*(?:tháng|-|/)\s*\d{1,2}\s*(?:năm|-|/)\s*(\d{4}))?"
-        r"(?:\s*của\s*(?:Chính phủ|Quốc hội|[\w\sÀ-Ỹà-ỹ]+))?", # Non-capturing cơ quan ban hành
-        re.IGNORECASE
-    )
+#             # Pattern 2: (khoản)? (Điều)
+#             elif pattern.pattern.count('(') - pattern.pattern.count('?:') == 2:
+#                 ref_khoan_text = groups[0] if groups[0] and "khoản" in groups[0].lower() else None
+#                 ref_dieu_text = groups[1] if groups[1] and "điều" in groups[1].lower() else None
+#                 # Nếu group 0 là điều
+#                 if not ref_khoan_text and (groups[0] and "điều" in groups[0].lower()):
+#                     ref_dieu_text = groups[0]
 
-    for match in external_ref_pattern.finditer(text_chunk_content):
-        # match.groups() sẽ trả về 4 phần tử tương ứng với 4 capturing groups ở trên
-        matched_groups = match.groups()
-        original_text_external = match.group(0) # Toàn bộ chuỗi khớp
+#             # Pattern 3: (Điều)
+#             elif pattern.pattern.count('(') - pattern.pattern.count('?:') == 1:
+#                 ref_dieu_text = groups[0] if groups[0] and "điều" in groups[0].lower() else None
 
-        provision_elements_str = matched_groups[0] if matched_groups[0] else ""
-        target_doc_full_name_raw = matched_groups[1].strip() if matched_groups[1] else ""
-        target_doc_number_explicit = matched_groups[2].strip() if matched_groups[2] else None
-        target_doc_year_in_ref_str = matched_groups[3].strip() if matched_groups[3] else None
+#             ref_dieu = ref_dieu_text.replace("Điều ", "").strip() if ref_dieu_text else None
+#             ref_khoan = ref_khoan_text.replace("khoản ", "").strip() if ref_khoan_text else None
+#             ref_diem = ref_diem_text.replace("điểm ", "").strip() if ref_diem_text else None
 
-        # Phân tích provision_elements_str để lấy điểm, khoản, điều
-        target_diem = None
-        if diem_match_obj := re.search(r"điểm\s+([a-zđ])", provision_elements_str, re.IGNORECASE):
-            target_diem = diem_match_obj.group(1)
+#             references.append({
+#                 "type": "internal", "original_text": original_text_internal,
+#                 "target_dieu": ref_dieu,
+#                 "target_khoan": ref_khoan,
+#                 "target_diem": ref_diem,
+#                 "target_document_id": current_doc_full_metadata.get("so_hieu"),
+#                 "target_document_title": current_doc_full_metadata.get("ten_van_ban")
+#             })
 
-        target_khoan = None
-        if khoan_match_obj := re.search(r"khoản\s+(\d+)", provision_elements_str, re.IGNORECASE):
-            target_khoan = khoan_match_obj.group(1)
 
-        target_dieu = None
-        if dieu_match_obj := re.search(r"Điều\s+(\d+[a-z]?)", provision_elements_str, re.IGNORECASE):
-            target_dieu = dieu_match_obj.group(1)
+#     external_ref_pattern = re.compile(
+#         r"(?:quy định tại|theo|tại|của|trong)\s+"
+#         # Group 1: Cụm điểm/khoản/điều (optional), ví dụ "điểm a khoản 1 Điều 5 " hoặc "Điều 5 "
+#         r"((?:điểm\s+[a-zđ]\s*)?(?:khoản\s+\d+\s*)?(?:Điều\s+\d+[a-z]?\s*)?)?"
+#         r"(?:của\s+)?" # Non-capturing "của "
+#         # Group 2: Loại VB + Tên VB, ví dụ "Luật Giao thông đường bộ" hoặc "Nghị định 100/2019/NĐ-CP"
+#         r"((?:Nghị định|Luật|Bộ luật|Thông tư|Pháp lệnh|Quyết định|Nghị quyết|Hiến pháp)"
+#         r"(?:\s+[\w\sÀ-Ỹà-ỹ\d()/'.,-]+?)?)"
+#         # Group 3: Số hiệu (optional), ví dụ "100/2019/NĐ-CP"
+#         r"(?:\s+(?:số|số hiệu)?\s*([\w\d/.-]+(?:-\d{4}-[\w\d.-]+)?))?"
+#         # Group 4: Năm từ ngày ban hành (optional), ví dụ "2019"
+#         r"(?:\s*ngày\s*\d{1,2}\s*(?:tháng|-|/)\s*\d{1,2}\s*(?:năm|-|/)\s*(\d{4}))?"
+#         r"(?:\s*của\s*(?:Chính phủ|Quốc hội|[\w\sÀ-Ỹà-ỹ]+))?", # Non-capturing cơ quan ban hành
+#         re.IGNORECASE
+#     )
 
-        # Phân tích loại và tên văn bản từ target_doc_full_name_raw
-        target_doc_type = None
-        target_doc_title = target_doc_full_name_raw # Gán giá trị mặc định
+#     for match in external_ref_pattern.finditer(text_chunk_content):
+#         # match.groups() sẽ trả về 4 phần tử tương ứng với 4 capturing groups ở trên
+#         matched_groups = match.groups()
+#         original_text_external = match.group(0) # Toàn bộ chuỗi khớp
 
-        for doc_type_keyword in LEGAL_DOC_TYPES:
-            # Sử dụng \b để khớp từ chính xác hơn và re.escape để xử lý ký tự đặc biệt nếu có
-            # Khớp ở đầu chuỗi và không phân biệt hoa thường
-            if re.match(rf"^{re.escape(doc_type_keyword)}\b", target_doc_full_name_raw, re.IGNORECASE):
-                target_doc_type = doc_type_keyword.upper() # Chuẩn hóa về chữ hoa
-                # Loại bỏ phần loại văn bản khỏi tên, và các khoảng trắng thừa
-                temp_title = re.sub(rf"^{re.escape(doc_type_keyword)}\b\s*", "", target_doc_full_name_raw, count=1, flags=re.IGNORECASE)
-                target_doc_title = temp_title.strip()
-                break
+#         provision_elements_str = matched_groups[0] if matched_groups[0] else ""
+#         target_doc_full_name_raw = matched_groups[1].strip() if matched_groups[1] else ""
+#         target_doc_number_explicit = matched_groups[2].strip() if matched_groups[2] else None
+#         target_doc_year_in_ref_str = matched_groups[3].strip() if matched_groups[3] else None
 
-        final_doc_number = target_doc_number_explicit
-        final_doc_year = None
-        if target_doc_year_in_ref_str:
-            final_doc_year = int(target_doc_year_in_ref_str)
+#         # Phân tích provision_elements_str để lấy điểm, khoản, điều
+#         target_diem = None
+#         if diem_match_obj := re.search(r"điểm\s+([a-zđ])", provision_elements_str, re.IGNORECASE):
+#             target_diem = diem_match_obj.group(1)
 
-        # Nếu không có số hiệu rõ ràng, thử trích từ tên (ví dụ: "Nghị định 100/2019/NĐ-CP")
-        if not final_doc_number and target_doc_title:
-            # Cố gắng bắt số hiệu dạng X/YYYY/ABC-XYZ hoặc X-YYYY-ABC
-            number_in_title_match = re.search(r"(\d+(?:/\d{4})?/[\w.-]+(?:-[\w\d.-]+)?|\d+-\d{4}-[\w.-]+)", target_doc_title)
-            if number_in_title_match:
-                final_doc_number = number_in_title_match.group(1)
-                # Cập nhật lại title nếu đã lấy số hiệu ra
-                target_doc_title = target_doc_title.replace(final_doc_number, "").strip()
-                target_doc_title = re.sub(r"^\s*(?:số|số hiệu)\s*$", "", target_doc_title, flags=re.IGNORECASE).strip() # Bỏ "số" thừa
-                target_doc_title = target_doc_title.replace("của", "").strip() # Bỏ "của" thừa nếu có
+#         target_khoan = None
+#         if khoan_match_obj := re.search(r"khoản\s+(\d+)", provision_elements_str, re.IGNORECASE):
+#             target_khoan = khoan_match_obj.group(1)
 
-        # Nếu không có năm rõ ràng, thử trích từ số hiệu hoặc tên
-        if not final_doc_year and final_doc_number:
-            year_in_number_match = re.search(r"/(\d{4})/", final_doc_number) or \
-                                   re.search(r"-(\d{4})-", final_doc_number)
-            if year_in_number_match:
-                final_doc_year = int(year_in_number_match.group(1))
+#         target_dieu = None
+#         if dieu_match_obj := re.search(r"Điều\s+(\d+[a-z]?)", provision_elements_str, re.IGNORECASE):
+#             target_dieu = dieu_match_obj.group(1)
 
-        if not final_doc_year and target_doc_title:
-            year_in_title_match = re.search(r"(?:năm|khóa)\s+(\d{4})", target_doc_title, re.IGNORECASE) # Thêm "khóa"
-            if year_in_title_match:
-                final_doc_year = int(year_in_title_match.group(1))
+#         # Phân tích loại và tên văn bản từ target_doc_full_name_raw
+#         target_doc_type = None
+#         target_doc_title = target_doc_full_name_raw # Gán giá trị mặc định
 
-        # Bỏ qua nếu không có loại văn bản HOẶC (cả tên văn bản VÀ số hiệu đều không có)
-        if not target_doc_type or (not target_doc_title and not final_doc_number):
-            # logger.debug(f"Skipping external ref: {original_text_external} -> Type: {target_doc_type}, Title: {target_doc_title}, Number: {final_doc_number}")
-            continue
+#         for doc_type_keyword in LEGAL_DOC_TYPES:
+#             # Sử dụng \b để khớp từ chính xác hơn và re.escape để xử lý ký tự đặc biệt nếu có
+#             # Khớp ở đầu chuỗi và không phân biệt hoa thường
+#             if re.match(rf"^{re.escape(doc_type_keyword)}\b", target_doc_full_name_raw, re.IGNORECASE):
+#                 target_doc_type = doc_type_keyword.upper() # Chuẩn hóa về chữ hoa
+#                 # Loại bỏ phần loại văn bản khỏi tên, và các khoảng trắng thừa
+#                 temp_title = re.sub(rf"^{re.escape(doc_type_keyword)}\b\s*", "", target_doc_full_name_raw, count=1, flags=re.IGNORECASE)
+#                 target_doc_title = temp_title.strip()
+#                 break
 
-        references.append({
-            "type": "external",
-            "original_text": original_text_external,
-            "target_document_type": target_doc_type,
-            "target_document_title": target_doc_title if target_doc_title else None,
-            "target_document_number": final_doc_number,
-            "target_document_year": final_doc_year, # Đã là int hoặc None
-            "target_dieu": target_dieu,
-            "target_khoan": target_khoan,
-            "target_diem": target_diem,
-            "target_document_year_hint": final_doc_year # Dùng final_doc_year đã được chuẩn hóa
-        })
-    return references
+#         final_doc_number = target_doc_number_explicit
+#         final_doc_year = None
+#         if target_doc_year_in_ref_str:
+#             final_doc_year = int(target_doc_year_in_ref_str)
+
+#         # Nếu không có số hiệu rõ ràng, thử trích từ tên (ví dụ: "Nghị định 100/2019/NĐ-CP")
+#         if not final_doc_number and target_doc_title:
+#             # Cố gắng bắt số hiệu dạng X/YYYY/ABC-XYZ hoặc X-YYYY-ABC
+#             number_in_title_match = re.search(r"(\d+(?:/\d{4})?/[\w.-]+(?:-[\w\d.-]+)?|\d+-\d{4}-[\w.-]+)", target_doc_title)
+#             if number_in_title_match:
+#                 final_doc_number = number_in_title_match.group(1)
+#                 # Cập nhật lại title nếu đã lấy số hiệu ra
+#                 target_doc_title = target_doc_title.replace(final_doc_number, "").strip()
+#                 target_doc_title = re.sub(r"^\s*(?:số|số hiệu)\s*$", "", target_doc_title, flags=re.IGNORECASE).strip() # Bỏ "số" thừa
+#                 target_doc_title = target_doc_title.replace("của", "").strip() # Bỏ "của" thừa nếu có
+
+#         # Nếu không có năm rõ ràng, thử trích từ số hiệu hoặc tên
+#         if not final_doc_year and final_doc_number:
+#             year_in_number_match = re.search(r"/(\d{4})/", final_doc_number) or \
+#                                    re.search(r"-(\d{4})-", final_doc_number)
+#             if year_in_number_match:
+#                 final_doc_year = int(year_in_number_match.group(1))
+
+#         if not final_doc_year and target_doc_title:
+#             year_in_title_match = re.search(r"(?:năm|khóa)\s+(\d{4})", target_doc_title, re.IGNORECASE) # Thêm "khóa"
+#             if year_in_title_match:
+#                 final_doc_year = int(year_in_title_match.group(1))
+
+#         # Bỏ qua nếu không có loại văn bản HOẶC (cả tên văn bản VÀ số hiệu đều không có)
+#         if not target_doc_type or (not target_doc_title and not final_doc_number):
+#             # logger.debug(f"Skipping external ref: {original_text_external} -> Type: {target_doc_type}, Title: {target_doc_title}, Number: {final_doc_number}")
+#             continue
+
+#         references.append({
+#             "type": "external",
+#             "original_text": original_text_external,
+#             "target_document_type": target_doc_type,
+#             "target_document_title": target_doc_title if target_doc_title else None,
+#             "target_document_number": final_doc_number,
+#             "target_document_year": final_doc_year, # Đã là int hoặc None
+#             "target_dieu": target_dieu,
+#             "target_khoan": target_khoan,
+#             "target_diem": target_diem,
+#             "target_document_year_hint": final_doc_year # Dùng final_doc_year đã được chuẩn hóa
+#         })
+#     return references
 
 
 def hierarchical_split_law_document(doc_obj: Document) -> List[Document]:
@@ -368,44 +371,46 @@ def hierarchical_split_law_document(doc_obj: Document) -> List[Document]:
 
     final_chunks: List[Document] = []
 
-    if GOOGLE_API_KEY:
-        try:
-            llm = ChatGoogleGenerativeAI(
-                model="gemini-2.5-flash-preview-05-20",
-                google_api_key=GOOGLE_API_KEY,
-                temperature=0.0,
-            )
-            hierarchical_split_law_document_prompt = ChatPromptTemplate.from_template(
-                prompt_templete.HIERARCHICAL_SPLIT_LAW_DOCUMENT_PROMPT
-            )
-            chain = hierarchical_split_law_document_prompt | llm | JsonOutputParser()
-            result = chain.invoke({"text": text})
-            if isinstance(result, list) and result:
-                for i, item in enumerate(result):
-                    dieu_code = item.get("dieu_code")
-                    dieu_title = item.get("dieu_title")
-                    content = item.get("content")
-                    if not dieu_code or not content:
-                        continue
-                    block_meta = source_metadata.copy()
-                    block_meta["dieu_code"] = dieu_code
-                    block_meta["dieu_title"] = dieu_title
-                    block_meta["chunk_title"] = dieu_code + (f" - {dieu_title}" if dieu_title else "")
-                    block_meta["document_title"] = document_title
-                    block_meta["law_field"] = law_field
-                    block_meta["entity_type"] = infer_entity_type(content, law_field)
-                    block_meta["penalties"] = extract_penalties_from_text(content)
-                    block_meta["cross_references"] = extract_cross_references(content, source_metadata)
-                    context_header = f"Excerpt from: {block_meta['chunk_title']}\nIn document: {document_title}"
-                    final_page_content = f"Full text: {block_meta['chunk_title']}\n\nContent:\n{content}"
-                    chunk_id = generate_structured_id(doc_so_hieu, [dieu_code], filename)
-                    final_chunks.append(Document(page_content=final_page_content, metadata=block_meta, id=chunk_id))
-                if final_chunks:
-                    logger.info(f"[Gemini] Chunked {len(final_chunks)} articles for file {filename}")
-                    return final_chunks
-        except Exception as e:
-            logger.error(f"[Gemini] Error chunking by article: {e}")
-            # Fallback to regex if error
+    if not GOOGLE_API_KEY:
+        raise Exception("GOOGLE_API_KEY is not set. Please provide your Google API key to extract document metadata.")
+    try:
+        llm = ChatGoogleGenerativeAI(
+            model="gemini-2.5-flash-preview-05-20",
+            google_api_key=GOOGLE_API_KEY,
+            temperature=0.0,
+        )
+        hierarchical_split_law_document_prompt = ChatPromptTemplate.from_template(
+            prompt_templete.HIERARCHICAL_SPLIT_LAW_DOCUMENT_PROMPT
+        )
+        chain = hierarchical_split_law_document_prompt | llm | JsonOutputParser()
+        result = chain.invoke({"text": text})
+        if isinstance(result, list) and result:
+            for i, item in enumerate(result):
+                dieu_code = item.get("dieu_code")
+                dieu_title = item.get("dieu_title")
+                content = item.get("content")
+                if not dieu_code or not content:
+                    continue
+                block_meta = source_metadata.copy()
+                block_meta["dieu_code"] = dieu_code
+                block_meta["dieu_title"] = dieu_title
+                block_meta["chunk_title"] = dieu_code + (f" - {dieu_title}" if dieu_title else "")
+                block_meta["document_title"] = document_title
+                block_meta["law_field"] = law_field
+                block_meta["entity_type"] = infer_entity_type(content, law_field)
+                block_meta["penalties"] = extract_penalties_from_text(content)
+                #block_meta["cross_references"] = extract_cross_references(content, source_metadata)
+                block_meta["cross_references"] = extract_legal_structures_and_entities(content, source_metadata)["cross_references"]
+                context_header = f"Excerpt from: {block_meta['chunk_title']}\nIn document: {document_title}"
+                final_page_content = f"Full text: {block_meta['chunk_title']}\n\nContent:\n{content}"
+                chunk_id = generate_structured_id(doc_so_hieu, [dieu_code], filename)
+                final_chunks.append(Document(page_content=final_page_content, metadata=block_meta, id=chunk_id))
+            if final_chunks:
+                logger.info(f"[Gemini] Chunked {len(final_chunks)} articles for file {filename}")
+                return final_chunks
+    except Exception as e:
+        logger.error(f"[Gemini] Error chunking by article: {e}")
+        raise e
 
 
 #xem lại hàm này để cải tiến sau
@@ -973,3 +978,47 @@ def process_single_file(file_path: str) -> List[Document]:
 #     except Exception as e:
 #         logger.error(f"LLM entity extraction failed: {e}")
 #         return []
+
+
+def extract_legal_structures_and_entities(text: str, current_doc_full_metadata: dict = None) -> dict:
+    """
+    Dùng LLM để trích xuất đồng thời:
+    - cross_references: Danh sách các tham chiếu pháp lý (nội bộ và ngoài văn bản)
+    - penalties: Danh sách các hình phạt (phạt tiền, phạt tù, tước giấy phép, ...)
+    - entity_types: Danh sách các đối tượng áp dụng (cá nhân, tổ chức, phương tiện, ...)
+    - law_item_line: Nếu đoạn này là dòng tiêu đề Điều, Khoản, Điểm, Chương, Phần, ... thì trả về object mô tả loại và nội dung; nếu không thì trả về null
+    """
+    if not GOOGLE_API_KEY:
+        raise Exception("GOOGLE_API_KEY is not set. Please provide your Google API key to extract legal structures and entities.")
+
+    from langchain_google_genai import ChatGoogleGenerativeAI
+    from langchain_core.prompts import ChatPromptTemplate
+    from langchain_core.output_parsers import JsonOutputParser
+
+    # Prompt tổng hợp
+    prompt_template = """
+    Bạn là AI chuyên phân tích văn bản pháp luật Việt Nam. Hãy đọc đoạn văn bản sau và trả về một object JSON với các trường:
+    - cross_references: Danh sách các tham chiếu pháp lý (nội bộ và ngoài văn bản, nếu có, mỗi tham chiếu là một object).
+    - penalties: Danh sách các hình phạt hoặc quyền lợi (phạt tiền, phạt tù, tước giấy phép, phụ cấp, ...), mỗi hình phạt là một object.
+    - entity_types: Danh sách các đối tượng áp dụng (cá nhân, tổ chức, phương tiện, chức danh, ...), mỗi entity là một chuỗi.
+    - law_item_line: Nếu đoạn này là dòng tiêu đề Điều, Khoản, Điểm, Chương, Phần, ... thì trả về object dạng {{"type": ..., "code": ..., "title": ...}}; nếu không thì trả về null.
+    Nếu có metadata của văn bản, bạn có thể dùng để xác định tham chiếu nội bộ.
+    Đoạn văn bản:
+    ---
+    {text}
+    ---
+    Metadata (nếu có):
+    {metadata}
+    Chỉ trả về một object JSON hợp lệ, không giải thích gì thêm.
+    """
+
+    prompt = ChatPromptTemplate.from_template(prompt_template)
+    llm = ChatGoogleGenerativeAI(
+        model="gemini-2.5-flash-preview-05-20",
+        google_api_key=GOOGLE_API_KEY,
+        temperature=0.0,
+    )
+    chain = prompt | llm | JsonOutputParser()
+    metadata = current_doc_full_metadata if current_doc_full_metadata else {}
+    result = chain.invoke({"text": text, "metadata": metadata})
+    return result
