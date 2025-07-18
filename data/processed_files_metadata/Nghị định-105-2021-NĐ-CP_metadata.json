@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2021,
+    "issuing_agency": null,
+    "effective_date": "ngày 01 tháng 01 năm 2022",
+    "source_file": "Nghị định-105-2021-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-105-2021-NĐ-CP.txt",
+    "field": "hinh_su",
+    "chunk_title": "None - Preamble",
+    "law_field": "hinh_su",
+    "entity_type": "[\"nguoi_pham_toi\"]",
+    "penalties": "[]"
+  }
+]

@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2024,
+    "issuing_agency": null,
+    "effective_date": null,
+    "source_file": "Nghị định-117-2024-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-117-2024-NĐ-CP.txt",
+    "field": "hanh_chinh",
+    "chunk_title": "None - Preamble",
+    "law_field": "hanh_chinh",
+    "entity_type": "[\"phuong_tien\", \"nguoi_pham_toi\", \"nguoi_su_dung_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[{\"type\": \"fine\", \"min_amount\": 15000000.0, \"max_amount\": 30000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 15.000.000 đồng đến 30.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 5000000.0, \"max_amount\": 10000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 5.000.000 đồng đến 10.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 3000000.0, \"max_amount\": 7000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 3.000.000 đồng đến 7.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 5000000.0, \"max_amount\": 7000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 5.000.000 đồng đến 7.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 1000000.0, \"max_amount\": 3000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 1.000.000 đồng đến 3.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 3000000.0, \"max_amount\": 5000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 3.000.000 đồng đến 5.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 10000000.0, \"max_amount\": 15000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 10.000.000 đồng đến 15.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 20000000.0, \"max_amount\": 30000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 20.000.000 đồng đến 30.000.000 đồng\"}, {\"type\": \"warning\", \"original_text\": \"Phạt cảnh cáo\"}, {\"type\": \"confiscation_object_vehicle\", \"original_text\": \"Tịch thu tang vật, phương tiện vi phạm hành chính\"}]"
+  }
+]

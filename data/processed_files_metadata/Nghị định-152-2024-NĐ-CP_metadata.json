@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2024,
+    "issuing_agency": null,
+    "effective_date": null,
+    "source_file": "Nghị định-152-2024-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-152-2024-NĐ-CP.txt",
+    "field": "doanh_nghiep",
+    "chunk_title": "None - Preamble",
+    "law_field": "doanh_nghiep",
+    "entity_type": "[\"nguoi_su_dung_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

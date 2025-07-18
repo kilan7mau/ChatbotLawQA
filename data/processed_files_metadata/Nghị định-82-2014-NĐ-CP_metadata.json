@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2014,
+    "issuing_agency": null,
+    "effective_date": "ngày 15 tháng 10 năm 2014",
+    "source_file": "Nghị định-82-2014-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-82-2014-NĐ-CP.txt",
+    "field": "doanh_nghiep",
+    "chunk_title": "None - Preamble",
+    "law_field": "doanh_nghiep",
+    "entity_type": "[\"nguoi_su_dung_lao_dong\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2021,
+    "issuing_agency": null,
+    "effective_date": null,
+    "source_file": "Nghị định-98-2021-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-98-2021-NĐ-CP.txt",
+    "field": "y_te",
+    "chunk_title": "None - Preamble",
+    "law_field": "y_te",
+    "entity_type": "[\"phuong_tien\", \"nguoi_lao_dong\", \"nguoi_su_dung_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

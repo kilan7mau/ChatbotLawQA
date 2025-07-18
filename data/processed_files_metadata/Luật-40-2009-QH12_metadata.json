@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": "40/2009/QH12",
+    "document_type": "Luật",
+    "document_title": "Khám bệnh, chữa bệnh",
+    "issue_date": "23/11/2009",
+    "issue_year": 2009,
+    "issuing_agency": "Quốc hội",
+    "effective_date": "01/01/2011",
+    "source_file": "Luật-40-2009-QH12",
+    "confidential_level": "Công Khai",
+    "source": "Luật-40-2009-QH12.txt",
+    "field": "y_te",
+    "chunk_title": "Khám bệnh, chữa bệnh - Preamble",
+    "law_field": "y_te",
+    "entity_type": "[\"phuong_tien\", \"nguoi_lao_dong\", \"nguoi_su_dung_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

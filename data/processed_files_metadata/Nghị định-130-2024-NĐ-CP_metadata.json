@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2024,
+    "issuing_agency": null,
+    "effective_date": "ngày 10 tháng 10 năm 2024",
+    "source_file": "Nghị định-130-2024-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-130-2024-NĐ-CP.txt",
+    "field": "tai_chinh_thue",
+    "chunk_title": "None - Preamble",
+    "law_field": "tai_chinh_thue",
+    "entity_type": "[\"xe_oto\", \"phuong_tien\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": "73/2021/QH14",
+    "document_type": "Luật",
+    "document_title": "Phòng, chống ma túy",
+    "issue_date": "30/03/2021",
+    "issue_year": 2021,
+    "issuing_agency": "Quốc hội",
+    "effective_date": "01/01/2022",
+    "source_file": "Luật-73-2021-QH14",
+    "confidential_level": "Công Khai",
+    "source": "Luật-73-2021-QH14.txt",
+    "field": "hinh_su",
+    "chunk_title": "Phòng, chống ma túy - Preamble",
+    "law_field": "hinh_su",
+    "entity_type": "[\"nguoi_pham_toi\"]",
+    "penalties": "[{\"type\": \"deportation\", \"original_text\": \"trục xuất\"}]"
+  }
+]

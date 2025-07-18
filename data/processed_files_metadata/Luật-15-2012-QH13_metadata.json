@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": "15/2012/QH13",
+    "document_type": "Luật",
+    "document_title": "Luật Xử lý vi phạm hành chính",
+    "issue_date": "20/06/2012",
+    "issue_year": 2012,
+    "issuing_agency": "Quốc hội",
+    "effective_date": "01/07/2013",
+    "source_file": "Luật-15-2012-QH13",
+    "confidential_level": "Công Khai",
+    "source": "Luật-15-2012-QH13.txt",
+    "field": "hanh_chinh",
+    "chunk_title": "Luật Xử lý vi phạm hành chính - Preamble",
+    "law_field": "hanh_chinh",
+    "entity_type": "[\"nguoi_dieu_khien\", \"phuong_tien\", \"nguoi_pham_toi\", \"nguoi_su_dung_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[{\"type\": \"warning\", \"original_text\": \"phạt cảnh cáo\"}, {\"type\": \"confiscation_object_vehicle\", \"original_text\": \"Tịch thu tang vật, phương tiện vi phạm hành chính\"}, {\"type\": \"deportation\", \"original_text\": \"Trục xuất\"}]"
+  }
+]

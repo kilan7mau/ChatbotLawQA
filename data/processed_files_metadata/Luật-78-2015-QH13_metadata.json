@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2015,
+    "issuing_agency": null,
+    "effective_date": null,
+    "source_file": "Luật-78-2015-QH13",
+    "confidential_level": "Công Khai",
+    "source": "Luật-78-2015-QH13.txt",
+    "field": "khac",
+    "chunk_title": "None - Preamble",
+    "law_field": "khac",
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

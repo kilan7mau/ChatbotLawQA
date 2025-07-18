@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": null,
+    "issuing_agency": null,
+    "effective_date": null,
+    "source_file": "Luật-18-L-CTN",
+    "confidential_level": "Công Khai",
+    "source": "Luật-18-L-CTN.txt",
+    "field": "dan_su",
+    "chunk_title": "None - Preamble",
+    "law_field": "dan_su",
+    "entity_type": "[\"phuong_tien\", \"nguoi_pham_toi\", \"nguoi_lao_dong\", \"nguoi_su_dung_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

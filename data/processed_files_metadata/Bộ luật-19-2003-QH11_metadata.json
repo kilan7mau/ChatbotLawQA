@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": "19/2003/QH11",
+    "document_type": "Luật",
+    "document_title": "Bộ luật Tố tụng hình sự",
+    "issue_date": "26/11/2003",
+    "issue_year": 2003,
+    "issuing_agency": "Quốc hội",
+    "effective_date": "",
+    "source_file": "Bộ luật-19-2003-QH11",
+    "confidential_level": "Công Khai",
+    "source": "Bộ luật-19-2003-QH11.txt",
+    "field": "hinh_su",
+    "chunk_title": "Bộ luật Tố tụng hình sự - Preamble",
+    "law_field": "hinh_su",
+    "entity_type": "[\"nguoi_pham_toi\", \"nan_nhan\"]",
+    "penalties": "[{\"type\": \"prison\", \"duration_type\": \"death_penalty\", \"original_text\": \"phạt tử hình\"}, {\"type\": \"deportation\", \"original_text\": \"trục xuất\"}]"
+  }
+]

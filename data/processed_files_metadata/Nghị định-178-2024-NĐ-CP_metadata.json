@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2024,
+    "issuing_agency": null,
+    "effective_date": "ngày 01 tháng 01 năm 2025",
+    "source_file": "Nghị định-178-2024-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-178-2024-NĐ-CP.txt",
+    "field": "hanh_chinh",
+    "chunk_title": "None - Preamble",
+    "law_field": "hanh_chinh",
+    "entity_type": "[\"nguoi_lao_dong\", \"hop_dong_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

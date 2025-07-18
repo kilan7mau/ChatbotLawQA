@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": "87/2001/NĐ-CP",
+    "document_type": "Nghị định",
+    "document_title": "Về xử phạt vi phạm hành chính trong lĩnh vực hôn nhân và gia đình",
+    "issue_date": "21/11/2001",
+    "issue_year": 2001,
+    "issuing_agency": "Chính phủ",
+    "effective_date": "06/12/2001",
+    "source_file": "Nghị định-87-2001-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-87-2001-NĐ-CP.txt",
+    "field": "hanh_chinh",
+    "chunk_title": "Về xử phạt vi phạm hành chính trong lĩnh vực hôn nhân và gia đình - Preamble",
+    "law_field": "hanh_chinh",
+    "entity_type": "[\"phuong_tien\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[{\"type\": \"fine\", \"min_amount\": 50000.0, \"max_amount\": 200000.0, \"currency\": \"đồng\", \"original_text\": \"phạt tiền từ 50.000 đồng đến 200.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 100000.0, \"max_amount\": 500000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 100.000 đồng đến 500.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 200000.0, \"max_amount\": 500000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 200.000 đồng đến 500.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 20000.0, \"max_amount\": 100000.0, \"currency\": \"đồng\", \"original_text\": \"phạt tiền từ 20.000 đồng đến 100.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 1000000.0, \"max_amount\": 2000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 1.000.000 đồng đến 2.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 3000000.0, \"max_amount\": 5000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 3.000.000 đồng đến 5.000.000 đồng\"}, {\"type\": \"fine\", \"amount\": 20000.0, \"currency\": \"đồng\", \"original_text\": \"phạt tiền 20.000 đồng\"}, {\"type\": \"warning\", \"original_text\": \"Phạt cảnh cáo\"}, {\"type\": \"confiscation_object_vehicle\", \"original_text\": \"Tịch thu tang vật, phương tiện vi phạm hành chính\"}]"
+  }
+]

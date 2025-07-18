@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": "102/2021/NĐ-CP",
+    "document_type": "Nghị định",
+    "document_title": "Sửa đổi, bổ sung một số điều của các Nghị định về xử phạt vi phạm hành chính trong lĩnh vực thuế, hóa đơn; hải quan; kinh doanh bảo hiểm, kinh doanh xổ số; quản lý, sử dụng tài sản công; thực hành tiết kiệm, chống lãng phí; dự trữ quốc gia; kho bạc nhà nước; kế toán, kiểm toán độc lập",
+    "issue_date": "16/11/2021",
+    "issue_year": 2021,
+    "issuing_agency": "Chính phủ",
+    "effective_date": "01/01/2022",
+    "source_file": "Nghị định-102-2021-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-102-2021-NĐ-CP.txt",
+    "field": "hanh_chinh",
+    "chunk_title": "Sửa đổi, bổ sung một số điều của các Nghị định về xử phạt vi phạm hành chính trong lĩnh vực thuế, hóa đơn; hải quan; kinh doanh bảo hiểm, kinh doanh xổ số; quản lý, sử dụng tài sản công; thực hành tiết kiệm, chống lãng phí; dự trữ quốc gia; kho bạc nhà nước; kế toán, kiểm toán độc lập - Preamble",
+    "law_field": "hanh_chinh",
+    "entity_type": "[\"phuong_tien\", \"nguoi_pham_toi\", \"nguoi_su_dung_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[{\"type\": \"fine\", \"min_amount\": 20000000.0, \"max_amount\": 50000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 20.000.000 đồng đến 50.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 4000000.0, \"max_amount\": 8000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 4.000.000 đồng đến 8.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 5000000.0, \"max_amount\": 10000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 5.000.000 đồng đến 10.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 10000000.0, \"max_amount\": 15000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 10.000.000 đồng đến 15.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 30000000.0, \"max_amount\": 50000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 30.000.000 đồng đến 50.000.000 đồng\"}, {\"type\": \"warning\", \"original_text\": \"Phạt cảnh cáo\"}, {\"type\": \"confiscation_object_vehicle\", \"original_text\": \"Tịch thu tang vật, phương tiện vi phạm hành chính\"}]"
+  }
+]

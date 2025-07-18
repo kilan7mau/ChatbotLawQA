@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2009,
+    "issuing_agency": null,
+    "effective_date": null,
+    "source_file": "Luật-28-2009-QH12",
+    "confidential_level": "Công Khai",
+    "source": "Luật-28-2009-QH12.txt",
+    "field": "doanh_nghiep",
+    "chunk_title": "None - Preamble",
+    "law_field": "doanh_nghiep",
+    "entity_type": "[\"phuong_tien\", \"nguoi_pham_toi\", \"nguoi_su_dung_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[{\"type\": \"prison\", \"duration_type\": \"death_penalty\", \"original_text\": \"phạt tử hình\"}, {\"type\": \"deportation\", \"original_text\": \"trục xuất\"}]"
+  }
+]

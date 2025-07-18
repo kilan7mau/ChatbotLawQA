@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2003,
+    "issuing_agency": null,
+    "effective_date": null,
+    "source_file": "Nghị định-42-2003-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-42-2003-NĐ-CP.txt",
+    "field": "dan_su",
+    "chunk_title": "None - Preamble",
+    "law_field": "dan_su",
+    "entity_type": "[\"phuong_tien\", \"hop_dong_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

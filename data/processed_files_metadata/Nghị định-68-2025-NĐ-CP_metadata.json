@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": "68/2025/NĐ-CP",
+    "document_type": "Nghị định",
+    "document_title": "Sửa đổi, bổ sung một số điều của Nghị định số 118/2021/NĐ-CP ngày 23 tháng 12 năm 2021 của Chính phủ quy định chi tiết một số điều và biện pháp thi hành Luật Xử lý vi phạm hành chính",
+    "issue_date": "18/03/2025",
+    "issue_year": 2025,
+    "issuing_agency": "Chính phủ",
+    "effective_date": "02/05/2025",
+    "source_file": "Nghị định-68-2025-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-68-2025-NĐ-CP.txt",
+    "field": "hanh_chinh",
+    "chunk_title": "Sửa đổi, bổ sung một số điều của Nghị định số 118/2021/NĐ-CP ngày 23 tháng 12 năm 2021 của Chính phủ quy định chi tiết một số điều và biện pháp thi hành Luật Xử lý vi phạm hành chính - Preamble",
+    "law_field": "hanh_chinh",
+    "entity_type": "[\"phuong_tien\", \"nguoi_su_dung_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[{\"type\": \"confiscation_object_vehicle\", \"original_text\": \"tịch thu tang vật, phương tiện vi phạm hành chính\"}]"
+  }
+]

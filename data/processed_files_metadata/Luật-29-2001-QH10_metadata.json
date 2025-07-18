@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2001,
+    "issuing_agency": null,
+    "effective_date": null,
+    "source_file": "Luật-29-2001-QH10",
+    "confidential_level": "Công Khai",
+    "source": "Luật-29-2001-QH10.txt",
+    "field": "hanh_chinh",
+    "chunk_title": "None - Preamble",
+    "law_field": "hanh_chinh",
+    "entity_type": "[\"nguoi_dieu_khien\", \"phuong_tien\", \"nguoi_pham_toi\", \"nguoi_su_dung_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": "",
+    "document_type": "Luật",
+    "document_title": "Luật Mặt trận Tổ quốc Việt Nam",
+    "issue_date": "12/06/1999",
+    "issue_year": 1999,
+    "issuing_agency": "Quốc hội",
+    "effective_date": "12/06/1999",
+    "source_file": "Luật-14-1999-QH10",
+    "confidential_level": "Công Khai",
+    "source": "Luật-14-1999-QH10.txt",
+    "field": "hanh_chinh",
+    "chunk_title": "Luật Mặt trận Tổ quốc Việt Nam - Preamble",
+    "law_field": "hanh_chinh",
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": "25/2008/QH12",
+    "document_type": "Luật",
+    "document_title": "Bảo hiểm y tế",
+    "issue_date": "14/11/2008",
+    "issue_year": 2008,
+    "issuing_agency": "Quốc hội",
+    "effective_date": "01/07/2009",
+    "source_file": "Luật-25-2008-QH12",
+    "confidential_level": "Công Khai",
+    "source": "Luật-25-2008-QH12.txt",
+    "field": "y_te",
+    "chunk_title": "Bảo hiểm y tế - Preamble",
+    "law_field": "y_te",
+    "entity_type": "[\"phuong_tien\", \"nguoi_lao_dong\", \"nguoi_su_dung_lao_dong\", \"hop_dong_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

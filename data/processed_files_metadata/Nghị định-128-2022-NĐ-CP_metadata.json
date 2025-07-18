@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": "128/2022/NĐ-CP",
+    "document_type": "Nghị định",
+    "document_title": "Sửa đổi, bổ sung một số điều của Nghị định số 38/2021/NĐ-CP ngày 29 tháng 3 năm 2021 của Chính phủ quy định xử phạt vi phạm hành chính trong lĩnh vực văn hóa và quảng cáo đã được sửa đổi, bổ sung bởi Nghị định số 129/2021/NĐ-CP ngày 30 tháng 12 năm 2021 của Chính phủ sửa đổi, bổ sung một số điều của các Nghị định quy định xử phạt vi phạm hành chính trong lĩnh vực du lịch; thể thao; quyền tác giả, quyền liên quan; văn hóa và quảng cáo",
+    "issue_date": "30/12/2022",
+    "issue_year": 2022,
+    "issuing_agency": "Chính phủ",
+    "effective_date": "15/02/2023",
+    "source_file": "Nghị định-128-2022-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-128-2022-NĐ-CP.txt",
+    "field": "hanh_chinh",
+    "chunk_title": "Sửa đổi, bổ sung một số điều của Nghị định số 38/2021/NĐ-CP ngày 29 tháng 3 năm 2021 của Chính phủ quy định xử phạt vi phạm hành chính trong lĩnh vực văn hóa và quảng cáo đã được sửa đổi, bổ sung bởi Nghị định số 129/2021/NĐ-CP ngày 30 tháng 12 năm 2021 của Chính phủ sửa đổi, bổ sung một số điều của các Nghị định quy định xử phạt vi phạm hành chính trong lĩnh vực du lịch; thể thao; quyền tác giả, quyền liên quan; văn hóa và quảng cáo - Preamble",
+    "law_field": "hanh_chinh",
+    "entity_type": "[\"phuong_tien\", \"nguoi_pham_toi\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[{\"type\": \"fine\", \"min_amount\": 40000000.0, \"max_amount\": 50000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 40.000.000 đồng đến 50.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 10000000.0, \"max_amount\": 20000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 10.000.000 đồng đến 20.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 20000000.0, \"max_amount\": 30000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 20.000.000 đồng đến 30.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 30000000.0, \"max_amount\": 40000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 30.000.000 đồng đến 40.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 5000000.0, \"max_amount\": 10000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 5.000.000 đồng đến 10.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 10000000.0, \"max_amount\": 15000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 10.000.000 đồng đến 15.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 40000000.0, \"max_amount\": 60000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 40.000.000 đồng đến 60.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 60000000.0, \"max_amount\": 80000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 60.000.000 đồng đến 80.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 80000000.0, \"max_amount\": 100000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 80.000.000 đồng đến 100.000.000 đồng\"}]"
+  }
+]

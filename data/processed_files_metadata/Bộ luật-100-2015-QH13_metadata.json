@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2015,
+    "issuing_agency": null,
+    "effective_date": null,
+    "source_file": "Bộ luật-100-2015-QH13",
+    "confidential_level": "Công Khai",
+    "source": "Bộ luật-100-2015-QH13.txt",
+    "field": "hinh_su",
+    "chunk_title": "None - Preamble",
+    "law_field": "hinh_su",
+    "entity_type": "[\"nguoi_pham_toi\", \"nan_nhan\"]",
+    "penalties": "[{\"type\": \"prison\", \"duration\": {\"value\": 20, \"unit\": \"years\"}, \"original_text\": \"phạt tù 20 năm\"}, {\"type\": \"prison\", \"duration\": {\"value\": 3, \"unit\": \"years\"}, \"original_text\": \"phạt tù 03 năm\"}, {\"type\": \"prison\", \"duration\": {\"value\": 2, \"unit\": \"years\"}, \"original_text\": \"phạt tù 02 năm\"}, {\"type\": \"prison\", \"duration_type\": \"life_imprisonment\", \"original_text\": \"phạt tù chung thân\"}, {\"type\": \"prison\", \"duration_type\": \"death_penalty\", \"original_text\": \"phạt tử hình\"}, {\"type\": \"warning\", \"original_text\": \"phạt cảnh cáo\"}, {\"type\": \"deportation\", \"original_text\": \"Trục xuất\"}]"
+  }
+]

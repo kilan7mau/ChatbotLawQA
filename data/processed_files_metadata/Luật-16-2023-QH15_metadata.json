@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2023,
+    "issuing_agency": null,
+    "effective_date": null,
+    "source_file": "Luật-16-2023-QH15",
+    "confidential_level": "Công Khai",
+    "source": "Luật-16-2023-QH15.txt",
+    "field": "giao_duc",
+    "chunk_title": "None - Preamble",
+    "law_field": "giao_duc",
+    "entity_type": "[\"xe_oto\", \"phuong_tien\", \"nguoi_lao_dong\", \"nguoi_su_dung_lao_dong\", \"hop_dong_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

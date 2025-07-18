@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": "03/2003/QH11",
+    "document_type": "Luật",
+    "document_title": "Luật Kế toán",
+    "issue_date": "17/06/2003",
+    "issue_year": 2003,
+    "issuing_agency": "Quốc hội",
+    "effective_date": "01/01/2004",
+    "source_file": "Luật-03-2003-QH11",
+    "confidential_level": "Công Khai",
+    "source": "Luật-03-2003-QH11.txt",
+    "field": "tai_chinh_thue",
+    "chunk_title": "Luật Kế toán - Preamble",
+    "law_field": "tai_chinh_thue",
+    "entity_type": "[\"nguoi_lao_dong\", \"nguoi_su_dung_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

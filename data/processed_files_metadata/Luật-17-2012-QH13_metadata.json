@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2012,
+    "issuing_agency": null,
+    "effective_date": null,
+    "source_file": "Luật-17-2012-QH13",
+    "confidential_level": "Công Khai",
+    "source": "Luật-17-2012-QH13.txt",
+    "field": "moi_truong",
+    "chunk_title": "None - Preamble",
+    "law_field": "moi_truong",
+    "entity_type": "[\"phuong_tien\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": "45/2019/QH14",
+    "document_type": "Bộ luật",
+    "document_title": "Bộ luật Lao động",
+    "issue_date": "20/11/2019",
+    "issue_year": 2019,
+    "issuing_agency": "Quốc hội",
+    "effective_date": "01/01/2021",
+    "source_file": "Bộ luật-45-2019-QH14",
+    "confidential_level": "Công Khai",
+    "source": "Bộ luật-45-2019-QH14.txt",
+    "field": "lao_dong",
+    "chunk_title": "Bộ luật Lao động - Preamble",
+    "law_field": "lao_dong",
+    "entity_type": "[\"nguoi_lao_dong\", \"nguoi_su_dung_lao_dong\", \"hop_dong_lao_dong\"]",
+    "penalties": "[{\"type\": \"deportation\", \"original_text\": \"trục xuất\"}]"
+  }
+]

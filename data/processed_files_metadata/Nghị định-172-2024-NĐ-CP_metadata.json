@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2024,
+    "issuing_agency": null,
+    "effective_date": "ngày 01 tháng 01 năm 2025",
+    "source_file": "Nghị định-172-2024-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-172-2024-NĐ-CP.txt",
+    "field": "dat_dai",
+    "chunk_title": "None - Preamble",
+    "law_field": "dat_dai",
+    "entity_type": "[\"nguoi_su_dung_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

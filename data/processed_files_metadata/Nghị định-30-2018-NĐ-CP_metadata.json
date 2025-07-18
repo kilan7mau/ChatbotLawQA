@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2018,
+    "issuing_agency": null,
+    "effective_date": "ngày 01 tháng 5 năm 2018",
+    "source_file": "Nghị định-30-2018-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-30-2018-NĐ-CP.txt",
+    "field": "hinh_su",
+    "chunk_title": "None - Preamble",
+    "law_field": "hinh_su",
+    "entity_type": "[\"nguoi_pham_toi\"]",
+    "penalties": "[]"
+  }
+]

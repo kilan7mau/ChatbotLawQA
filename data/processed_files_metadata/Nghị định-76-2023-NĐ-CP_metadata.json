@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2023,
+    "issuing_agency": null,
+    "effective_date": "ngày 25 tháng 12 năm 2023",
+    "source_file": "Nghị định-76-2023-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-76-2023-NĐ-CP.txt",
+    "field": "hon_nhan_gia_dinh",
+    "chunk_title": "None - Preamble",
+    "law_field": "hon_nhan_gia_dinh",
+    "entity_type": "[\"phuong_tien\", \"nguoi_pham_toi\", \"nan_nhan\", \"nguoi_lao_dong\", \"nguoi_su_dung_lao_dong\", \"hop_dong_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

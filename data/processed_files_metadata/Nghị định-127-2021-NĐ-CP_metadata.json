@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": "127/2021/NĐ-CP",
+    "document_type": "Nghị định",
+    "document_title": "Sửa đổi, bổ sung một số điều của Nghị định số 04/2021/NĐ-CP ngày 22 tháng 01 năm 2021 của Chính phủ quy định về xử phạt vi phạm hành chính trong lĩnh vực giáo dục",
+    "issue_date": "30/12/2021",
+    "issue_year": 2021,
+    "issuing_agency": "Chính phủ",
+    "effective_date": "01/01/2022",
+    "source_file": "Nghị định-127-2021-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-127-2021-NĐ-CP.txt",
+    "field": "hanh_chinh",
+    "chunk_title": "Sửa đổi, bổ sung một số điều của Nghị định số 04/2021/NĐ-CP ngày 22 tháng 01 năm 2021 của Chính phủ quy định về xử phạt vi phạm hành chính trong lĩnh vực giáo dục - Preamble",
+    "law_field": "hanh_chinh",
+    "entity_type": "[\"phuong_tien\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[{\"type\": \"fine\", \"min_amount\": 60000000.0, \"max_amount\": 90000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 60.000.000 đồng đến 90.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 100000000.0, \"max_amount\": 130000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 100.000.000 đồng đến 130.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 110000000.0, \"max_amount\": 150000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 110.000.000 đồng đến 150.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 80000000.0, \"max_amount\": 110000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 80.000.000 đồng đến 110.000.000 đồng\"}, {\"type\": \"warning\", \"original_text\": \"Phạt cảnh cáo\"}, {\"type\": \"confiscation_object_vehicle\", \"original_text\": \"Tịch thu tang vật, phương tiện vi phạm hành chính\"}, {\"type\": \"deportation\", \"original_text\": \"trục xuất\"}]"
+  }
+]

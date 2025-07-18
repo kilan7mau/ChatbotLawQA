@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": null,
+    "issuing_agency": null,
+    "effective_date": null,
+    "source_file": "Luật-2-LCTN_new",
+    "confidential_level": "Công Khai",
+    "source": "Luật-2-LCTN_new.txt",
+    "field": "hinh_su",
+    "chunk_title": "None - Preamble",
+    "law_field": "hinh_su",
+    "entity_type": "[\"nguoi_pham_toi\"]",
+    "penalties": "[]"
+  }
+]

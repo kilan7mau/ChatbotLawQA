@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": "58/2015/NĐ-CP",
+    "document_type": "Nghị định",
+    "document_title": "SỬA ĐỔI, BỔ SUNG MỘT SỐ ĐIỀU CỦA NGHỊ ĐỊNH SỐ 192/2013/NĐ-CP NGÀY 21 THÁNG 11 NĂM 2013 CỦA CHÍNH PHỦ QUY ĐỊNH VIỆC XỬ PHẠT VI PHẠM HÀNH CHÍNH TRONG LĨNH VỰC QUẢN LÝ, SỬ DỤNG TÀI SẢN NHÀ NƯỚC; THỰC HÀNH TIẾT KIỆM, CHỐNG LÃNG PHÍ; DỰ TRỮ QUỐC GIA; KHO BẠC NHÀ NƯỚC",
+    "issue_date": "16/06/2015",
+    "issue_year": 2015,
+    "issuing_agency": "Chính phủ",
+    "effective_date": "01/08/2015",
+    "source_file": "Nghị định-58-2015-NĐ-CP",
+    "confidential_level": "Công Khai",
+    "source": "Nghị định-58-2015-NĐ-CP.txt",
+    "field": "tai_chinh_thue",
+    "chunk_title": "SỬA ĐỔI, BỔ SUNG MỘT SỐ ĐIỀU CỦA NGHỊ ĐỊNH SỐ 192/2013/NĐ-CP NGÀY 21 THÁNG 11 NĂM 2013 CỦA CHÍNH PHỦ QUY ĐỊNH VIỆC XỬ PHẠT VI PHẠM HÀNH CHÍNH TRONG LĨNH VỰC QUẢN LÝ, SỬ DỤNG TÀI SẢN NHÀ NƯỚC; THỰC HÀNH TIẾT KIỆM, CHỐNG LÃNG PHÍ; DỰ TRỮ QUỐC GIA; KHO BẠC NHÀ NƯỚC - Preamble",
+    "law_field": "tai_chinh_thue",
+    "entity_type": "[\"phuong_tien\", \"to_chuc\"]",
+    "penalties": "[{\"type\": \"fine\", \"min_amount\": 1000000.0, \"max_amount\": 2000000.0, \"currency\": \"đồng\", \"original_text\": \"phạt tiền từ 1.000.000 đồng đến 2.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 20000000.0, \"max_amount\": 30000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 20.000.000 đồng đến 30.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 50000000.0, \"max_amount\": 60000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 50.000.000 đồng đến 60.000.000 đồng\"}, {\"type\": \"fine\", \"min_amount\": 1000000.0, \"max_amount\": 5000000.0, \"currency\": \"đồng\", \"original_text\": \"Phạt tiền từ 1.000.000 đồng đến 5.000.000 đồng\"}, {\"type\": \"warning\", \"original_text\": \"Phạt cảnh cáo\"}]"
+  }
+]

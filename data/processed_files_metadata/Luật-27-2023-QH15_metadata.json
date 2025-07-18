@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": "27/2023/QH15",
+    "document_type": "Luật",
+    "document_title": "Luật Nhà ở",
+    "issue_date": "27/11/2023",
+    "issue_year": 2023,
+    "issuing_agency": "Quốc hội",
+    "effective_date": "01/01/2025",
+    "source_file": "Luật-27-2023-QH15",
+    "confidential_level": "Công Khai",
+    "source": "Luật-27-2023-QH15.txt",
+    "field": "xay_dung",
+    "chunk_title": "Luật Nhà ở - Preamble",
+    "law_field": "xay_dung",
+    "entity_type": "[\"xe_oto\", \"phuong_tien\", \"nguoi_pham_toi\", \"nguoi_lao_dong\", \"nguoi_su_dung_lao_dong\", \"hop_dong_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[{\"type\": \"deportation\", \"original_text\": \"trục xuất\"}]"
+  }
+]

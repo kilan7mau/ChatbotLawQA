@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2008,
+    "issuing_agency": null,
+    "effective_date": null,
+    "source_file": "Luật-24-2008-QH12",
+    "confidential_level": "Công Khai",
+    "source": "Luật-24-2008-QH12.txt",
+    "field": "khac",
+    "chunk_title": "None - Preamble",
+    "law_field": "khac",
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]

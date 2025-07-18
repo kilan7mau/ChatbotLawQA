@@ -1,0 +1,19 @@
+[
+  {
+    "document_number": null,
+    "document_type": null,
+    "document_title": null,
+    "issue_date": null,
+    "issue_year": 2000,
+    "issuing_agency": null,
+    "effective_date": "ngày 01 tháng 01 năm 2001",
+    "source_file": "Luật-21-2000-QH10",
+    "confidential_level": "Công Khai",
+    "source": "Luật-21-2000-QH10.txt",
+    "field": "khac",
+    "chunk_title": "None - Preamble",
+    "law_field": "khac",
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]",
+    "penalties": "[]"
+  }
+]
