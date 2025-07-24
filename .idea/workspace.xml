@@ -4,7 +4,648 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="faa8f1d4-5d84-45d8-b7ee-13ba1631a159" name="Changes" comment="test" />
+    <list default="true" id="faa8f1d4-5d84-45d8-b7ee-13ba1631a159" name="Changes" comment="test2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật số 62_new.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật số 63_new.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật số 65_new.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-01-1997-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-01-2002-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-02-1997-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-02-2016-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-03-1998-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-03-2003-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-03-2007-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-03-2011-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-03-L-CTN.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-04-2003-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-04-2007-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-04-2022-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-05-1998-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-05-2003-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-05-2007-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-05-2011-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-05-2022-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-06-2003-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-06-2007-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-06-2022-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-07-1998-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-07-2007-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-07-2012-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-08-1998-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-08-2007-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-08-2012-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-09-1998-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-09-2003-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-09-2008-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-09-2012-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-105-2016-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-11-1998-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-11-2003-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-11-2008-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-11-2012-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-12-2003-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-12-2008-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-13-1999-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-13-2003-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-13-2008-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-13-2022-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-14-1999-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-14-2003-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-14-2008-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-14-2012-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-14-2022-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-15-2003-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-15-2008-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-15-2012-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-15-2023-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-16-1999-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-16-2003-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-16-2012-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-16-2023-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-17-2003-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-17-2008-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-17-2012-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-18-2003-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-18-2008-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-18-2012-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-18-L-CTN.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-19-2012-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-19-2023-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-2-LCTN_new.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-20-2008-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-20-2023-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-21-2000-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-21-2004-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-21-2008-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-22-2000-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-22-2004-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-22-2008-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-22-2018-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-22-2023-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-22-L-CTN.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-23-2000-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-23-2004-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-23-2008-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-23-2018-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-23-L-CTN.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-24-2000-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-24-2008-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-24-2018-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-24-2023-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-24-L-CTN.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-25-2001-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-25-2004-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-25-2008-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-25-2018-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-25-2023-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-26-2001-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-26-2008-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-27-2001-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-27-2004-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-27-2008-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-27-2023-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-28-2001-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-28-2004-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-28-2009-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-28-2013-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-29-2001-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-29-2004-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-29-2009-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-29-2013-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-29-2018-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-29-L-CTN.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-30-2001-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-30-2004-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-30-2009-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-30-2013-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-30-2018-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-30-2023-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-31-2018-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-31-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-32-2001-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-32-2004-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-32-2018-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-32-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-33-2013-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-33-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-34-2002-QH10.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-34-2005-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-34-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-35-2005-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-35-2009-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-35-2013-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-35-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-36-2005-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-36-2018-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-36-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-37-2005-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-38-2005-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-38-2013-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-38-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-39-2005-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-39-2009-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-40-2009-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-41-2005-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-41-2009-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-41-2013-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-41-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-42-2009-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-42-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-43-2009-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-43-2013-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-43-2019-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-44-2005-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-44-2019-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-44-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-45-2005-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-45-2013-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-45-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-46-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-48-2010-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-48-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-49-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-51-2005-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-51-2010-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-51-2014-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-52-2010-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-52-2014-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-53-2010-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-53-2014-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-53-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-54-2014-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-55-2010-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-55-2014-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-57-2010-QH12 (1).txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-57-2010-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-57-2014-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-58-2010-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-58-2014-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-58-L-CTN.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-59-2010-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-59-2014-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-59-2020-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-59-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-60-2014-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-60-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-61-2020-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-61-2024-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-62-2014-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-63-2014-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-63-LCT-HĐNN8.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-64-2010-QH12.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-64-2025-QH15.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-65-2006-QH11.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-65-2014-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-66-2011-QH12 .txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-68-2014-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-68-2020-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-69-2020-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-70-2020-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-72-2020-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-73-2014-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-73-2021-QH14.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-74-2014-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-75-2015-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-76-2015-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-78-2015-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-79-2015-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-80-2015-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-84-2015-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-86-2015-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-93-2015-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Luật-97-2015-QH13.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-01-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-02-2013-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-02-2019-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-02-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-02-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-02-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-03-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-03-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-03-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-04-2005-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-04-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-05-2017-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-05-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-06-2012-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-06-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-07-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-07-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-07-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-08-2009-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-08-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-09-2013-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-09-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-09-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-10-2012-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-10-2015-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-10-2017-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-10-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-100-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-100-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-101-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-101-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-102-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-102-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-103-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-103-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-104-2018-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-104-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-104-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-105-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-105-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-106-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-106-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-107-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-108-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-108-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-108-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-109-2011-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-109-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-109-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-110-2013-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-110-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-110-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-110-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-111-2010-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-111-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-111-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-112-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-113-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-114-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-115-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-116-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-116-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-117-2011-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-117-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-118-2020-NĐ-CP .txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-118-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-119-2010-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-119-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-12-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-12-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-120-2017-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-121-2017-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-121-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-122-2010-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-123-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-124-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-124-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-125-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-126-2014-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-126-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-126-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-127-2017-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-127-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-127-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-128-2017-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-128-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-129-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-129-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-13-2001-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-13-2002-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-13-2012-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-13-2019-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-13-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-13-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-13-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-130-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-131-2013-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-131-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-133-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-133-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-134-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-135-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-136-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-136-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-137-2013-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-137-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-138-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-139-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-14-2014-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-14-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-14-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-14-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-140-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-141-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-142-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-142-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-143-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-144-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-145-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-146-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-147-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-149-HĐBT.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-15-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-15-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-151-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-152-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-153-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-154-2018-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-154-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-155-2017-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-155-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-156-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-157-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-158-2017-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-158-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-16-2010-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-16-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-16-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-16-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-160-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-162-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-164-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-165-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-166-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-168-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-169-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-17-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-17-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-170-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-171-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-172-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-174-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-175-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-176-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-177-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-178-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-179-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-18-2011-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-18-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-18-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-18-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-180-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-182-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-184-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-19-2008-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-19-2011-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-19-2018-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-19-2019-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-19-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-19-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-19-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-192-2013-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-20-2008-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-20-2012-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-20-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-20-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-205-2013-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-21-2011-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-21-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-21-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-21-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-22-2018-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-22-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-22-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-220-2013-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-23-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-23-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-24-2013-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-24-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-24-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-24-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-25-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-25-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-26-2018-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-26-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-26-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-26-2025-NĐ-CP (1).txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-26-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-27-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-27-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-28-2017-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-28-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-28-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-29-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-29-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-29-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-29-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-30-2018-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-30-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-30-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-30-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-31-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-31-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-31-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-32-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-32-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-33-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-33-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-33-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-33-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-34-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-34-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-35-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-35-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-36-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-36-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-37-2018-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-37-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-37-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-38-1998-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-38-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-38-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-38-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-39-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-39-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-39-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-4-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-40-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-40-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-41-2009-NĐ-CP (1).txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-41-2009-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-41-2019-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-41-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-41-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-42-2003-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-42-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-42-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-42-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-43-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-43-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-43-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-43-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-43-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-44-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-44-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-45-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-45-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-46-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-46-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-46-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-47-2013-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-47-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-47-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-48-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-49-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-49-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-50-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-50-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-50-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-51-2019-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-51-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-51-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-51-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-52-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-53-2005-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-53-2018-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-53-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-53-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-54-2000-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-55-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-55-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-55-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-55-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-56-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-56-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-56-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-57-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-57-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-57-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-58-2015-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-58-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-58-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-59-2000-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-59-2013-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-59-2019-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-59-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-59-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-59-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-60-2000-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-60-2019-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-60-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-60-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-60-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-61-2000-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-61-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-61-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-61-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-61-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-62-2012-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-62-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-62-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-62-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-63-2019-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-63-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-63-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-63-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-63-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-64-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-64-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-64-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-64-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-65-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-65-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-65-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-66-2025-NĐ-CP (1).txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-66-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-67-2015-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-67-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-67-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-67-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-67-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-68-2011-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-68-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-68-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-69-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-69-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-70-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-70-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-70-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-71-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-71-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-71-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-71-2025-NĐ-CP_new.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-72-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-72-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-73-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-73-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-73-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-74-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-74-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-75-2012-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-75-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-75-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-75-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-76-2012-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-76-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-76-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-77-2001-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-77-2019-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-77-2021-NĐ-CP .txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-77-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-78-2013-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-79-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-79-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-80-2011-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-80-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-81-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-81-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-81-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-82-2011-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-82-2014-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-82-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-83-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-84-2014-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-84-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-84-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-85-2011-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-85-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-86-2011-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-86-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-86-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-86-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-87-2001-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-87-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-88-2010-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-88-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-88-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-88-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-88-2024-NĐ-CP (1).txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-88-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-89-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-89-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-89-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-9-2025-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-90-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-90-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-91-2013-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-92-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-93-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-93-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-93-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-94-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-95-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-95-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-95-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-96-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-96-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-97-2010-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-97-2019-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-97-2020-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-97-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-97-2023-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-98-2021-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-98-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-99-2013-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-99-2022-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/core/Nghị định-99-2024-NĐ-CP.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/processed_files_metadata/Bộ luật-10-2012-QH13_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/processed_files_metadata/Bộ luật-10-2012-QH13_metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/processed_files_metadata/Bộ luật-19-2003-QH11_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/processed_files_metadata/Bộ luật-19-2003-QH11_metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/processed_files_metadata/Bộ luật-24-2004-QH11_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/processed_files_metadata/Bộ luật-24-2004-QH11_metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/processed_files_metadata/Bộ luật-33-2005-QH11_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/processed_files_metadata/Bộ luật-33-2005-QH11_metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/processed_files_metadata/Bộ luật-40-2005-QH11_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/processed_files_metadata/Bộ luật-40-2005-QH11_metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/processed_files_metadata/Bộ luật-44-L-CTN_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/processed_files_metadata/Bộ luật-44-L-CTN_metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/processed_files_metadata/Bộ luật-45-2019-QH14_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/processed_files_metadata/Bộ luật-45-2019-QH14_metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/processed_files_metadata/Bộ luật-95-2015-QH13_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/processed_files_metadata/Bộ luật-95-2015-QH13_metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/processed_files_metadata/Hiến pháp-18-2013-L-CTN_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/processed_files_metadata/Hiến pháp-18-2013-L-CTN_metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/weaviateDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/weaviateDB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/processed_files.log" beforeDir="false" afterPath="$PROJECT_DIR$/processed_files.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/process_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/process_data.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,29 +692,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.build_vectorstore.executor": "Run",
-    "Python.minimal-retrieval.executor": "Run",
-    "Python.process_data.executor": "Run",
-    "Python.standalone_rag_demo.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "hung",
-    "ignore.virus.scanning.warn.message": "true",
-    "ignore_missing_gitignore": "true",
-    "last_opened_file_path": "D:/jetbrain/project/ChatbotLawQA",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.build_vectorstore.executor&quot;: &quot;Run&quot;,
+    &quot;Python.minimal-retrieval.executor&quot;: &quot;Run&quot;,
+    &quot;Python.process_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.standalone_rag_demo.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;hung&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;ignore_missing_gitignore&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/jetbrain/project/ChatbotLawQA&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\jetbrain\project\ChatbotLawQA" />
@@ -182,9 +823,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.build_vectorstore" />
         <item itemvalue="Python.process_data" />
         <item itemvalue="Python.minimal-retrieval" />
-        <item itemvalue="Python.build_vectorstore" />
         <item itemvalue="Python.standalone_rag_demo" />
         <item itemvalue="Python.minimal-retrieval" />
       </list>
@@ -372,8 +1013,8 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ChatbotLawQA$minimal_retrieval.coverage" NAME="minimal-retrieval Coverage Results" MODIFIED="1752832518188" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ChatbotLawQA$standalone_rag_demo.coverage" NAME="standalone_rag_demo Coverage Results" MODIFIED="1752833211518" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ChatbotLawQA$standalone_rag_demo.coverage" NAME="standalone_rag_demo Coverage Results" MODIFIED="1753328233995" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ChatbotLawQA$process_data.coverage" NAME="process_data Coverage Results" MODIFIED="1752654915263" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/utils" />
-    <SUITE FILE_PATH="coverage/ChatbotLawQA$build_vectorstore.coverage" NAME="build_vectorstore Coverage Results" MODIFIED="1752826742174" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ChatbotLawQA$build_vectorstore.coverage" NAME="build_vectorstore Coverage Results" MODIFIED="1753329251997" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

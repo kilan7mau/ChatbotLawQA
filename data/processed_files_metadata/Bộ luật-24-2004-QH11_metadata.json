@@ -1,17 +1,17 @@
 [
   {
-    "document_number": null,
-    "document_type": null,
-    "document_title": null,
-    "issue_date": null,
+    "document_number": "24/2004/QH11",
+    "document_type": "Bộ luật",
+    "document_title": "VỀ TỐ TỤNG DÂN SỰ",
+    "issue_date": "15/06/2004",
     "issue_year": 2004,
-    "issuing_agency": null,
+    "issuing_agency": "Quốc hội",
     "effective_date": null,
     "source_file": "Bộ luật-24-2004-QH11",
     "confidential_level": "Công Khai",
     "source": "Bộ luật-24-2004-QH11.txt",
     "field": "dan_su",
-    "chunk_title": "None - Preamble",
+    "chunk_title": "VỀ TỐ TỤNG DÂN SỰ - Preamble",
     "law_field": "dan_su",
     "entity_type": "[\"phuong_tien\", \"nguoi_pham_toi\", \"nguoi_lao_dong\", \"nguoi_su_dung_lao_dong\", \"hop_dong_lao_dong\", \"ca_nhan\", \"to_chuc\"]",
     "penalties": "[{\"type\": \"warning\", \"original_text\": \"phạt cảnh cáo\"}]"
