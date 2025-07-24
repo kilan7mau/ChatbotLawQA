@@ -44,7 +44,7 @@ def run_diagnostic_checks(client: WeaviateClient):
 
     # --- 2. Kiểm tra sự tồn tại của dữ liệu Nghị định Giao thông ---
     # Thay tên file này cho đúng với file bạn đã ingest
-    target_source_file = "Nghị định-168-2024-NĐ-CP.txt"
+    target_source_file = "NĐ-CP.txt"
     try:
         source_filter = wvc_query.Filter.by_property("source").equal(target_source_file)
         response = collection.query.fetch_objects(limit=1, filters=source_filter)

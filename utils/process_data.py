@@ -6,7 +6,7 @@ from tqdm import tqdm
 import uuid
 import json
 from langchain_core.documents import Document
-from config import LEGAL_DOC_TYPES, MAX_CHUNK_SIZE, CHUNK_OVERLAP
+from config import LEGAL_DOC_TYPES, MAX_CHUNK_SIZE, CHUNK_OVERLAP, model_process
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
@@ -166,7 +166,7 @@ def extract_document_metadata(raw_text: str, filename: str) -> Dict[str, Any]:
 
     try:
         llm = ChatGoogleGenerativeAI(
-            model="gemini-2.5-flash-preview-05-20",
+            model=model_process,
             google_api_key=GOOGLE_API_KEY,
             temperature=0.0,
         )
@@ -375,7 +375,7 @@ def hierarchical_split_law_document(doc_obj: Document) -> List[Document]:
         raise Exception("GOOGLE_API_KEY is not set. Please provide your Google API key to extract document metadata.")
     try:
         llm = ChatGoogleGenerativeAI(
-            model="gemini-2.5-flash-preview-05-20",
+            model=model_process,
             google_api_key=GOOGLE_API_KEY,
             temperature=0.0,
         )
@@ -1014,7 +1014,7 @@ def extract_legal_structures_and_entities(text: str, current_doc_full_metadata: 
 
     prompt = ChatPromptTemplate.from_template(prompt_template)
     llm = ChatGoogleGenerativeAI(
-        model="gemini-2.5-flash-preview-05-20",
+        model=model_process,
         google_api_key=GOOGLE_API_KEY,
         temperature=0.0,
     )

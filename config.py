@@ -13,6 +13,10 @@ EMBEDDING_MODEL_NAME = "bkai-foundation-models/vietnamese-bi-encoder"
 RERANKER_MODEL_NAME = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 GROQ_MODEL_NAME = "llama-3.3-70b-versatile"
 
+#cấu hình Gemini
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+model_process = "gemini-2.0-flash"
+
 LEGAL_DOC_TYPES = ["Luật", "Bộ luật", "Nghị định", "Thông tư", "Quyết định", "Pháp lệnh", "Nghị quyết", "Chỉ thị", "Hiến pháp"]
 MAX_CHUNK_SIZE = 3000  # Kích thước tối đa cho một chunk trước khi bị chia nhỏ hơn
 CHUNK_OVERLAP = 300
