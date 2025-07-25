@@ -128,6 +128,7 @@ async def initialize_api_components(app_state: AppState):
     logger.info(f"🔸Khởi tạo API Components hoàn tất ")
 
 
+#.....................
 async def get_access_token_from_cookie(request: Request) -> Optional[str]:
     """
     Lấy access token từ cookie 'access_token_cookie'.

@@ -163,9 +163,9 @@
     "dieu_title": null,
     "chunk_title": "Điều 8",
     "penalties": "[]",
-    "entity_types": "[]",
+    "entity_types": "[\"ca_nhan\"]",
     "cross_references": "[]",
-    "entity_type": "[\"to_chuc\"]"
+    "entity_type": "[\"ca_nhan\"]"
   },
   {
     "source": "Hiến pháp-18-2013-L-CTN.txt",
@@ -184,9 +184,9 @@
     "dieu_title": null,
     "chunk_title": "Điều 9",
     "penalties": "[]",
-    "entity_types": "[]",
+    "entity_types": "[\"to_chuc\", \"ca_nhan\"]",
     "cross_references": "[]",
-    "entity_type": "[\"ca_nhan\", \"to_chuc\"]"
+    "entity_type": "[\"to_chuc\", \"ca_nhan\"]"
   },
   {
     "source": "Hiến pháp-18-2013-L-CTN.txt",
@@ -205,9 +205,9 @@
     "dieu_title": null,
     "chunk_title": "Điều 10",
     "penalties": "[]",
-    "entity_types": "[\"nguoi_lao_dong\"]",
+    "entity_types": "[\"to_chuc\", \"nguoi_lao_dong\"]",
     "cross_references": "[]",
-    "entity_type": "[\"nguoi_lao_dong\"]"
+    "entity_type": "[\"to_chuc\", \"nguoi_lao_dong\"]"
   },
   {
     "source": "Hiến pháp-18-2013-L-CTN.txt",
@@ -1065,27 +1065,6 @@
     "dieu_code": "Điều 51",
     "dieu_title": null,
     "chunk_title": "Điều 51",
-    "penalties": "[]",
-    "entity_types": "[\"ca_nhan\", \"to_chuc\"]",
-    "cross_references": "[]",
-    "entity_type": "[\"ca_nhan\", \"to_chuc\"]"
-  },
-  {
-    "source": "Hiến pháp-18-2013-L-CTN.txt",
-    "source_file": "Hiến pháp-18-2013-L-CTN",
-    "document_number": null,
-    "document_type": "Hiến pháp",
-    "document_title": "Hiến pháp nước Cộng hòa xã hội chủ nghĩa Việt Nam",
-    "issue_date": "28/11/2013",
-    "issuing_agency": "Quốc hội",
-    "effective_date": null,
-    "expiry_date": null,
-    "confidential_level": "Công khai",
-    "issue_year": 2013,
-    "law_field": "khac",
-    "dieu_code": "Điều 52",
-    "dieu_title": null,
-    "chunk_title": "Điều 52",
     "penalties": "[]",
     "entity_types": "[]",
     "cross_references": "[]",
