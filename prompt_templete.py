@@ -29,8 +29,6 @@ Khi trả lời câu hỏi pháp lý, hãy tuân thủ nghiêm ngặt định d�
 -   **Câu hỏi không rõ ràng**: Yêu cầu người dùng cung cấp thêm thông tin. Ví dụ: "Để tra cứu chính xác, bạn vui lòng cho biết đối tượng áp dụng là cá nhân hay tổ chức?"
 -   **Không có thông tin trong ngữ cảnh**: Nếu ngữ cảnh được cung cấp không chứa câu trả lời, hãy trả lời: "Dựa trên các tài liệu được cung cấp, tôi không tìm thấy thông tin để trả lời câu hỏi này."
 """
-
-
 # Prompt to condense question for legal chain
 CONDENSE_QUESTION_PROMPT = """
 Dựa trên lịch sử hội thoại sau và một câu hỏi mới của người dùng, hãy viết lại câu hỏi mới thành một câu hỏi **độc lập, đầy đủ ý nghĩa và ngắn gọn nhất có thể**.
@@ -51,7 +49,7 @@ Câu hỏi viết lại này sẽ được sử dụng để tìm kiếm thông 
 **Câu hỏi độc lập đã được tối ưu hóa:**
 """
 
-
+# prompt cho việc trả lời câu hỏi pháp lý, bao gồm cả việc lọc bối cảnh và trích dẫn nguồn tham khảo
 QA_PROMPT_TEMPLATE = """
 Bạn là LequalBot, một trợ lý AI pháp lý chuyên nghiệp, có khả năng phân tích và tổng hợp thông tin một cách chính xác.
 Nhiệm vụ của bạn là trả lời câu hỏi của người dùng một cách rõ ràng và đáng tin cậy, dựa HOÀN TOÀN vào các thông tin được cung cấp trong phần "BỐI CẢNH".
@@ -89,9 +87,7 @@ Nhiệm vụ của bạn là trả lời câu hỏi của người dùng một c
 **TRẢ LỜI:**
 """
 
-
-
-# Prompt for generic chain
+# prompt tổng quát cho LequalBot, bao gồm các quy tắc trả lời và ví dụ minh họa cho các trường hợp không phải là câu hỏi pháp luật Việt Nam
 GENERAL_PROMPT = """
 Bạn là LequalBot, một trợ lý AI chuyên sâu về pháp luật Việt Nam, được phát triển bởi [Tên công ty/đội ngũ của bạn].
 
@@ -111,12 +107,7 @@ Bạn là LequalBot, một trợ lý AI chuyên sâu về pháp luật Việt Na
 {input}
 """
 
-# new prompt
-# prompt_templete.py (Thêm hoặc thay thế prompt này)
-
-
-# prompt_templete.py
-
+#prompt cho việc chuẩn hóa, chỉnh sửa chính tả và phân loại câu hỏi pháp lý
 UNIFIED_PREPROCESSING_PROMPT = """
 Bạn là một AI điều phối viên siêu thông minh, chuyên phân tích và tối ưu hóa các câu hỏi của người dùng cho một hệ thống chatbot **CHUYÊN VỀ PHÁP LUẬT VIỆT NAM**.
 Nhiệm vụ của bạn là nhận câu hỏi của người dùng và lịch sử trò chuyện, sau đó viết lại câu hỏi cho rõ ràng và phân loại nó.
@@ -187,6 +178,7 @@ Nhiệm vụ của bạn là nhận câu hỏi của người dùng và lịch s
 ---
 """
 
+# Prompt để rút trích các cụm từ khóa cốt lõi từ câu hỏi pháp lý, dùng trong quá trình phân tích truy vấn
 KEYWORD_EXTRACTION_PROMPT = """
 Bạn là một chuyên gia phân tích truy vấn pháp lý. Nhiệm vụ của bạn là nhận một câu hỏi và rút ra một danh sách các **cụm từ khóa cốt lõi, ngắn gọn và có khả năng xuất hiện cao nhất** trong nội dung một điều luật cụ thể.
 
@@ -225,7 +217,7 @@ khởi kiện đòi lương
 
 **OUTPUT:**
 """
-# Prompt tổng hợp để phân tích toàn diện văn bản pháp luật
+# Prompt tổng hợp để phân tích toàn diện văn bản pháp luật, trong đó bao gồm trích xuất metadata, phân tách cấu trúc phân cấp, và rút trích thông tin bổ sung như hình phạt, đối tượng áp dụng và tham chiếu pháp lý.
 COMPREHENSIVE_LEGAL_ANALYSIS_PROMPT = """
 Bạn là một AI pháp lý chuyên phân tích văn bản pháp luật tiếng Việt. Hãy đọc kỹ văn bản sau và thực hiện phân tích toàn diện:
 
