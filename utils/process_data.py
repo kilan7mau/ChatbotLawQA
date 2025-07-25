@@ -5,9 +5,10 @@ import logging
 from tqdm import tqdm
 import uuid
 import json
+import time
 from langchain_core.documents import Document
 from config import LEGAL_DOC_TYPES, MAX_CHUNK_SIZE, CHUNK_OVERLAP, model_process
-
+from docx import Document as DocxDocument
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
@@ -15,6 +16,8 @@ from langchain_core.output_parsers import JsonOutputParser
 import prompt_templete
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 
+# Thiết lập logging
+# logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 #Hàm cuối cùng để chuẩn hóa metadata ngay trước khi ingest vào vector store.
@@ -165,9 +168,6 @@ def comprehensive_legal_analysis(raw_text: str, filename: str) -> dict:
             "GOOGLE_API_KEY is not set. Please provide your Google API key for comprehensive legal analysis.")
 
     try:
-        from langchain_google_genai import ChatGoogleGenerativeAI
-        from langchain_core.prompts import ChatPromptTemplate
-        from langchain_core.output_parsers import JsonOutputParser
 
         llm = ChatGoogleGenerativeAI(
             model=model_process,
@@ -182,6 +182,17 @@ def comprehensive_legal_analysis(raw_text: str, filename: str) -> dict:
 
         chain = comprehensive_prompt | llm | JsonOutputParser()
         result = chain.invoke({"raw_text": raw_text})
+        # for attempt in range(3):
+        #     try:
+        #         result = chain.invoke({"raw_text": raw_text})
+        #         break
+        #     except Exception as e:
+        #         if "429" in str(e) or "ResourceExhausted" in str(e):
+        #             wait_time = (2 ** attempt) * 10
+        #             logger.warning(f"⏳ Quá giới hạn API, đợi {wait_time}s rồi thử lại...")
+        #             time.sleep(wait_time)
+        #         else:
+        #             raise e
 
         # Chuyển đổi key tiếng Việt sang tiếng Anh cho metadata
         if "metadata" in result:
@@ -526,7 +537,6 @@ def infer_field(text_content: str, doc_title: Optional[str]) -> str:
     best_field = max(positive_scores, key=positive_scores.get)
     return best_field
 
-
 #xem lại hàm này để cải tiến sau
 def infer_entity_type(query_or_text: str, field: Optional[str]) -> Optional[List[str]]:
     """
@@ -576,7 +586,7 @@ def infer_entity_type(query_or_text: str, field: Optional[str]) -> Optional[List
     # Luôn trả về một danh sách các entity tìm được
     return found_entities
 
-# xem lại hàm này để chunking và trích xuất bằng llm sau
+# xem lại hàm này để chunking và trích xuất bằng llm sau, hàm def parse_law_item_line cần xem xét lại
 def parse_law_item_line(line: str) -> Tuple[Optional[str], str, str]:
     """Phân tích cấu trúc dòng một cách mạnh mẽ và có thứ tự."""
     stripped_line = line.strip()
@@ -600,8 +610,6 @@ def parse_law_item_line(line: str) -> Tuple[Optional[str], str, str]:
     if m := re.match(r"^\s*([a-zđ])\)\s+(.*)", stripped_line):
         return "diem", m.group(1), m.group(2).strip()
     return None, "", stripped_line
-
-
 
 # các hàm đằng sau này đều cần xem lại
 def _normalize_money(value_str: str) -> Optional[float]:
@@ -728,64 +736,6 @@ def extract_penalties_from_text(text_content: str) -> List[Dict]:
     return penalties
 
 
-def load_process_and_split_documents(folder_path: str) -> List[Document]:
-    all_final_chunks = []
-    if not os.path.isdir(folder_path):
-        logger.error(f"Folder '{folder_path}' does not exist.")
-        return all_final_chunks
-
-    txt_files = [f for f in os.listdir(folder_path) if f.lower().endswith('.txt')]
-    if not txt_files:
-        logger.warning(f"No .txt files found in '{folder_path}'.")
-        return all_final_chunks
-
-    logger.info(f"Found {len(txt_files)} .txt files. Processing...")
-    for filename in tqdm(txt_files, desc="Processing files"):
-        file_path = os.path.join(folder_path, filename)
-        try:
-            with open(file_path, 'r', encoding='utf-8') as f:
-                raw_content = f.read()
-
-            if not raw_content.strip():
-                logger.warning(f"File '{filename}' is empty or contains only whitespace.")
-                continue
-
-            # Trích xuất metadata gốc từ raw_content trước khi làm sạch quá nhiều
-            #doc_metadata_original = extract_document_metadata(raw_content, filename)
-            doc_metadata_original = process_document_with_comprehensive_analysis(raw_content, filename)
-            doc_metadata_original["source_file"] = os.path.splitext(filename)[0]
-
-            # Làm sạch nội dung để xử lý (có thể giữ lại phần đầu nếu clean_document_text được điều chỉnh)
-            cleaned_content_for_processing = clean_document_text(raw_content)
-            if not cleaned_content_for_processing.strip():
-                logger.warning(f"File '{filename}' is empty after cleaning for processing.")
-                continue
-
-            # Suy luận lĩnh vực và các thông tin khác
-            doc_metadata_original["law_field"] = infer_field(cleaned_content_for_processing, doc_metadata_original.get("document_title"))
-            doc_metadata_original["entity_type"] = infer_entity_type(cleaned_content_for_processing, doc_metadata_original.get("field"))
-            # Penalty sẽ được trích xuất cho từng chunk
-
-            # Tạo đối tượng Document lớn ban đầu để truyền vào hàm chia chunk
-            # Nội dung là cleaned_content, metadata là doc_metadata_original
-            # Tham số id của Document này không quá quan trọng vì nó sẽ được chia nhỏ
-            doc_to_split = Document(page_content=cleaned_content_for_processing, metadata=doc_metadata_original)
-
-            chunks_from_file = process_document_with_comprehensive_analysis(doc_to_split)
-            all_final_chunks.extend(chunks_from_file)
-
-        except Exception as e:
-            logger.error(f"Error processing file '{filename}': {e}", exc_info=True)
-
-    logger.info(f"Processed {len(txt_files)} files, generated {len(all_final_chunks)} final chunks.")
-    # Log kiểm tra cuối cùng trước khi trả về
-    for i, chk in enumerate(all_final_chunks[:3]): # Log 3 chunk đầu tiên
-        logger.debug(f"Final Chunk {i} ID: {chk.id if hasattr(chk, 'id') else 'NO ID ATTR'}, Metadata: {chk.metadata}")
-        if not hasattr(chk, 'id') or not chk.id:
-             logger.error(f"!!! FINAL CHECK: Chunk {i} from {chk.metadata.get('source')} is missing valid ID attribute before returning from load_process_and_split_documents.")
-
-    return all_final_chunks
-
 # Cập nhật hàm process_single_file() để sử dụng phân tích tổng hợp
 def process_single_file_comprehensive(file_path: str) -> List[Document]:
     """
@@ -795,10 +745,14 @@ def process_single_file_comprehensive(file_path: str) -> List[Document]:
     logger.info(f"--- Starting Comprehensive Processing Pipeline for: {filename} ---")
 
     try:
-        # Đọc và làm sạch file
-        with open(file_path, 'r', encoding='utf-8') as f:
-            raw_content = f.read()
+        # --- BƯỚC 1: ĐỌC FILE ---
+        raw_content = read_file_content(file_path)
+        if not raw_content or not raw_content.strip():
+            logger.warning(f"File '{filename}' is empty or unreadable.")
+            return []
 
+        # --- BƯỚC 2: LÀM SẠCH VĂN BẢN ---
+        # Việc làm sạch trước giúp các bước sau hoạt động chính xác hơn
         if not raw_content.strip():
             logger.warning(f"File '{filename}' is empty. Skipping.")
             return []
@@ -807,6 +761,7 @@ def process_single_file_comprehensive(file_path: str) -> List[Document]:
         if not cleaned_content.strip():
             logger.warning(f"File '{filename}' is empty after cleaning. Skipping.")
             return []
+        logger.debug(f"File '{filename}' cleaned successfully.")
 
         # Tạo document object với metadata cơ bản
         initial_metadata = {"source": filename, "source_file": os.path.splitext(filename)[0]}
@@ -838,14 +793,15 @@ def load_process_and_split_documents_comprehensive(folder_path: str) -> List[Doc
         logger.error(f"Folder '{folder_path}' does not exist.")
         return all_final_chunks
 
-    txt_files = [f for f in os.listdir(folder_path) if f.lower().endswith('.txt')]
-    if not txt_files:
-        logger.warning(f"No .txt files found in '{folder_path}'.")
+    # List all supported files
+    supported_files = [f for f in os.listdir(folder_path) if f.lower().endswith(('.txt', '.docx'))]
+    if not supported_files:
+        logger.warning(f"Không tìm thấy file .txt hoặc .docx trong '{folder_path}'.")
         return all_final_chunks
 
-    logger.info(f"Found {len(txt_files)} .txt files. Starting comprehensive processing...")
+    logger.info(f"Found {len(supported_files)} .txt files. Starting comprehensive processing...")
 
-    for filename in tqdm(txt_files, desc="Processing files with comprehensive analysis"):
+    for filename in tqdm(supported_files, desc="Processing files with comprehensive analysis"):
         file_path = os.path.join(folder_path, filename)
         try:
             chunks_from_file = process_single_file_comprehensive(file_path)
@@ -853,5 +809,40 @@ def load_process_and_split_documents_comprehensive(folder_path: str) -> List[Doc
         except Exception as e:
             logger.error(f"Error in comprehensive processing of file '{filename}': {e}", exc_info=True)
 
-    logger.info(f"Comprehensive processing completed: {len(txt_files)} files, {len(all_final_chunks)} total chunks.")
+    logger.info(f"Comprehensive processing completed: {len(supported_files)} files, {len(all_final_chunks)} total chunks.")
     return all_final_chunks
+
+def read_file_content(file_path: str) -> str:
+    """
+    Đọc nội dung từ file .txt hoặc .docx.
+    Trả về chuỗi văn bản hoặc ném lỗi nếu không đọc được.
+    """
+    try:
+        if file_path.lower().endswith('.txt'):
+            with open(file_path, 'r', encoding='utf-8') as f:
+                return f.read()
+        elif file_path.lower().endswith('.docx'):
+            doc = DocxDocument(file_path)
+            full_text = [para.text for para in doc.paragraphs if para.text.strip()]  # Bỏ qua đoạn rỗng
+            # Xử lý bảng
+            for table in doc.tables:
+                for row in table.rows:
+                    row_text = ' | '.join(cell.text.strip() for cell in row.cells if cell.text.strip())
+                    if row_text:
+                        full_text.append(row_text)
+            # Xử lý header và footer
+            for section in doc.sections:
+                header = section.header
+                footer = section.footer
+                for para in header.paragraphs:
+                    if para.text.strip():
+                        full_text.append(para.text)
+                for para in footer.paragraphs:
+                    if para.text.strip():
+                        full_text.append(para.text)
+            return '\n'.join(full_text)
+        else:
+            raise ValueError(f"Định dạng file không hỗ trợ: {file_path}. Chỉ hỗ trợ .txt và .docx.")
+    except Exception as e:
+        logger.error(f"Lỗi khi đọc file {file_path}: {e}", exc_info=True)
+        raise

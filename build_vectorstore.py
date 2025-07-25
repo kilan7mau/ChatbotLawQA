@@ -6,6 +6,7 @@ import logging
 from tqdm import tqdm
 from concurrent.futures import ProcessPoolExecutor, as_completed
 
+from utils.doc_to_docx import convert_doc_to_docx
 # Import các hàm cần thiết
 import config
 from db.weaviateDB import connect_to_weaviate
@@ -16,6 +17,7 @@ from rag_components import (
     filter_and_serialize_complex_metadata
 )
 from utils.process_data import process_single_file_comprehensive
+
 
 logger = logging.getLogger(__name__)
 
@@ -84,10 +86,30 @@ def build_store_v5(force_rebuild: bool = False, pool_batch_size: int = 50):
 
         # --- 2. LỌC FILE VÀ CHUẨN BỊ BATCH ---
         processed_files = load_processed_files()
-        all_txt_paths = [os.path.join(config.CORE_DATA_FOLDER, f) for f in os.listdir(config.CORE_DATA_FOLDER) if f.lower().endswith('.txt')]
+        all_files = os.listdir(config.CORE_DATA_FOLDER)
+        all_txt_paths = [os.path.join(config.CORE_DATA_FOLDER, f) for f in all_files if f.lower().endswith('.txt')]
+        all_docx_paths = [os.path.join(config.CORE_DATA_FOLDER, f) for f in all_files if f.lower().endswith('.docx')]
+        all_doc_paths = [os.path.join(config.CORE_DATA_FOLDER, f) for f in all_files if f.lower().endswith('.doc')]
+
+        # --- Chuyển .doc sang .docx ---
+        for doc_path in all_doc_paths:
+            try:
+                convert_doc_to_docx(doc_path, config.CORE_DATA_FOLDER)
+                os.remove(doc_path)
+                logger.info(f"✅ Đã chuyển đổi {doc_path} thành .docx")
+            except Exception as e:
+                logger.error(f"❌ Không thể chuyển file DOC: {doc_path} → {e}")
+
+        # Cập nhật lại danh sách .docx sau khi chuyển
+        all_docx_paths = [os.path.join(config.CORE_DATA_FOLDER, f)
+                          for f in os.listdir(config.CORE_DATA_FOLDER)
+                          if f.lower().endswith('.docx')]
+
+        # Tổng hợp file cần xử lý
+        all_file_paths = all_txt_paths + all_docx_paths
 
         # Lọc ra những file chưa được xử lý
-        files_to_process = [path for path in all_txt_paths if os.path.basename(path) not in processed_files]
+        files_to_process = [path for path in all_file_paths if os.path.basename(path) not in processed_files]
 
         if not files_to_process:
             logger.info("✅ Tất cả các file đã được xử lý. Không có gì để làm.")
