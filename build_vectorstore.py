@@ -15,7 +15,7 @@ from rag_components import (
     ingest_chunks_with_native_batching,
     filter_and_serialize_complex_metadata
 )
-from utils.process_data import process_single_file
+from utils.process_data import process_single_file_comprehensive
 
 logger = logging.getLogger(__name__)
 
@@ -96,7 +96,8 @@ def build_store_v5(force_rebuild: bool = False, pool_batch_size: int = 50):
         logger.info(f"🔍 Đã xử lý {len(processed_files)} files. Còn lại {len(files_to_process)} files cần xử lý.")
 
         # --- 3. XỬ LÝ THEO LÔ ĐỂ CHỐNG RÒ RỈ BỘ NHỚ ---
-        max_workers = os.cpu_count() or 1
+        #max_workers = os.cpu_count() or 1
+        max_workers = min(2, os.cpu_count() or 1)# Giới hạn worker để tránh quá tải gemini
 
         # Tạo thanh tiến trình tổng
         main_progress_bar = tqdm(total=len(files_to_process), desc="Tổng tiến trình")
@@ -108,7 +109,7 @@ def build_store_v5(force_rebuild: bool = False, pool_batch_size: int = 50):
 
             # Tạo một Worker Pool MỚI cho mỗi lô
             with ProcessPoolExecutor(max_workers=max_workers) as executor:
-                future_to_file = {executor.submit(process_single_file, path): path for path in file_batch}
+                future_to_file = {executor.submit(process_single_file_comprehensive, path): path for path in file_batch}
 
                 for future in as_completed(future_to_file):
                     path = future_to_file[future]

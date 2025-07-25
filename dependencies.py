@@ -37,22 +37,7 @@ def get_app_state(request: Request):
         raise RuntimeError("Application state ('app_state') not found. Initialization failed?")
     return request.app.state.app_state
 
-# def initialize_redis_client():
-#     redis_url = os.environ.get("REDIS_URL")
-#     if not redis_url:
-#         logger.error("🔸[Redis] REDIS_URL environment variable not set.")
-#         raise ValueError("REDIS_URL is not configured.")
-#     try:
-#         logger.info(f"🔸[Redis] Attempting to connect to Redis at {redis_url}...")
-#         client = redis.Redis.from_url(redis_url, socket_connect_timeout=5, socket_timeout=5)
-#         logger.info("🔸[Redis] Connected successfully and pinged.")
-#         return client
-#     except redis.exceptions.ConnectionError as e:
-#         logger.error(f"🔸[Redis] Connection failed for URL '{redis_url}': {e}")
-#         raise ConnectionError(f"Failed to connect to Redis: {e}")
-#     except Exception as e:
-#         logger.error(f"🔸[Redis] Error initializing Redis from URL '{redis_url}': {e}")
-#         raise RuntimeError(f"Error initializing Redis: {e}")
+
 
 async def initialize_api_components(app_state: AppState):
     """Khởi tạo các thành phần cần thiết cho API """

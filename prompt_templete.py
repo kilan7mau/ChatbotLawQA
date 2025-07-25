@@ -229,93 +229,99 @@ khởi kiện đòi lương
 
 **OUTPUT:**
 """
-# Prompt for extracting keywords from a legal question
-KEYWORD_EXTRACTION_PROMPT = """
-Bạn là một AI chuyên trích xuất metadata từ văn bản pháp luật tiếng Việt. Hãy đọc kỹ văn bản sau và trả về một object JSON hợp lệ với các trường sau:
+# Prompt tổng hợp để phân tích toàn diện văn bản pháp luật
+COMPREHENSIVE_LEGAL_ANALYSIS_PROMPT = """
+Bạn là một AI pháp lý chuyên phân tích văn bản pháp luật tiếng Việt. Hãy đọc kỹ văn bản sau và thực hiện phân tích toàn diện:
+
+## NHIỆM VỤ 1: TRÍCH XUẤT METADATA
+Trích xuất thông tin metadata từ văn bản:
 
 - so_hieu: Số hiệu văn bản (ví dụ: "57/2009/NĐ-CP")
-- loai_van_ban: Loại văn bản (ví dụ: "Nghị định", "Quyết định", ...)
-- ten_van_ban: Tên văn bản (ví dụ: "Sửa đổi, bổ sung khoản 3 Điều 8 của Nghị định số 12/2007/NĐ-CP ...")
-- ngay_ban_hanh_str: Ngày ban hành của văn bản, chuyển về định dạng dd/mm/yyyy (ví dụ: "08/07/2009"). Văn bản có thể ghi theo nhiều kiểu (vd: "ngày 8-7-2009", "8.7.2009", "08/07/2009", "ngày  8   tháng 7  năm 2009",) nhưng kết quả phải luôn là dd/mm/yyyy.
-- nam_ban_hanh: Năm ban hành dạng số nguyên (ví dụ: 2009)
-- co_quan_ban_hanh: Cơ quan ban hành (ví dụ: "Chính phủ")
-- ngay_hieu_luc_str: Ngày hiệu lực, nếu có,  chuyển về định dạng dd/mm/yyyy (ví dụ: "08/07/2009"). Văn bản có thể ghi theo nhiều kiểu (vd: "ngày 8-7-2009", "8.7.2009", "08/07/2009", "ngày  8   tháng 7  năm 2009",) nhưng kết quả phải luôn là dd/mm/yyyy.
-- ngay_het_hieu_luc_str: Ngày hết hiệu lực, nếu có, định dạng dd/mm/yyyy (ví dụ: "01/01/2025")
-- muc_do_mat: Mức độ mật của văn bản, nhận dạng tự do theo ngữ cảnh. Trường này có thể xuất hiện dưới nhiều hình thức, ví dụ: "Công khai", "Mật", "Tối Mật", "Tuyệt Mật", v.v. Nếu không tìm thấy thông tin nào về mức độ mật, hãy trả về mặc định là "Công Khai".
+- loai_van_ban: Loại văn bản (ví dụ: "Nghị định", "Quyết định")
+- ten_van_ban: Tên văn bản
+- ngay_ban_hanh_str: Ngày ban hành định dạng dd/mm/yyyy
+- nam_ban_hanh: Năm ban hành (số nguyên)
+- co_quan_ban_hanh: Cơ quan ban hành
+- ngay_hieu_luc_str: Ngày hiệu lực định dạng dd/mm/yyyy (nếu có)
+- ngay_het_hieu_luc_str: Ngày hết hiệu lực định dạng dd/mm/yyyy (nếu có)
+- muc_do_mat: Mức độ mật ("Công khai" là mặc định)
 
-⚠️ Chỉ trả về một object JSON hợp lệ duy nhất, không được giải thích, không thêm mô tả. Dưới đây là nội dung văn bản cần phân tích:
+## NHIỆM VỤ 2: PHÂN TÁCH CẤU TRÚC PHÂN CẤP
+Phân tách văn bản theo từng điều:
+
+- dieu_code: Số điều (ví dụ: "Điều 1", "Điều 2")
+- dieu_title: Tiêu đề điều (nếu có)
+- content: Nội dung đầy đủ của điều
+- penalties: Danh sách hình phạt trong điều này (nếu có)
+- entity_types: Danh sách đối tượng áp dụng (cá nhân, tổ chức, xe cộ...)
+- cross_references: Tham chiếu pháp lý trong điều này
+
+## NHIỆM VỤ 3: TRÍCH XUẤT THÔNG TIN BỔ SUNG
+Cho mỗi điều, trích xuất:
+
+### Tham chiếu pháp lý:
+- type: "internal" hoặc "external"
+- original_text: văn bản gốc
+- target_dieu, target_khoan, target_diem: vị trí tham chiếu
+- target_document_*: thông tin văn bản được tham chiếu
+
+### Hình phạt:
+- type: "fine" (phạt tiền), "prison" (phạt tù), "license_revocation" (tước giấy phép), "warning" (cảnh cáo)
+- amount/duration: mức phạt cụ thể
+- original_text: văn bản gốc
+
+### Đối tượng áp dụng:
+- Danh sách các entity: "ca_nhan", "to_chuc", "xe_oto", "xe_may", "nguoi_lao_dong"...
+
+## ĐỊNH DẠNG ĐẦU RA
+```json
+{{
+  "metadata": {{
+    "so_hieu": "...",
+    "loai_van_ban": "...",
+    "ten_van_ban": "...",
+    "ngay_ban_hanh_str": "dd/mm/yyyy",
+    "nam_ban_hanh": 2009,
+    "co_quan_ban_hanh": "...",
+    "ngay_hieu_luc_str": "dd/mm/yyyy",
+    "ngay_het_hieu_luc_str": "dd/mm/yyyy",
+    "muc_do_mat": "..."
+  }},
+  "hierarchical_structure": [
+    {{
+      "dieu_code": "Điều 1",
+      "dieu_title": "...",
+      "content": "...",
+      "penalties": [
+        {{
+          "type": "fine",
+          "amount": 1000000,
+          "currency": "đồng",
+          "original_text": "phạt tiền 1.000.000 đồng"
+        }}
+      ],
+      "entity_types": ["ca_nhan", "to_chuc"],
+      "cross_references": [
+        {{
+          "type": "internal",
+          "original_text": "quy định tại Điều 5",
+          "target_dieu": "5",
+          "target_khoan": null,
+          "target_diem": null,
+          "target_document_id": "...",
+          "target_document_title": "..."
+        }}
+      ]
+    }}
+  ]
+}}
+```
+
+⚠️ **CHỈ TRẢ VỀ JSON HỢP LỆ, KHÔNG GIẢI THÍCH GÌ THÊM.**
+
 ---
+Văn bản cần phân tích:
+
 {raw_text}
 ---
-"""
-
-# Prompt for hierarchical split of law documents
-HIERARCHICAL_SPLIT_LAW_DOCUMENT_PROMPT= """
-Bạn là một AI chuyên phân tích văn bản pháp luật tiếng Việt. Hãy đọc kỹ văn bản sau và trả về một danh sách JSON, mỗi phần tử là một object với các trường:
-- dieu_code: Số điều (ví dụ: "Điều 1", "Điều 2", ...)
-- dieu_title: Tiêu đề điều (nếu có, ví dụ: "Quy định chung")
-- content: Nội dung đầy đủ của điều đó
-Nếu không tìm thấy điều nào, trả về mảng rỗng. Chỉ trả về JSON, không giải thích gì thêm. Dưới đây là văn bản:
----
-{text}
----
-"""
-CROSS_REFERENCE_EXTRACTION_PROMPT = """
-Bạn là một AI pháp lý có nhiệm vụ trích xuất **các tham chiếu pháp lý** (cross-references) từ đoạn văn bản luật Việt Nam.
-
-Dưới đây là một đoạn văn bản và metadata của văn bản chứa nó. Hãy đọc thật kỹ và liệt kê ra tất cả các tham chiếu pháp lý, bao gồm cả:
-
-- **Tham chiếu nội bộ**: ví dụ "Điều 5", "khoản 2 Điều 3", "điểm a khoản 1 Điều 6"
-- **Tham chiếu đến văn bản khác**: ví dụ "theo Nghị định 100/2019/NĐ-CP", "Luật Giao thông", v.v.
-
----
-
-**QUY TẮC:**
-
-- Mỗi tham chiếu là một object JSON.
-- Nếu là tham chiếu nội bộ (cùng văn bản), đặt `"type": "internal"` và bổ sung:
-  - `"target_document_id"`: lấy từ `metadata["so_hieu"]` (nếu có)
-  - `"target_document_title"`: lấy từ `metadata["ten_van_ban"]` (nếu có)
-
-- Nếu là tham chiếu ngoài, đặt `"type": "external"` và cố gắng cung cấp:
-  - `"target_document_type"`: Loại văn bản (ví dụ: "LUẬT", "NGHỊ ĐỊNH", v.v.)
-  - `"target_document_title"`: tên văn bản (nếu có)
-  - `"target_document_number"`: số hiệu nếu có (ví dụ: "100/2019/NĐ-CP")
-  - `"target_document_year"`: năm nếu có (ví dụ: 2019)
-  - `"target_document_year_hint"`: giống `target_document_year`
-
-- Các trường khác cần có nếu trích được:
-  - `"target_dieu"`: số Điều
-  - `"target_khoan"`: số Khoản
-  - `"target_diem"`: chữ cái Điểm
-
----
-
-**YÊU CẦU ĐẦU RA:**
-Trả về **một danh sách JSON** gồm các object như sau:
-
-```json
-[
-  {{
-    "type": "internal",
-    "original_text": "quy định tại khoản 1 Điều 5",
-    "target_dieu": "5",
-    "target_khoan": "1",
-    "target_diem": null,
-    "target_document_id": "57/2019/NĐ-CP",
-    "target_document_title": "Nghị định quy định xử phạt hành chính"
-  }},
-  {{
-    "type": "external",
-    "original_text": "theo Nghị định 100/2019/NĐ-CP",
-    "target_document_type": "NGHỊ ĐỊNH",
-    "target_document_title": "Quy định xử phạt giao thông",
-    "target_document_number": "100/2019/NĐ-CP",
-    "target_document_year": 2019,
-    "target_document_year_hint": 2019,
-    "target_dieu": null,
-    "target_khoan": null,
-    "target_diem": null
-  }}
-]
 """
