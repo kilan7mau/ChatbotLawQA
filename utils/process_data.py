@@ -587,29 +587,29 @@ def infer_entity_type(query_or_text: str, field: Optional[str]) -> Optional[List
     return found_entities
 
 # xem lại hàm này để chunking và trích xuất bằng llm sau, hàm def parse_law_item_line cần xem xét lại
-def parse_law_item_line(line: str) -> Tuple[Optional[str], str, str]:
-    """Phân tích cấu trúc dòng một cách mạnh mẽ và có thứ tự."""
-    stripped_line = line.strip()
-    patterns = [
-        ("phan", r"^\s*(PHẦN\s+(?:THỨ\s+[\w\sÀ-Ỹà-ỹ]+|[IVXLCDM]+|CHUNG))\s*?$"),
-        ("chuong", r"^\s*(Chương\s+[IVXLCDM\d]+)\s*?$"),
-        ("dieu", r"^\s*(Điều\s+\d+[a-z]?)\.?\s*(.*)"),
-    ]
-    for item_type, pattern_str in patterns:
-        match = re.match(pattern_str, stripped_line, re.IGNORECASE)
-        if match:
-            if item_type in ["phan", "chuong"]:
-                return item_type, match.group(1).strip(), ""
-            elif item_type == "dieu":
-                return item_type, match.group(1).strip(), match.group(2).strip()
+# def parse_law_item_line(line: str) -> Tuple[Optional[str], str, str]:
+#     """Phân tích cấu trúc dòng một cách mạnh mẽ và có thứ tự."""
+#     stripped_line = line.strip()
+#     patterns = [
+#         ("phan", r"^\s*(PHẦN\s+(?:THỨ\s+[\w\sÀ-Ỹà-ỹ]+|[IVXLCDM]+|CHUNG))\s*?$"),
+#         ("chuong", r"^\s*(Chương\s+[IVXLCDM\d]+)\s*?$"),
+#         ("dieu", r"^\s*(Điều\s+\d+[a-z]?)\.?\s*(.*)"),
+#     ]
+#     for item_type, pattern_str in patterns:
+#         match = re.match(pattern_str, stripped_line, re.IGNORECASE)
+#         if match:
+#             if item_type in ["phan", "chuong"]:
+#                 return item_type, match.group(1).strip(), ""
+#             elif item_type == "dieu":
+#                 return item_type, match.group(1).strip(), match.group(2).strip()
 
-    if stripped_line.isupper() and len(stripped_line.split()) > 1 and len(stripped_line) < 150:
-        return "title", "", stripped_line
-    if m := re.match(r"^\s*(\d+)\.\s+(.*)", stripped_line):
-        return "khoan", m.group(1), m.group(2).strip()
-    if m := re.match(r"^\s*([a-zđ])\)\s+(.*)", stripped_line):
-        return "diem", m.group(1), m.group(2).strip()
-    return None, "", stripped_line
+#     if stripped_line.isupper() and len(stripped_line.split()) > 1 and len(stripped_line) < 150:
+#         return "title", "", stripped_line
+#     if m := re.match(r"^\s*(\d+)\.\s+(.*)", stripped_line):
+#         return "khoan", m.group(1), m.group(2).strip()
+#     if m := re.match(r"^\s*([a-zđ])\)\s+(.*)", stripped_line):
+#         return "diem", m.group(1), m.group(2).strip()
+#     return None, "", stripped_line
 
 # các hàm đằng sau này đều cần xem lại
 def _normalize_money(value_str: str) -> Optional[float]:
