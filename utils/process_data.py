@@ -612,6 +612,7 @@ def infer_entity_type(query_or_text: str, field: Optional[str]) -> Optional[List
 #     return None, "", stripped_line
 
 # các hàm đằng sau này đều cần xem lại
+# chuẩn hóa lại giá trị tiền tệ
 def _normalize_money(value_str: str) -> Optional[float]:
     if not value_str: return None
     try:
