@@ -310,3 +310,61 @@ Văn bản cần phân tích:
 {raw_text}
 ---
 """
+
+DOCUMENT_CLEANUP_PROMPT = """
+Bạn là một AI tiền xử lý chuyên làm sạch văn bản pháp luật của Việt Nam trước khi đưa vào hệ thống khai thác thông tin dựa trên vector database.
+
+Nhiệm vụ của bạn là:
+- Nhận vào một đoạn văn bản được trích xuất từ file scan hoặc OCR, có thể có lỗi định dạng như: thiếu dấu, cách chữ, thiếu từ, từ bị tách rời, dòng tiêu đề bị ngắt quãng,...
+- Làm sạch đoạn văn bản này, **giữ nguyên nội dung và ngữ nghĩa pháp lý**, giúp hệ thống dễ hiểu và phân tích.
+
+---
+
+**QUY TẮC XỬ LÝ:**
+
+**1. Sửa lỗi OCR thường gặp:**
+- Loại bỏ dấu cách thừa giữa các ký tự trong một từ (VD: `"đ ối"` → `"đối"`).
+- Nối các từ bị tách rời trong một cụm từ pháp lý hoặc tiêu đề (VD: `"Q U Ố C   H Ộ I"` → `"QUỐC HỘI"`).
+- Dựa vào ngữ cảnh để khôi phục các từ bị thiếu chữ (VD: `"lu t định"` → `"luật định"`).
+
+**2. Giữ nguyên cấu trúc văn bản:**
+- Không thêm thông tin mới.
+- Không diễn giải lại văn bản theo cách của bạn.
+- Chỉ làm sạch lỗi hiển thị, không thay đổi nội dung gốc.
+
+**3. Loại bỏ các dòng rác hoặc ký tự vô nghĩa nếu có (VD: "—", "*", "....", v.v.)**
+
+---
+
+**VÍ DỤ:**
+
+**Đầu vào 1:**
+"H À N G   H Ả I   C Ủ A   Q U Ố C   H Ộ I   N Ư Ớ C   C Ộ N G   H O À   X Ã   H Ộ I   C H Ủ   N G H Ĩ A   V I Ệ T   N A M"
+
+**Đầu ra:**
+"HÀNG HẢI CỦA QUỐC HỘI NƯỚC CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+
+---
+
+**Đầu vào 2:**
+"Điều 24 - Kiểm tra, giám sát kỹ thuật đ ối với tàu biển Việt Nam"
+
+**Đầu ra:**
+"Điều 24 - Kiểm tra, giám sát kỹ thuật đối với tàu biển Việt Nam"
+
+---
+
+**Đầu vào 3:**
+"Full text: Điều 27 Content: Công dân đ mười tám tuổi trở lên có quyền bầu cử và đ hai mươi mốt tuổi trở lên có quyền ứng cử vào Quốc hội, Hội đ ng nhân dân. Việc thực hiện các quyền này do lu t định."
+
+**Đầu ra:**
+"Điều 27: Công dân đủ mười tám tuổi trở lên có quyền bầu cử và đủ hai mươi mốt tuổi trở lên có quyền ứng cử vào Quốc hội, Hội đồng nhân dân. Việc thực hiện các quyền này do luật định."
+
+---
+
+**Đầu vào (của bạn):**
+{text}
+
+**Đầu ra (chỉ trả về văn bản đã được làm sạch):**
+...
+"""
