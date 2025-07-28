@@ -6,25 +6,37 @@ import config
 
 logger = logging.getLogger(__name__)
 
-# Đặt tên model vào một hằng số để dễ quản lý
-
 
 @lru_cache(maxsize=1)
+def _get_base_cross_encoder_model():
+    """
+    Tải và cache model cross-encoder cơ bản.
+    Model chỉ được tải một lần và tái sử dụng.
+    """
+    logger.info(f"🧠 Loading Cross-Encoder model '{config.RERANKER_MODEL_NAME}'...")
+    try:
+        model = HuggingFaceCrossEncoder(model_name=config.RERANKER_MODEL_NAME)
+        logger.info("✅ Cross-Encoder model loaded successfully.")
+        return model
+    except Exception as e:
+        logger.error(f"❌ Could not load Cross-Encoder model: {e}", exc_info=True)
+        raise
+
+
 def get_reranker_compressor(top_n: int = 4):
     """
-    Tải và trả về một đối tượng CrossEncoderReranker.
-    Sử dụng lru_cache để đảm bảo model chỉ được tải một lần duy nhất.
+    Tạo CrossEncoderReranker với top_n tùy chỉnh.
+    Model được cache, chỉ tạo mới compressor với top_n khác nhau.
     """
-    logger.info(f"🧠 Loading Re-ranker model '{config.RERANKER_MODEL_NAME}'...")
     try:
-        # Tải model cross-encoder
-        model = HuggingFaceCrossEncoder(model_name=config.RERANKER_MODEL_NAME)
+        # Lấy model đã cache
+        base_model = _get_base_cross_encoder_model()
 
-        # Tạo đối tượng compressor
-        compressor = CrossEncoderReranker(model=model, top_n=top_n)
+        # Tạo compressor với top_n tùy chỉnh
+        compressor = CrossEncoderReranker(model=base_model, top_n=top_n)
 
-        logger.info("✅ Re-ranker model is ready.")
+        logger.info(f"✅ Re-ranker compressor ready with top_n={top_n}")
         return compressor
     except Exception as e:
-        logger.error(f"❌ Could not load Re-ranker model: {e}", exc_info=True)
+        logger.error(f"❌ Could not create Re-ranker compressor: {e}")
         raise
