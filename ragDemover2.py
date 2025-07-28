@@ -9,6 +9,9 @@ from db.weaviateDB import connect_to_weaviate
 import torch
 import rag_components
 import logging
+from fastapi import Depends, HTTPException, Request
+from config import SECRET_KEY, ALGORITHM,EMBEDDING_MODEL_NAME,WEAVIATE_COLLECTION_NAME, WEAVIATE_URL
+from utils.utils import load_legal_dictionary
 
 logger = logging.getLogger(__name__)
 handler = logging.StreamHandler()  # Gửi log đến stdout
@@ -30,18 +33,17 @@ async def initialize_api_components(app_state: AppState):
     load_dotenv()
     # --- Kiểm tra kết nối tới Redis ---
     app_state.process_input_llm = ChatGroq(model=config.GROQ_MODEL_NAME,temperature=0.2)
-    try:
-        app_state.redis = await get_redis_client() # Gọi hàm khởi tạo redis
-    except Exception as e:
-        logger.error(f"☠️ LỖI NGHIÊM TRỌNG khi khởi tạo Redis trong initialize_api_components: {e}")
-        raise
+    if not app_state.process_input_llm:
+        logger.error("🔸Lỗi khởi tạo LLM cho quá trình tiền xử lý đầu vào.")
+        raise HTTPException(status_code=500, detail="Failed to initialize LLM for input processing")
     app_state.dict = load_legal_dictionary(config.LEGAL_DIC_FOLDER+ "/legal_terms.json")
     app_state.weaviateDB = connect_to_weaviate(run_diagnostics=False)
-    # --- Kiểm tra kết nối tới MongoDB ---
-    if user_collection is  None or app_state.weaviateDB is None:
-        logger.error("🔸Lỗi kết nối tới MongoDB hoặc Weaviate.")
-        raise HTTPException(status_code=500, detail="Lỗi kết nối tới database.")
-
+    # --- Kiểm tra kết nối tới weaviate ---
+    if app_state.weaviateDB is None:
+        logger.error("🔸Lỗi kết nối tới MongoDB .")
+        raise HTTPException(status_code=500, detail="Lỗi kết nối tới vector database.")
+    
+    
     app_state.google_api_key = os.environ.get("GOOGLE_API_KEY")
     if not app_state.google_api_key:
         logger.error("🔸GG API Key không được cung cấp.")
