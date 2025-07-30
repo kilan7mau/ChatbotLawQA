@@ -10,8 +10,8 @@ class AppState(BaseModel):
     qa_chain: Optional[Any] = None
     device: str = "cpu"
     google_api_key: Optional[str] = None
-    dict: Dict = {}
-    redis: Optional[Any] = None
+    # dict: Dict = {}
+    # redis: Optional[Any] = None
     retriever: Optional[Any] = None
     weaviateDB: Optional[Any] = None
     reranker: Optional[Any] = None
