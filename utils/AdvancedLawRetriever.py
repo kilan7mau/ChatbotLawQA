@@ -11,7 +11,6 @@ from langchain_core.output_parsers import StrOutputParser
 from utils.process_data import infer_field, infer_entity_type
 from utils.synonym_map import rewrite_query_with_legal_synonyms
 import prompt_templete
-import functools
 
 logger = logging.getLogger(__name__)
 
@@ -34,10 +33,6 @@ class AdvancedLawRetriever(BaseRetriever):
 
     def _extract_searchable_keywords_with_llm(self, question: str) -> List[str]:
         """Sử dụng LLM để trích xuất các cụm từ khóa tìm kiếm hiệu quả."""
-        return self._cached_extract_keywords(question)
-
-    @functools.lru_cache(maxsize=128)
-    def _cached_extract_keywords(self, question: str) -> List[str]:
         keyword_extraction_prompt = ChatPromptTemplate.from_template(prompt_templete.KEYWORD_EXTRACTION_PROMPT)
         keyword_chain = keyword_extraction_prompt | self.llm | StrOutputParser() | (lambda text: [k.strip() for k in text.strip().split("\n") if k.strip()])
         try:
@@ -135,6 +130,7 @@ class AdvancedLawRetriever(BaseRetriever):
         def run_search_tasks(filters: Optional[wvc_query.Filter]) -> List[Document]:
             """Hàm nội bộ để thực hiện tìm kiếm song song."""
             docs = []
+            from concurrent.futures import ThreadPoolExecutor
             with ThreadPoolExecutor(max_workers=len(search_terms) or 1) as executor:
                 futures = [executor.submit(self._perform_hybrid_search, term, self.initial_k, filters) for term in search_terms]
                 for future in futures:
