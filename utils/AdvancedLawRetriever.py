@@ -11,6 +11,7 @@ from langchain_core.output_parsers import StrOutputParser
 from utils.process_data import infer_field, infer_entity_type
 from utils.synonym_map import rewrite_query_with_legal_synonyms
 import prompt_templete
+import functools
 
 logger = logging.getLogger(__name__)
 
@@ -33,6 +34,10 @@ class AdvancedLawRetriever(BaseRetriever):
 
     def _extract_searchable_keywords_with_llm(self, question: str) -> List[str]:
         """Sử dụng LLM để trích xuất các cụm từ khóa tìm kiếm hiệu quả."""
+        return self._cached_extract_keywords(question)
+
+    @functools.lru_cache(maxsize=128)
+    def _cached_extract_keywords(self, question: str) -> List[str]:
         keyword_extraction_prompt = ChatPromptTemplate.from_template(prompt_templete.KEYWORD_EXTRACTION_PROMPT)
         keyword_chain = keyword_extraction_prompt | self.llm | StrOutputParser() | (lambda text: [k.strip() for k in text.strip().split("\n") if k.strip()])
         try:
@@ -85,6 +90,9 @@ class AdvancedLawRetriever(BaseRetriever):
     def _get_relevant_documents(
     self, query: str, *, run_manager: CallbackManagerForRetrieverRun
 ) -> List[Document]:
+        import time
+        phase_times = {}
+        phase_start = time.time()
 
         # =================================================================
         # PHASE 0: PREPARATION - Chuẩn bị và làm giàu truy vấn
@@ -93,28 +101,37 @@ class AdvancedLawRetriever(BaseRetriever):
         # 0.1. Đảm bảo an toàn cho input
         safe_query = str(query)
         logger.info(f"--- Starting Advanced Retrieval (FINAL) for Original Query: '{safe_query}' ---")
+        phase_times['start'] = phase_start
 
         # 0.2. Trích xuất thông tin và ý định từ câu hỏi gốc
+        t0 = time.time()
         query_info = self._extract_query_info_with_intent(safe_query)
+        phase_times['extract_query_info'] = time.time() - t0
         inferred_field = query_info.get("base_filters", {}).get("field")
         preferred_doc_type = query_info.get("preferred_doc_type")
 
         # 0.3. "Dịch" câu hỏi sang ngôn ngữ pháp lý bằng từ điển
+        t0 = time.time()
         rewritten_query = rewrite_query_with_legal_synonyms(safe_query, field=inferred_field)
+        phase_times['rewrite_query'] = time.time() - t0
         if safe_query != rewritten_query:
             logger.info(f"Query after Synonym Rewriting: '{rewritten_query}'")
 
         # 0.4. Trích xuất từ khóa "vàng" bằng LLM từ câu hỏi đã được viết lại
+        t0 = time.time()
         search_terms = self._extract_searchable_keywords_with_llm(rewritten_query)
+        phase_times['extract_keywords'] = time.time() - t0
         logger.info(f"Extracted {len(search_terms)} searchable terms: {search_terms}")
 
         # 0.5. Xây dựng bộ lọc Weaviate từ thông tin đã trích xuất
+        t0 = time.time()
         base_weaviate_filter = self._extract_and_build_filters(query_info["base_filters"])
+        phase_times['build_filters'] = time.time() - t0
 
         # =================================================================
         # PHASE 1: RETRIEVAL - Truy xuất dữ liệu có fallback
         # =================================================================
-
+        t0 = time.time()
         def run_search_tasks(filters: Optional[wvc_query.Filter]) -> List[Document]:
             """Hàm nội bộ để thực hiện tìm kiếm song song."""
             docs = []
@@ -127,24 +144,29 @@ class AdvancedLawRetriever(BaseRetriever):
 
         logger.info(f"--- Attempt 1: Searching with inferred filters: {base_weaviate_filter} ---")
         retrieved_docs = run_search_tasks(base_weaviate_filter)
+        phase_times['hybrid_search'] = time.time() - t0
 
         # Lọc trùng lặp
+        t0 = time.time()
         unique_docs_dict = {doc.page_content: doc for doc in retrieved_docs if isinstance(doc.page_content, str)}
+        phase_times['dedup'] = time.time() - t0
 
         # Cơ chế Fallback
+        t0 = time.time()
         if len(unique_docs_dict) < self.default_k and base_weaviate_filter is not None:
             logger.warning("Initial search yielded few results. Retrying without any filters (fallback)...")
             fallback_docs = run_search_tasks(None)
             for doc in fallback_docs:
                 if isinstance(doc.page_content, str) and doc.page_content not in unique_docs_dict:
                     unique_docs_dict[doc.page_content] = doc
+        phase_times['fallback'] = time.time() - t0
 
         candidate_docs_list = list(unique_docs_dict.values())
 
         # =================================================================
         # PHASE 2: REFINEMENT - Tinh chỉnh, ưu tiên và xếp hạng kết quả
         # =================================================================
-
+        t0 = time.time()
         # 2.1. Intent-based Boosting: Tăng điểm dựa trên loại văn bản ưu tiên
         final_candidates_for_rerank = candidate_docs_list
         if preferred_doc_type:
@@ -160,13 +182,14 @@ class AdvancedLawRetriever(BaseRetriever):
 
             docs_with_scores.sort(key=lambda x: x[1], reverse=True)
             final_candidates_for_rerank = [doc for doc, score in docs_with_scores]
+        phase_times['intent_boost'] = time.time() - t0
 
         logger.info(f"Found {len(final_candidates_for_rerank)} candidates for re-ranking.")
         if not final_candidates_for_rerank: return []
 
         # 2.2. Cross-Encoder Re-ranking với Structured Context
+        t0 = time.time()
         logger.info("Applying Cross-Encoder re-ranking with STRUCTURED CONTEXT...")
-
         docs_for_reranking = []
         for doc in final_candidates_for_rerank:
             # Tạo chuỗi context giàu thông tin
@@ -187,6 +210,10 @@ class AdvancedLawRetriever(BaseRetriever):
             logger.error(f"Failed to re-rank with custom structured content: {e}. Falling back to default re-ranking.")
             # Fallback về cách re-rank mặc định nếu có lỗi
             reranked_docs = self.reranker.compress_documents(final_candidates_for_rerank, rewritten_query)
+            phase_times['rerank'] = time.time() - t0
+            logger.info(f"[AdvancedLawRetriever] Timing breakdown: " + ', '.join([f"{k}: {v:.3f}s" for k,v in phase_times.items()]))
+            phase_times['total'] = time.time() - phase_start
+            logger.info(f"[AdvancedLawRetriever] Total retrieval time: {phase_times['total']:.3f}s")
             return reranked_docs[:self.default_k]
 
         # Lấy lại các Document gốc theo thứ tự đã được re-rank
@@ -195,6 +222,7 @@ class AdvancedLawRetriever(BaseRetriever):
             original_doc = docs_for_reranking[rank_info['corpus_id']]["original_doc"]
             original_doc.metadata['rerank_score'] = rank_info['score']
             final_reranked_docs.append(original_doc)
+        phase_times['rerank'] = time.time() - t0
 
         # 2.3. Log và Trả về kết quả cuối cùng
         logger.info(f"--- Re-ranked down to {len(final_reranked_docs)} documents. Final results: ---")
@@ -204,6 +232,9 @@ class AdvancedLawRetriever(BaseRetriever):
             logger.info(f"    CONTENT: {doc.page_content[:400]}...") # Log dài hơn
             logger.info("-" * 25)
 
+        logger.info(f"[AdvancedLawRetriever] Timing breakdown: " + ', '.join([f"{k}: {v:.3f}s" for k,v in phase_times.items()]))
+        phase_times['total'] = time.time() - phase_start
+        logger.info(f"[AdvancedLawRetriever] Total retrieval time: {phase_times['total']:.3f}s")
         return final_reranked_docs[:self.default_k]
 
     def _extract_query_info_with_intent(self, query: str) -> Dict[str, Any]:
