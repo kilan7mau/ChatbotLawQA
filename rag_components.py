@@ -336,7 +336,7 @@ def get_google_llm(google_api_key):
             return ChatGoogleGenerativeAI(
                 model="gemini-2.5-flash",
                 google_api_key=google_api_key,
-                temperature=0.1, # Điều chỉnh nhiệt độ nếu cần, 0.1-0.3 thường tốt cho RAG
+                temperature=0.3, # Điều chỉnh nhiệt độ nếu cần, 0.1-0.3 thường tốt cho RAG
                 safety_settings={                 },
             )
 

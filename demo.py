@@ -11,7 +11,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from prompt_templete import UNIFIED_PREPROCESSING_PROMPT
 
-app = FastAPI(title="JuriBot RAG API")
+app = FastAPI(title="LexiBot RAG API")
 
 class RAGQueryRequest(BaseModel):
     question: str

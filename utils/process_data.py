@@ -112,74 +112,41 @@ def general_ocr_corrections(text: str) -> str:
 ### HÀM 1: CLEAN_DOCUMENT_TEXT (Cải tiến) ###
 def clean_document_text(raw_text: str) -> str:
     """
-    Làm sạch văn bản luật một cách an toàn, giữ lại cấu trúc cột ở phần đầu và loại bỏ nhiễu một cách có mục tiêu.
+    Làm sạch văn bản luật một cách an toàn, giữ lại cấu trúc cột ở phần đầu
+    và loại bỏ nhiễu một cách có mục tiêu.
     """
-    if not raw_text:
-        return ""
-
+    if not raw_text: return ""
     lines = raw_text.splitlines()
 
     noise_patterns_to_remove = re.compile(
         r"|".join([
-            r"LuatVietnam(?:\.vn)?",
-            r"Tiện ích văn bản luật",
-            r"www\.vanbanluat\.vn",
-            r"Hotline:",
-            r"Email:",
-            r"Cơ sở dữ liệu văn bản pháp luật",
-            r"Trang \d+\s*/\s*\d+",
-            r"^\s*[=\-_*#]+\s*$",
-            r"^\s*\[\s*Hình\s*ảnh\s*]\s*$",
-        ]),
-        re.IGNORECASE
+            r"LuatVietnam(?:\.vn)?", r"Tiện ích văn bản luật", r"www\.vanbanluat\.vn",
+            r"Hotline:", r"Email:", r"Cơ sở dữ liệu văn bản pháp luật",
+            r"Trang \d+\s*/\s*\d+", r"^\s*[=\-_*#]+\s*$", r"^\s*\[\s*Hình\s*ảnh\s*]\s*$",
+        ]), re.IGNORECASE
     )
+    footer_keywords = ["Nơi nhận:", "TM. CHÍNH PHỦ", "TM. BAN BÍ THƯ", "KT. BỘ TRƯỞNG", "TL. BỘ TRƯỞNG", "CHỦ TỊCH QUỐC HỘI"]
 
-    footer_keywords = ["Nơi nhận:", "TM. CHÍNH PHỦ", "TM. BAN BÍ THƯ", "KT. BỘ TRƯỞNG", "TL. BỘ TRƯỞNG",
-                       "CHỦ TỊCH QUỐC HỘI"]
     footer_start_index = len(lines)
-
     for i, line in enumerate(lines):
         line_upper = line.strip().upper()
         if any(keyword.upper() in line_upper for keyword in footer_keywords):
-            if "CHỦ TỊCH" in line_upper and i < len(lines) / 2 and "NƯỚC" in line_upper:
-                continue
+            if "CHỦ TỊCH" in line_upper and i < len(lines) / 2 and "NƯỚC" in line_upper: continue
             footer_start_index = i
             break
 
     lines_before_footer = lines[:footer_start_index]
-    cleaned_lines = []
 
+    cleaned_lines = []
     for line in lines_before_footer:
-        if noise_patterns_to_remove.search(line):
-            continue
+        if noise_patterns_to_remove.search(line): continue
         stripped_line = line.strip()
-        if not stripped_line:
-            continue
+        if not stripped_line: continue
         cleaned_lines.append(stripped_line)
 
     text = "\n".join(cleaned_lines)
-
-    # Sử dụng LLM để xử lý lỗi OCR nâng cao bằng DOCUMENT_CLEANUP_PROMPT
-    if text.strip():
-        try:
-            llm = ChatGoogleGenerativeAI(
-                model=model_process,
-                google_api_key=GOOGLE_API_KEY,
-                temperature=0.0,
-            )
-            prompt = ChatPromptTemplate.from_template(DOCUMENT_CLEANUP_PROMPT)
-            chain = prompt | llm | StrOutputParser()
-            llm_result = chain.invoke({"text": text}).strip()
-            if llm_result:  # Chỉ sử dụng kết quả LLM nếu có nội dung
-                text = llm_result
-        except Exception as e:
-            logger.warning(f"[LLM OCR CLEANUP ERROR] {e}")
-            # Fallback về logic cũ nếu LLM thất bại
-
-    # Logic xử lý cuối cùng (luôn được thực hiện)
     text = general_ocr_corrections(text)
     text = re.sub(r"\n{3,}", "\n\n", text).strip()
-
     return text
 
 # Hàm tổng hợp phân tích pháp lý toàn diện
@@ -793,6 +760,7 @@ def process_single_file_comprehensive(file_path: str) -> List[Document]:
             return []
 
         cleaned_content = clean_document_text(raw_content)
+        cleaned_content = llm_ocr_cleanup(cleaned_content)
         if not cleaned_content.strip():
             logger.warning(f"File '{filename}' is empty after cleaning. Skipping.")
             return []
@@ -882,5 +850,23 @@ def read_file_content(file_path: str) -> str:
         logger.error(f"Lỗi khi đọc file {file_path}: {e}", exc_info=True)
         raise
 
+def llm_ocr_cleanup(text: str) -> str:
+    """
+    Sử dụng LLM để xử lý lỗi OCR nâng cao bằng DOCUMENT_CLEANUP_PROMPT.
+    """
+    if not text.strip():
+        return text.strip()
+    try:
+        llm = ChatGoogleGenerativeAI(
+            model=model_process,
+            google_api_key=GOOGLE_API_KEY,
+            temperature=0.0,
+        )
+        prompt = ChatPromptTemplate.from_template(DOCUMENT_CLEANUP_PROMPT)
+        chain = prompt | llm | StrOutputParser()
 
+        return chain.invoke({"text": text}).strip()
+    except Exception as e:
+        logger.warning(f"[LLM OCR CLEANUP ERROR] {e}")
+        return text.strip()  # fallback
 

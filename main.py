@@ -55,9 +55,9 @@ async def lifespan(app: FastAPI):
             logger.warning("⚠️ [Lifespan] Skipping resource cleanup due to startup failure.")
 
 app = FastAPI(
-    title="JuriBot API",
+    title="LexiBot API",
     version="2.0",
-    description="Backend API cho Trợ lý Pháp luật JuriBot",
+    description="Backend API cho Trợ lý Pháp luật LexiBot",
     lifespan=lifespan
 )
 
