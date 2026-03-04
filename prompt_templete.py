@@ -204,6 +204,7 @@ Chọn **DUY NHẤT MỘT** trong hai nhãn sau:
 ---
 """
 
+
 # Prompt để rút trích các cụm từ khóa cốt lõi từ câu hỏi pháp lý, dùng trong quá trình phân tích truy vấn
 KEYWORD_EXTRACTION_PROMPT = """
 Bạn là một chuyên gia phân tích truy vấn pháp lý. Nhiệm vụ của bạn là nhận một câu hỏi và rút ra một danh sách các **cụm từ khóa cốt lõi, ngắn gọn và có khả năng xuất hiện cao nhất** trong nội dung một điều luật cụ thể.
