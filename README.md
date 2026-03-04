@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">⚖️ JuriBot - Trợ lý Pháp luật Việt Nam</h1>
+  <h1 align="center">⚖️ LawBot - Trợ lý Pháp luật Việt Nam</h1>
   <p align="center">
     <em>Chatbot tư vấn pháp luật thông minh sử dụng RAG (Retrieval-Augmented Generation)</em>
   </p>
