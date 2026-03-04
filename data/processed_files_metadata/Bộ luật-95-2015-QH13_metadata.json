@@ -16,9 +16,9 @@
     "dieu_title": "Phạm vi điều chỉnh",
     "chunk_title": "Điều 1 - Phạm vi điều chỉnh",
     "penalties": "[]",
-    "entity_types": "[\"tau_bien\", \"thuyen_vien\", \"cang_bien\", \"tau_quan_su\", \"tau_cong_vu\", \"tau_ca\", \"phuong_tien_thuy_noi_dia\", \"tau_ngam\", \"tau_lan\", \"thuy_phi_co\", \"kho_chua_noi\", \"gian_di_dong\", \"u_noi\"]",
+    "entity_types": "[\"tau_bien\", \"thuyen_vien\", \"cang_bien\", \"luong_hang_hai\", \"cang_can\", \"tau_quan_su\", \"tau_cong_vu\", \"tau_ca\", \"phuong_tien_thuy_noi_dia\", \"tau_ngam\", \"tau_lan\", \"thuy_phi_co\", \"kho_chua_noi\", \"gian_di_dong\", \"u_noi\", \"cang_quan_su\", \"cang_ca\", \"ben_thuy_noi_dia\"]",
     "cross_references": "[]",
-    "entity_type": "[\"tau_bien\", \"thuyen_vien\", \"cang_bien\", \"tau_quan_su\", \"tau_cong_vu\", \"tau_ca\", \"phuong_tien_thuy_noi_dia\", \"tau_ngam\", \"tau_lan\", \"thuy_phi_co\", \"kho_chua_noi\", \"gian_di_dong\", \"u_noi\"]"
+    "entity_type": "[\"tau_bien\", \"thuyen_vien\", \"cang_bien\", \"luong_hang_hai\", \"cang_can\", \"tau_quan_su\", \"tau_cong_vu\", \"tau_ca\", \"phuong_tien_thuy_noi_dia\", \"tau_ngam\", \"tau_lan\", \"thuy_phi_co\", \"kho_chua_noi\", \"gian_di_dong\", \"u_noi\", \"cang_quan_su\", \"cang_ca\", \"ben_thuy_noi_dia\"]"
   },
   {
     "source": "Bộ luật-95-2015-QH13.txt",
@@ -142,9 +142,9 @@
     "dieu_title": "Chính sách của Nhà nước về phát triển hàng hải",
     "chunk_title": "Điều 7 - Chính sách của Nhà nước về phát triển hàng hải",
     "penalties": "[]",
-    "entity_types": "[\"to_chuc\", \"ca_nhan\", \"tau_bien\", \"cang_bien\"]",
+    "entity_types": "[\"to_chuc\", \"ca_nhan\", \"tau_bien\", \"cang_bien\", \"thuyen_vien\"]",
     "cross_references": "[]",
-    "entity_type": "[\"to_chuc\", \"ca_nhan\", \"tau_bien\", \"cang_bien\"]"
+    "entity_type": "[\"to_chuc\", \"ca_nhan\", \"tau_bien\", \"cang_bien\", \"thuyen_vien\"]"
   },
   {
     "source": "Bộ luật-95-2015-QH13.txt",
@@ -164,7 +164,7 @@
     "chunk_title": "Điều 8 - Quyền vận tải biển nội địa",
     "penalties": "[]",
     "entity_types": "[\"tau_bien\", \"to_chuc\", \"ca_nhan\"]",
-    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"khoản 1 Điều này\", \"target_dieu\": \"8\", \"target_khoan\": \"1\", \"target_diem\": null, \"target_document_id\": \"95/2015/QH13\", \"target_document_title\": \"BỘ LUẬT HÀNG HẢI VIỆT NAM\"}, {\"type\": \"internal\", \"original_text\": \"khoản 2 Điều này\", \"target_dieu\": \"8\", \"target_khoan\": \"2\", \"target_diem\": null, \"target_document_id\": \"95/2015/QH13\", \"target_document_title\": \"BỘ LUẬT HÀNG HẢI VIỆT NAM\"}]",
+    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"khoản 1 Điều này\", \"target_dieu\": \"8\", \"target_khoan\": \"1\", \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": null}, {\"type\": \"internal\", \"original_text\": \"khoản 2 Điều này\", \"target_dieu\": \"8\", \"target_khoan\": \"2\", \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": null}]",
     "entity_type": "[\"tau_bien\", \"to_chuc\", \"ca_nhan\"]"
   },
   {
@@ -184,9 +184,9 @@
     "dieu_title": "Nội dung quản lý nhà nước về hàng hải",
     "chunk_title": "Điều 9 - Nội dung quản lý nhà nước về hàng hải",
     "penalties": "[]",
-    "entity_types": "[\"tau_bien\", \"thuyen_vien\", \"cang_bien\"]",
+    "entity_types": "[\"tau_bien\", \"thuyen_vien\", \"cang_bien\", \"luong_hang_hai\", \"ben_cang\", \"cau_cang\", \"ben_phao\"]",
     "cross_references": "[]",
-    "entity_type": "[\"tau_bien\", \"thuyen_vien\", \"cang_bien\"]"
+    "entity_type": "[\"tau_bien\", \"thuyen_vien\", \"cang_bien\", \"luong_hang_hai\", \"ben_cang\", \"cau_cang\", \"ben_phao\"]"
   },
   {
     "source": "Bộ luật-95-2015-QH13.txt",
@@ -247,9 +247,9 @@
     "dieu_title": "Các hành vi bị nghiêm cấm trong hoạt động hàng hải",
     "chunk_title": "Điều 12 - Các hành vi bị nghiêm cấm trong hoạt động hàng hải",
     "penalties": "[]",
-    "entity_types": "[\"tau_bien\", \"cang_bien\"]",
+    "entity_types": "[\"tau_bien\", \"cang_bien\", \"luong_hang_hai\", \"bao_hieu_hang_hai\"]",
     "cross_references": "[]",
-    "entity_type": "[\"tau_bien\", \"cang_bien\"]"
+    "entity_type": "[\"tau_bien\", \"cang_bien\", \"luong_hang_hai\", \"bao_hieu_hang_hai\"]"
   },
   {
     "source": "Bộ luật-95-2015-QH13.txt",
@@ -374,7 +374,7 @@
     "chunk_title": "Điều 18 - Nguyên tắc đăng ký tàu biển",
     "penalties": "[]",
     "entity_types": "[\"tau_bien\", \"to_chuc\", \"ca_nhan\"]",
-    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"Điều 20 của Bộ luật này\", \"target_dieu\": \"20\", \"target_khoan\": null, \"target_diem\": null, \"target_document_id\": \"95/2015/QH13\", \"target_document_title\": \"BỘ LUẬT HÀNG HẢI VIỆT NAM\"}]",
+    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"Điều 20 của Bộ luật này\", \"target_dieu\": \"20\", \"target_khoan\": null, \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": null}]",
     "entity_type": "[\"tau_bien\", \"to_chuc\", \"ca_nhan\"]"
   },
   {
@@ -395,7 +395,7 @@
     "chunk_title": "Điều 19 - Các loại tàu biển phải đăng ký",
     "penalties": "[]",
     "entity_types": "[\"tau_bien\"]",
-    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"khoản 1 Điều này\", \"target_dieu\": \"19\", \"target_khoan\": \"1\", \"target_diem\": null, \"target_document_id\": \"95/2015/QH13\", \"target_document_title\": \"BỘ LUẬT HÀNG HẢI VIỆT NAM\"}]",
+    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"khoản 1 Điều 19\", \"target_dieu\": \"19\", \"target_khoan\": \"1\", \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": null}, {\"type\": \"internal\", \"original_text\": \"điểm a và điểm b khoản này\", \"target_dieu\": \"19\", \"target_khoan\": \"1\", \"target_diem\": \"a\", \"target_document_id\": null, \"target_document_title\": null}, {\"type\": \"internal\", \"original_text\": \"điểm a và điểm b khoản này\", \"target_dieu\": \"19\", \"target_khoan\": \"1\", \"target_diem\": \"b\", \"target_document_id\": null, \"target_document_title\": null}]",
     "entity_type": "[\"tau_bien\"]"
   },
   {
@@ -416,28 +416,7 @@
     "chunk_title": "Điều 20 - Điều kiện đăng ký tàu biển Việt Nam",
     "penalties": "[]",
     "entity_types": "[\"tau_bien\", \"to_chuc\", \"ca_nhan\"]",
-    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"các điểm a, b, c, d, e và g khoản 1 Điều này\", \"target_dieu\": \"20\", \"target_khoan\": \"1\", \"target_diem\": \"a\", \"target_document_id\": \"95/2015/QH13\", \"target_document_title\": \"BỘ LUẬT HÀNG HẢI VIỆT NAM\"}]",
+    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"các điểm a, b, c, d, e và g khoản 1 Điều này\", \"target_dieu\": \"20\", \"target_khoan\": \"1\", \"target_diem\": \"a\", \"target_document_id\": null}]",
     "entity_type": "[\"tau_bien\", \"to_chuc\", \"ca_nhan\"]"
-  },
-  {
-    "source": "Bộ luật-95-2015-QH13.txt",
-    "source_file": "Bộ luật-95-2015-QH13",
-    "document_number": "95/2015/QH13",
-    "document_type": "Luật",
-    "document_title": "BỘ LUẬT HÀNG HẢI VIỆT NAM",
-    "issue_date": "25/11/2015",
-    "issuing_agency": "Quốc hội",
-    "effective_date": "01/07/2017",
-    "expiry_date": null,
-    "confidential_level": "Công khai",
-    "issue_year": 2015,
-    "law_field": "dan_su",
-    "dieu_code": "Điều 21",
-    "dieu_title": "Đặt tên tàu biển Việt Nam",
-    "chunk_title": "Điều 21 - Đặt tên tàu biển Việt Nam",
-    "penalties": "[]",
-    "entity_types": "[]",
-    "cross_references": "[]",
-    "entity_type": "[\"to_chuc\"]"
   }
 ]

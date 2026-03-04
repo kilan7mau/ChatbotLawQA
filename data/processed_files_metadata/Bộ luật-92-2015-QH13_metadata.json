@@ -16,9 +16,9 @@
     "dieu_title": "Phạm vi điều chỉnh và nhiệm vụ của Bộ luật tố tụng dân sự",
     "chunk_title": "Điều 1 - Phạm vi điều chỉnh và nhiệm vụ của Bộ luật tố tụng dân sự",
     "penalties": "[]",
-    "entity_types": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]",
+    "entity_types": "[\"ca_nhan\", \"to_chuc\"]",
     "cross_references": "[]",
-    "entity_type": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]"
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]"
   },
   {
     "source": "Bộ luật-92-2015-QH13.txt",
@@ -37,9 +37,9 @@
     "dieu_title": "Đối tượng áp dụng và hiệu lực của Bộ luật tố tụng dân sự",
     "chunk_title": "Điều 2 - Đối tượng áp dụng và hiệu lực của Bộ luật tố tụng dân sự",
     "penalties": "[]",
-    "entity_types": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]",
+    "entity_types": "[\"ca_nhan\", \"to_chuc\"]",
     "cross_references": "[]",
-    "entity_type": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]"
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]"
   },
   {
     "source": "Bộ luật-92-2015-QH13.txt",
@@ -58,9 +58,9 @@
     "dieu_title": "Tuân thủ pháp luật trong tố tụng dân sự",
     "chunk_title": "Điều 3 - Tuân thủ pháp luật trong tố tụng dân sự",
     "penalties": "[]",
-    "entity_types": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]",
+    "entity_types": "[\"ca_nhan\", \"to_chuc\"]",
     "cross_references": "[]",
-    "entity_type": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]"
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]"
   },
   {
     "source": "Bộ luật-92-2015-QH13.txt",
@@ -79,9 +79,9 @@
     "dieu_title": "Quyền yêu cầu Tòa án bảo vệ quyền và lợi ích hợp pháp",
     "chunk_title": "Điều 4 - Quyền yêu cầu Tòa án bảo vệ quyền và lợi ích hợp pháp",
     "penalties": "[]",
-    "entity_types": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]",
-    "cross_references": "[]",
-    "entity_type": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]"
+    "entity_types": "[\"ca_nhan\", \"to_chuc\"]",
+    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"khoản này\", \"target_dieu\": \"4\", \"target_khoan\": \"2\", \"target_diem\": null, \"target_document_id\": \"92/2015/QH13\", \"target_document_title\": \"BỘ LUẬT TỐ TỤNG DÂN SỰ\"}]",
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]"
   },
   {
     "source": "Bộ luật-92-2015-QH13.txt",
@@ -121,9 +121,9 @@
     "dieu_title": "Cung cấp chứng cứ và chứng minh trong tố tụng dân sự",
     "chunk_title": "Điều 6 - Cung cấp chứng cứ và chứng minh trong tố tụng dân sự",
     "penalties": "[]",
-    "entity_types": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]",
+    "entity_types": "[\"ca_nhan\", \"to_chuc\"]",
     "cross_references": "[]",
-    "entity_type": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]"
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]"
   },
   {
     "source": "Bộ luật-92-2015-QH13.txt",
@@ -142,9 +142,9 @@
     "dieu_title": "Trách nhiệm cung cấp tài liệu, chứng cứ của cơ quan, tổ chức, cá nhân có thẩm quyền",
     "chunk_title": "Điều 7 - Trách nhiệm cung cấp tài liệu, chứng cứ của cơ quan, tổ chức, cá nhân có thẩm quyền",
     "penalties": "[]",
-    "entity_types": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]",
+    "entity_types": "[\"ca_nhan\", \"to_chuc\"]",
     "cross_references": "[]",
-    "entity_type": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]"
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]"
   },
   {
     "source": "Bộ luật-92-2015-QH13.txt",
@@ -163,9 +163,9 @@
     "dieu_title": "Bình đẳng về quyền và nghĩa vụ trong tố tụng dân sự",
     "chunk_title": "Điều 8 - Bình đẳng về quyền và nghĩa vụ trong tố tụng dân sự",
     "penalties": "[]",
-    "entity_types": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]",
+    "entity_types": "[\"ca_nhan\", \"to_chuc\"]",
     "cross_references": "[]",
-    "entity_type": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]"
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]"
   },
   {
     "source": "Bộ luật-92-2015-QH13.txt",
@@ -247,9 +247,9 @@
     "dieu_title": "Thẩm phán, Hội thẩm nhân dân xét xử vụ án dân sự, Thẩm phán giải quyết việc dân sự độc lập và chỉ tuân theo pháp luật",
     "chunk_title": "Điều 12 - Thẩm phán, Hội thẩm nhân dân xét xử vụ án dân sự, Thẩm phán giải quyết việc dân sự độc lập và chỉ tuân theo pháp luật",
     "penalties": "[]",
-    "entity_types": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]",
+    "entity_types": "[\"ca_nhan\", \"to_chuc\"]",
     "cross_references": "[]",
-    "entity_type": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]"
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]"
   },
   {
     "source": "Bộ luật-92-2015-QH13.txt",
@@ -268,9 +268,9 @@
     "dieu_title": "Trách nhiệm của cơ quan tiến hành tố tụng, người tiến hành tố tụng",
     "chunk_title": "Điều 13 - Trách nhiệm của cơ quan tiến hành tố tụng, người tiến hành tố tụng",
     "penalties": "[]",
-    "entity_types": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]",
+    "entity_types": "[\"ca_nhan\", \"to_chuc\"]",
     "cross_references": "[]",
-    "entity_type": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]"
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]"
   },
   {
     "source": "Bộ luật-92-2015-QH13.txt",
@@ -311,7 +311,7 @@
     "chunk_title": "Điều 15 - Tòa án xét xử kịp thời, công bằng, công khai",
     "penalties": "[]",
     "entity_types": "[]",
-    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"tại khoản 2 Điều 109\", \"target_dieu\": \"109\", \"target_khoan\": \"2\", \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": null}]",
+    "cross_references": "[]",
     "entity_type": null
   },
   {
@@ -332,7 +332,7 @@
     "chunk_title": "Điều 16 - Bảo đảm sự vô tư, khách quan trong tố tụng dân sự",
     "penalties": "[]",
     "entity_types": "[]",
-    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"quy định tại khoản 2 Điều 47\", \"target_dieu\": \"47\", \"target_khoan\": \"2\", \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": null}, {\"type\": \"internal\", \"original_text\": \"quy định tại khoản 2 Điều 57\", \"target_dieu\": \"57\", \"target_khoan\": \"2\", \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": null}]",
+    "cross_references": "[]",
     "entity_type": null
   },
   {
@@ -394,9 +394,9 @@
     "dieu_title": "Bảo đảm hiệu lực của bản án, quyết định của Tòa án",
     "chunk_title": "Điều 19 - Bảo đảm hiệu lực của bản án, quyết định của Tòa án",
     "penalties": "[]",
-    "entity_types": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]",
+    "entity_types": "[\"ca_nhan\", \"to_chuc\"]",
     "cross_references": "[]",
-    "entity_type": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]"
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]"
   },
   {
     "source": "Bộ luật-92-2015-QH13.txt",
@@ -437,7 +437,7 @@
     "chunk_title": "Điều 21 - Kiểm sát việc tuân theo pháp luật trong tố tụng dân sự",
     "penalties": "[]",
     "entity_types": "[]",
-    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"tại khoản 2 Điều 4\", \"target_dieu\": \"4\", \"target_khoan\": \"2\", \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": null}]",
+    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"khoản 2 Điều 4\", \"target_dieu\": \"4\", \"target_khoan\": \"2\", \"target_diem\": null, \"target_document_id\": \"92/2015/QH13\", \"target_document_title\": \"BỘ LUẬT TỐ TỤNG DÂN SỰ\"}]",
     "entity_type": null
   },
   {
@@ -457,9 +457,9 @@
     "dieu_title": "Trách nhiệm chuyển giao tài liệu, giấy tờ của Tòa án",
     "chunk_title": "Điều 22 - Trách nhiệm chuyển giao tài liệu, giấy tờ của Tòa án",
     "penalties": "[]",
-    "entity_types": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]",
+    "entity_types": "[\"ca_nhan\", \"to_chuc\"]",
     "cross_references": "[]",
-    "entity_type": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]"
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]"
   },
   {
     "source": "Bộ luật-92-2015-QH13.txt",
@@ -478,9 +478,9 @@
     "dieu_title": "Việc tham gia tố tụng dân sự của cơ quan, tổ chức, cá nhân",
     "chunk_title": "Điều 23 - Việc tham gia tố tụng dân sự của cơ quan, tổ chức, cá nhân",
     "penalties": "[]",
-    "entity_types": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]",
+    "entity_types": "[\"ca_nhan\", \"to_chuc\"]",
     "cross_references": "[]",
-    "entity_type": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]"
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]"
   },
   {
     "source": "Bộ luật-92-2015-QH13.txt",
@@ -500,7 +500,7 @@
     "chunk_title": "Điều 24 - Bảo đảm tranh tụng trong xét xử",
     "penalties": "[]",
     "entity_types": "[]",
-    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"tại khoản 2 Điều 109\", \"target_dieu\": \"109\", \"target_khoan\": \"2\", \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": null}]",
+    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"khoản 2 Điều 109\", \"target_dieu\": \"109\", \"target_khoan\": \"2\", \"target_diem\": null, \"target_document_id\": \"92/2015/QH13\", \"target_document_title\": \"BỘ LUẬT TỐ TỤNG DÂN SỰ\"}]",
     "entity_type": null
   },
   {
@@ -520,9 +520,9 @@
     "dieu_title": "Bảo đảm quyền khiếu nại, tố cáo trong tố tụng dân sự",
     "chunk_title": "Điều 25 - Bảo đảm quyền khiếu nại, tố cáo trong tố tụng dân sự",
     "penalties": "[]",
-    "entity_types": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]",
+    "entity_types": "[\"ca_nhan\", \"to_chuc\"]",
     "cross_references": "[]",
-    "entity_type": "[\"ca_nhan\", \"co_quan\", \"to_chuc\"]"
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]"
   },
   {
     "source": "Bộ luật-92-2015-QH13.txt",
@@ -541,9 +541,9 @@
     "dieu_title": "Những tranh chấp về dân sự thuộc thẩm quyền giải quyết của Tòa án",
     "chunk_title": "Điều 26 - Những tranh chấp về dân sự thuộc thẩm quyền giải quyết của Tòa án",
     "penalties": "[]",
-    "entity_types": "[]",
-    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"quy định tại khoản 2 Điều 30\", \"target_dieu\": \"30\", \"target_khoan\": \"2\", \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": null}]",
-    "entity_type": null
+    "entity_types": "[\"ca_nhan\", \"to_chuc\"]",
+    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"khoản 2 Điều 30\", \"target_dieu\": \"30\", \"target_khoan\": \"2\", \"target_diem\": null, \"target_document_id\": \"92/2015/QH13\", \"target_document_title\": \"BỘ LUẬT TỐ TỤNG DÂN SỰ\"}]",
+    "entity_type": "[\"ca_nhan\", \"to_chuc\"]"
   },
   {
     "source": "Bộ luật-92-2015-QH13.txt",
@@ -563,7 +563,7 @@
     "chunk_title": "Điều 27 - Những yêu cầu về dân sự thuộc thẩm quyền giải quyết của Tòa án",
     "penalties": "[]",
     "entity_types": "[]",
-    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"tại điểm đ khoản 2 Điều 470\", \"target_dieu\": \"470\", \"target_khoan\": \"2\", \"target_diem\": \"đ\", \"target_document_id\": null, \"target_document_title\": null}]",
+    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"điểm đ khoản 2 Điều 470\", \"target_dieu\": \"470\", \"target_khoan\": \"2\", \"target_diem\": \"đ\", \"target_document_id\": \"92/2015/QH13\", \"target_document_title\": \"BỘ LUẬT TỐ TỤNG DÂN SỰ\"}]",
     "entity_type": null
   },
   {

@@ -17,7 +17,7 @@
     "chunk_title": "Điều 1",
     "penalties": "[]",
     "entity_types": "[\"ha_si_quan\", \"chien_si\"]",
-    "cross_references": "[{\"type\": \"external\", \"original_text\": \"Nghị định số 12/2007/NĐ-CP\", \"target_dieu\": \"8\", \"target_khoan\": \"3\", \"target_diem\": null, \"target_document_id\": \"12/2007/NĐ-CP\", \"target_document_title\": \"Nghị định số 12/2007/NĐ-CP\"}, {\"type\": \"external\", \"original_text\": \"Luật Công an nhân dân\", \"target_dieu\": null, \"target_khoan\": null, \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": \"Luật Công an nhân dân\"}, {\"type\": \"external\", \"original_text\": \"các Nghị định của Chính phủ\", \"target_dieu\": null, \"target_khoan\": null, \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": \"các Nghị định của Chính phủ\"}]",
+    "cross_references": "[{\"type\": \"external\", \"original_text\": \"Nghị định số 12/2007/NĐ-CP\", \"target_dieu\": null, \"target_khoan\": null, \"target_diem\": null, \"target_document_so_hieu\": \"12/2007/NĐ-CP\", \"target_document_title\": \"quy định về công dân phục vụ có thời hạn trong Công an nhân dân\"}, {\"type\": \"external\", \"original_text\": \"Luật Công an nhân dân\", \"target_dieu\": null, \"target_khoan\": null, \"target_diem\": null, \"target_document_title\": \"Luật Công an nhân dân\"}]",
     "entity_type": "[\"ha_si_quan\", \"chien_si\"]"
   },
   {

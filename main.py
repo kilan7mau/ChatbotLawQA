@@ -4,9 +4,9 @@ from contextlib import asynccontextmanager
 import uvicorn
 import config
 from schemas.chat import AppState
-from routers.user import router as user_router
+#from routers.user import router as user_router
 from routers.chat import router as chat_router
-from routers.documents import router as docs_router
+#from routers.documents import router as docs_router
 from routers.health_check import router as health_router
 from dependencies import initialize_api_components
 import logging
@@ -79,9 +79,9 @@ app.add_middleware(
 )
 
 # Thêm routers trực tiếp vào app chính với prefix /api
-app.include_router(user_router, prefix="/api/user", tags=["Manager User"])
+#app.include_router(user_router, prefix="/api/user", tags=["Manager User"])
 app.include_router(chat_router, prefix="/api/chat", tags=["Chatbot"])
-app.include_router(docs_router, prefix="/api/documents", tags=["Documents"])
+#app.include_router(docs_router, prefix="/api/documents", tags=["Documents"])
 app.include_router(health_router, prefix="/api", tags=["Status"]) # Hoặc chỉ / nếu health check không cần /api
 
 # Run with Uvicorn

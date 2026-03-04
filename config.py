@@ -11,6 +11,10 @@ WEAVIATE_API_KEY = os.environ.get("WEAVIATE_API_KEY")
 # --- Cấu hình Model ---
 EMBEDDING_MODEL_NAME = "bkai-foundation-models/vietnamese-bi-encoder"
 RERANKER_MODEL_NAME = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+
+
+# --- Cấu hình Groq ---
+GROQ_API_KEY= os.environ.get("GROQ_API_KEY")
 GROQ_MODEL_NAME = "llama-3.3-70b-versatile"
 
 #cấu hình Gemini

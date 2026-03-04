@@ -269,7 +269,7 @@
     "chunk_title": "Điều 13 - Tình trạng không có năng lực trách nhiệm hình sự",
     "penalties": "[]",
     "entity_types": "[\"ca_nhan\"]",
-    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"khoản 1 Điều này\", \"target_dieu\": \"13\", \"target_khoan\": \"1\", \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": null}]",
+    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"khoản 1 Điều này\", \"target_dieu\": \"13\", \"target_khoan\": \"1\", \"target_diem\": null, \"target_document_id\": \"15/1999/QH10\", \"target_document_title\": \"Bộ luật Hình sự\"}]",
     "entity_type": "[\"ca_nhan\"]"
   },
   {
@@ -458,7 +458,7 @@
     "chunk_title": "Điều 22 - Không tố giác tội phạm",
     "penalties": "[]",
     "entity_types": "[\"ca_nhan\"]",
-    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"Điều 313 của Bộ luật này\", \"target_dieu\": \"313\", \"target_khoan\": null, \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": null}, {\"type\": \"internal\", \"original_text\": \"Điều 313 của Bộ luật này\", \"target_dieu\": \"313\", \"target_khoan\": null, \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": null}]",
+    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"Điều 313 của Bộ luật này\", \"target_dieu\": \"313\", \"target_khoan\": null, \"target_diem\": null, \"target_document_id\": \"15/1999/QH10\", \"target_document_title\": \"Bộ luật Hình sự\"}, {\"type\": \"internal\", \"original_text\": \"Điều 313 của Bộ luật này.\", \"target_dieu\": \"313\", \"target_khoan\": null, \"target_diem\": null, \"target_document_id\": \"15/1999/QH10\", \"target_document_title\": \"Bộ luật Hình sự\"}]",
     "entity_type": "[\"ca_nhan\"]"
   },
   {
@@ -479,7 +479,7 @@
     "chunk_title": "Điều 23 - Thời hiệu truy cứu trách nhiệm hình sự",
     "penalties": "[]",
     "entity_types": "[\"ca_nhan\"]",
-    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"khoản 2 Điều này\", \"target_dieu\": \"23\", \"target_khoan\": \"2\", \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": null}]",
+    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"khoản 2 Điều này\", \"target_dieu\": \"23\", \"target_khoan\": \"2\", \"target_diem\": null, \"target_document_id\": \"15/1999/QH10\", \"target_document_title\": \"Bộ luật Hình sự\"}]",
     "entity_type": "[\"ca_nhan\"]"
   },
   {
@@ -500,7 +500,7 @@
     "chunk_title": "Điều 24 - Không áp dụng thời hiệu truy cứu trách nhiệm hình sự",
     "penalties": "[]",
     "entity_types": "[]",
-    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"Điều 23 của Bộ luật này\", \"target_dieu\": \"23\", \"target_khoan\": null, \"target_diem\": null, \"target_document_id\": null, \"target_document_title\": null}]",
+    "cross_references": "[{\"type\": \"internal\", \"original_text\": \"Điều 23 của Bộ luật này\", \"target_dieu\": \"23\", \"target_khoan\": null, \"target_diem\": null, \"target_document_id\": \"15/1999/QH10\", \"target_document_title\": \"Bộ luật Hình sự\"}, {\"type\": \"internal\", \"original_text\": \"Chương XI\", \"target_dieu\": null, \"target_khoan\": null, \"target_diem\": null, \"target_document_id\": \"15/1999/QH10\", \"target_document_title\": \"Bộ luật Hình sự\"}, {\"type\": \"internal\", \"original_text\": \"Chương XXIV\", \"target_dieu\": null, \"target_khoan\": null, \"target_diem\": null, \"target_document_id\": \"15/1999/QH10\", \"target_document_title\": \"Bộ luật Hình sự\"}]",
     "entity_type": null
   },
   {
@@ -687,7 +687,7 @@
     "dieu_code": "Điều 33",
     "dieu_title": "Tù có thời hạn",
     "chunk_title": "Điều 33 - Tù có thời hạn",
-    "penalties": "[{\"type\": \"prison\", \"duration\": {\"min\": 3, \"unit\": \"tháng\"}, \"original_text\": \"mức tối thiểu là ba tháng\"}, {\"type\": \"prison\", \"duration\": {\"max\": 20, \"unit\": \"năm\"}, \"original_text\": \"mức tối đa là hai mươi năm\"}]",
+    "penalties": "[{\"type\": \"prison\", \"duration\": 3, \"unit\": \"tháng\", \"original_text\": \"mức tối thiểu là ba tháng\"}, {\"type\": \"prison\", \"duration\": 20, \"unit\": \"năm\", \"original_text\": \"mức tối đa là hai mươi năm\"}]",
     "entity_types": "[\"ca_nhan\"]",
     "cross_references": "[]",
     "entity_type": "[\"ca_nhan\"]"
@@ -708,7 +708,7 @@
     "dieu_code": "Điều 34",
     "dieu_title": "Tù chung thân",
     "chunk_title": "Điều 34 - Tù chung thân",
-    "penalties": "[{\"type\": \"prison\", \"duration\": \"life\", \"original_text\": \"Tù chung thân\"}]",
+    "penalties": "[{\"type\": \"prison\", \"duration\": null, \"unit\": null, \"original_text\": \"Tù chung thân\"}]",
     "entity_types": "[\"ca_nhan\"]",
     "cross_references": "[]",
     "entity_type": "[\"ca_nhan\"]"
@@ -729,30 +729,9 @@
     "dieu_code": "Điều 35",
     "dieu_title": "Tử hình",
     "chunk_title": "Điều 35 - Tử hình",
-    "penalties": "[{\"type\": \"prison\", \"duration\": \"death\", \"original_text\": \"Tử hình\"}, {\"type\": \"prison\", \"duration\": \"life\", \"original_text\": \"tù chung thân\"}]",
+    "penalties": "[{\"type\": \"prison\", \"duration\": null, \"unit\": null, \"original_text\": \"tù chung thân\"}, {\"type\": \"prison\", \"duration\": null, \"unit\": null, \"original_text\": \"tử hình\"}]",
     "entity_types": "[\"ca_nhan\"]",
     "cross_references": "[]",
     "entity_type": "[\"ca_nhan\"]"
-  },
-  {
-    "source": "Bộ luật-15-1999-QH10.txt",
-    "source_file": "Bộ luật-15-1999-QH10",
-    "document_number": "15/1999/QH10",
-    "document_type": "Bộ luật",
-    "document_title": "HÌNH SỰ CỦA NƯỚC CỘNG HOÀ XÃ HỘI CHỦ NGHĨA VIỆT NAM",
-    "issue_date": "21/12/1999",
-    "issuing_agency": "Quốc hội",
-    "effective_date": null,
-    "expiry_date": null,
-    "confidential_level": "Công khai",
-    "issue_year": 1999,
-    "law_field": "hinh_su",
-    "dieu_code": "Điều 36",
-    "dieu_title": "Cấm đảm nhiệm chức vụ, cấm hành nghề hoặc làm công việc nhất định",
-    "chunk_title": "Điều 36 - Cấm đảm nhiệm chức vụ, cấm hành nghề hoặc làm công việc nhất định",
-    "penalties": "[]",
-    "entity_types": "[]",
-    "cross_references": "[]",
-    "entity_type": null
   }
 ]

@@ -334,7 +334,9 @@ def get_google_llm(google_api_key):
     try:
         def create_chat_google():
             return ChatGoogleGenerativeAI(
-                model="gemini-2.5-flash-preview-05-20",
+                #model="gemini-2.5-flash-preview-05-20",
+                model="gemini-2.5-flash",
+                #model="gemini-2.5-pro",
                 google_api_key=google_api_key,
                 temperature=0.1, # Điều chỉnh nhiệt độ nếu cần, 0.1-0.3 thường tốt cho RAG
                 safety_settings={                 },
@@ -369,7 +371,7 @@ def create_qa_chain(
 
         # LLM cho bước tiền xử lý (thường là model mạnh nhất)
         preprocessing_llm = process_input_llm or llm
-
+        #preprocessing_llm = process_input_llm 
         # ----- PROMPTS (Sử dụng các phiên bản đã cải tiến) -----
 
         # 1. Prompt tiền xử lý hợp nhất

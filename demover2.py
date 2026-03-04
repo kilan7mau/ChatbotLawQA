@@ -2,6 +2,7 @@ import os
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
 from fastapi import FastAPI, HTTPException
+from langchain_groq import ChatGroq
 from pydantic import BaseModel
 from typing import List, Optional, Any
 import config
@@ -43,11 +44,12 @@ retriever = None
 qa_chain = None
 preprocessing_chain = None
 executor = None
+process_input_llm = None
 
 
 @app.on_event("startup")
 def startup_event():
-    global embeddings, weaviate_client, llm, reranker, retriever, qa_chain, preprocessing_chain, executor
+    global embeddings, weaviate_client, llm, reranker, retriever, qa_chain, preprocessing_chain, executor, process_input_llm
 
     logger.info("Starting RAG API initialization...")
 
@@ -67,12 +69,20 @@ def startup_event():
         raise RuntimeError("Failed to connect to Weaviate.")
 
     # 3. Load LLM
-    logger.info("Loading LLM...")
+    logger.info("Loading LLM gemini...")
     google_api_key = os.environ.get("GOOGLE_API_KEY")
     if hasattr(rag_components, 'get_google_llm') and google_api_key:
         llm = rag_components.get_google_llm(google_api_key)
     if not llm:
         raise RuntimeError("Failed to load LLM. Please set GOOGLE_API_KEY.")
+    
+    # 3.5 Load process_input_llm if available
+    logger.info("Loading process_input_llm groq...")
+    if hasattr(rag_components, 'get_process_input_llm'):
+        logger.info("Loading process_input_llm...")
+        process_input_llm = ChatGroq(model=config.GROQ_MODEL_NAME,temperature=0.2)
+        if not process_input_llm:
+            raise RuntimeError("Failed to load process_input_llm. Please set GROQ API KEY.")
 
     # 4. Load reranker
     logger.info("Loading reranker...")
@@ -95,7 +105,7 @@ def startup_event():
     qa_chain = rag_components.create_qa_chain(
         llm=llm,
         retriever=retriever,
-        process_input_llm=llm
+        process_input_llm=process_input_llm
     )
 
     # 7. Pre-build preprocessing chain
@@ -268,7 +278,11 @@ async def health_check():
             "llm": llm is not None,
             "retriever": retriever is not None,
             "qa_chain": qa_chain is not None,
-            "preprocessing_chain": preprocessing_chain is not None
+            "preprocessing_chain": preprocessing_chain is not None,
+            "process_input_llm": process_input_llm is not None,
+            "embeddings": embeddings is not None,
+            "weaviateDB": weaviate_client is not None,
+            "reranker": reranker is not None
         }
     }
 
